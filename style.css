@@ -1,15 +1,88 @@
-<body>
- <header>
-   <nav>
-  <a href="index.html">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">CV / Contact</a>
-</nav>
- </header> 
-  <main>
-    
-  </main>
-</body>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fcfbff;
+  color: #2d2438;
+  line-height: 1.6;
+}
 
+header {
+  padding: 20px 40px;
+  border-bottom: 1px solid #e8e0f2;
+  background: white;
+}
 
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #6f4aa6;
+  font-weight: 600;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.hero {
+  margin-bottom: 60px;
+}
+
+.eyebrow {
+  color: #8e72b8;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 10px 0 20px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #5b3d8a;
+}
+
+h3 {
+  margin-top: 0;
+  color: #4e3278;
+}
+
+.intro {
+  max-width: 700px;
+  font-size: 18px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 24px;
+  border: 1px solid #eadff7;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(111, 74, 166, 0.06);
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+footer {
+  padding: 30px 24px;
+  text-align: center;
+  border-top: 1px solid #e8e0f2;
+  color: #7a6994;
+  font-size: 14px;
+}

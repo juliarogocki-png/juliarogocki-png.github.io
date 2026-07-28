@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel-Trends-Dashboard · Portfolio</title>
-  <meta name="description" content="A modern portfolio case study presenting a code-first travel trends dashboard." />
+  <title>Travel Trends Dashboard · Portfolio Case Study</title>
+  <meta name="description" content="A modern portfolio case study for a travel trends dashboard with mockup placeholders." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -18,9 +18,7 @@
       --muted: #697983;
       --faint: #93a0a8;
       --primary: #1e4e60;
-      --primary-2: #2f6a7d;
       --accent: #c97c63;
-      --accent-soft: #f3e1d9;
       --radius-lg: 28px;
       --radius-md: 20px;
       --shadow-sm: 0 8px 22px rgba(28, 37, 43, 0.05);
@@ -37,9 +35,7 @@
       --muted: #a5b0b6;
       --faint: #7e8a91;
       --primary: #7fb3c7;
-      --primary-2: #99c5d6;
       --accent: #dc9b86;
-      --accent-soft: #392d2a;
       --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.25);
       --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.35);
     }
@@ -57,9 +53,8 @@
       line-height: 1.6;
     }
 
-    img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
+    img, svg { display: block; max-width: 100%; }
 
     .container {
       width: min(var(--content), calc(100% - 2rem));
@@ -113,32 +108,6 @@
       border-radius: 12px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.42);
-    }
-
-    .brand-mark::before {
-      width: 22px;
-      height: 3px;
-      left: 8px;
-      top: 12px;
-      transform: rotate(-35deg);
-    }
-
-    .brand-mark::after {
-      width: 14px;
-      height: 3px;
-      left: 16px;
-      top: 22px;
-      transform: rotate(45deg);
     }
 
     .nav {
@@ -148,8 +117,6 @@
       color: var(--muted);
       font-size: 0.95rem;
     }
-
-    .nav a:hover { color: var(--text); }
 
     .theme-toggle {
       width: 44px;
@@ -186,7 +153,7 @@
     h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.045em; }
 
     h1 {
-      font-size: clamp(3.2rem, 7vw, 6.6rem);
+      font-size: clamp(3.2rem, 7vw, 6.4rem);
       max-width: 9.5ch;
     }
 
@@ -208,7 +175,7 @@
     .hero-card,
     .panel,
     .project-card,
-    .chart-card,
+    .mockup-card,
     .note-card {
       background: var(--surface);
       border: 1px solid var(--line);
@@ -244,11 +211,6 @@
       margin-bottom: 0.4rem;
     }
 
-    .mini-item strong {
-      font-size: 1rem;
-      letter-spacing: -0.03em;
-    }
-
     .button-row,
     .action-row {
       display: flex;
@@ -261,7 +223,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.55rem;
       min-height: 48px;
       padding: 0.9rem 1.2rem;
       border-radius: 999px;
@@ -333,7 +294,7 @@
     }
 
     .project-visual::after {
-      content: "Replace with exported chart preview or screenshot";
+      content: "Replace with screenshot later";
       position: absolute;
       right: 1rem;
       bottom: 1rem;
@@ -356,4 +317,402 @@
     .fake-chart-bars div {
       height: 42px;
       border-radius: 14px;
-      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 38%,
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 38%, var(--primary)));
+    }
+
+    .project-body,
+    .panel-body,
+    .note-body,
+    .mockup-body {
+      padding: 1.5rem;
+    }
+
+    .project-body p,
+    .panel-body p,
+    .note-body p,
+    .note-body li,
+    .mockup-body p {
+      color: var(--muted);
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+      border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--line));
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .mockup-card {
+      overflow: hidden;
+      min-height: 340px;
+    }
+
+    .mockup-stage {
+      min-height: 220px;
+      padding: 1.25rem;
+      background: color-mix(in srgb, var(--surface) 65%, var(--surface-2));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mockup-box {
+      height: 100%;
+      border-radius: 18px;
+      border: 1px dashed var(--line);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1rem;
+      color: var(--faint);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, var(--surface-2)), var(--surface));
+    }
+
+    .code-frame {
+      margin: 0;
+      padding: 1.2rem;
+      border-radius: 20px;
+      background: #12202a;
+      color: #e8eef1;
+      overflow: auto;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .note-list {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .insight-card {
+      padding: 1.3rem;
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .insight-card span {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      font-size: 0.77rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .portfolio-link-box {
+      padding: 1.3rem;
+      border-radius: var(--radius-md);
+      background: color-mix(in srgb, var(--primary) 7%, var(--surface));
+      border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--line));
+      margin-top: 1rem;
+    }
+
+    .footer {
+      padding: 2rem 0 4rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      border-top: 1px solid var(--line);
+      padding-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-head,
+      .projects-grid,
+      .split-grid,
+      .insight-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(var(--content), calc(100% - 1.25rem)); }
+      .hero { padding-top: 4.5rem; }
+      .button-row,
+      .action-row { flex-direction: column; }
+      .button { width: 100%; }
+      .project-visual,
+      .mockup-stage { min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Portfolio</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#case-study">Case Study</a>
+        <a href="#implementation">Implementation</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Portfolio Project · Case Study</p>
+          <h1>Travel <em>Trends</em> Dashboard.</h1>
+          <p>
+            This project page is designed as a modern portfolio case study. It focuses on the story behind the dashboard, the structure of the code, and the final visuals you will insert later.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="#case-study">Open project</a>
+            <a class="button secondary" href="#implementation">See code</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Portfolio summary">
+          <div class="mini-grid">
+            <div class="mini-item">
+              <span>Project type</span>
+              <strong>Dashboard case study</strong>
+            </div>
+            <div class="mini-item">
+              <span>Focus</span>
+              <strong>Code + visuals</strong>
+            </div>
+            <div class="mini-item">
+              <span>Tools</span>
+              <strong>HTML, CSS, JS, Python</strong>
+            </div>
+            <div class="mini-item">
+              <span>Layout</span>
+              <strong>Modern one-page flow</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Project overview</p>
+            <h2 class="section-title">A clean page for the <em>dashboard</em></h2>
+          </div>
+          <p>
+            The layout keeps a smooth flow: first the context, then the mockups, then the implementation. That makes the page feel like a real case study instead of a random collection of blocks.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card" id="case-study">
+            <div class="project-visual">
+              <div>
+                <p class="eyebrow">Featured case study</p>
+                <h3>Travel Trends Dashboard</h3>
+              </div>
+              <div class="fake-chart-lines" aria-hidden="true">
+                <div style="width:100%;"></div>
+                <div style="width:88%;opacity:.62;"></div>
+                <div style="width:95%;opacity:.46;"></div>
+                <div style="width:78%;opacity:.34;"></div>
+                <div style="width:66%;opacity:.25;"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>What this page is for</h3>
+              <p>
+                This page is meant to present the dashboard project in a portfolio format. The visuals are mockups for now, so you can insert screenshots, chart exports, or device previews later.
+              </p>
+              <div class="stack">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Python</span>
+              </div>
+              <div class="action-row">
+                <a class="button primary" href="#implementation">View implementation</a>
+                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+                <a class="button ghost" href="https://yourusername.github.io/Travel-Trends-Dashboard/" target="_blank" rel="noopener noreferrer">Live demo</a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="panel">
+            <div class="panel-body">
+              <p class="eyebrow">Why this works</p>
+              <h3>Portfolio-friendly structure</h3>
+              <p>
+                Direct project links and a clear case-study section are common in portfolio pages because they make it easy to understand the work quickly.
+              </p>
+              <div class="portfolio-link-box">
+                Put this file in your GitHub repo as <code>Travel-Trends-Dashboard.html</code> and link to it from <code>index.html</code>.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Mockups</p>
+            <h2 class="section-title">Empty spaces for the <em>final visuals</em></h2>
+          </div>
+          <p>
+            These are deliberate placeholders. Later you can drop in your dashboard screenshot, ranking chart, line chart, or a mockup of the final GitHub Pages view.
+          </p>
+        </div>
+
+        <div class="split-grid">
+          <article class="mockup-card">
+            <div class="mockup-stage">
+              <div class="mockup-box">Mockup 1<br>Dashboard hero image</div>
+            </div>
+            <div class="mockup-body">
+              <h3>Main visual mockup</h3>
+              <p>This can later become a full dashboard screenshot or a laptop mockup.</p>
+            </div>
+          </article>
+
+          <article class="mockup-card">
+            <div class="mockup-stage">
+              <div class="mockup-box">Mockup 2<br>Chart preview / close-up</div>
+            </div>
+            <div class="mockup-body">
+              <h3>Supporting mockup</h3>
+              <p>This can later become a chart close-up, process image, or detail section.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="implementation">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Implementation</p>
+            <h2 class="section-title">Show the <em>code</em>, not just the result</h2>
+          </div>
+          <p>
+            This part is for code snippets, notes, and repo links. It helps the portfolio feel technical and makes the project easier to review.
+          </p>
+        </div>
+
+        <div class="split-grid">
+          <article class="panel">
+            <div class="panel-body">
+              <h3>Example snippet</h3>
+              <pre class="code-frame"><code>ranking = (
+    df[keyword_cols]
+    .mean()
+    .sort_values(ascending=True)
+    .reset_index()
+)
+ranking.columns = ["keyword", "avg_interest"]</code></pre>
+              <div class="action-row">
+                <a class="button primary" href="https://github.com/yourusername/Travel-Trends-Dashboard" target="_blank" rel="noopener noreferrer">Open repository</a>
+                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read notes</a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="note-card">
+            <div class="note-body">
+              <h3>How to use it</h3>
+              <ul class="note-list">
+                <li>Save as <code>Travel-Trends-Dashboard.html</code>.</li>
+                <li>Link to it from your main portfolio page.</li>
+                <li>Add your images later inside the mockup boxes.</li>
+                <li>Replace GitHub links with your real repo and demo URLs.</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 class="section-title">Ready for your <em>portfolio</em></h2>
+          </div>
+          <p>
+            This page is set up to fit into a GitHub-based portfolio structure with a clean navigation flow.
+          </p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-body">
+            <h3>Simple contact links</h3>
+            <div class="action-row">
+              <a class="button primary" href="mailto:yourname@email.com">Email me</a>
+              <a class="button secondary" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="button ghost" href="https://www.linkedin.com/in/yourname/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Travel Trends Dashboard · Project page with mockup placeholders.</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', mode);
+
+      const render = () => {
+        toggle.innerHTML = mode === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+      };
+
+      render();
+      toggle.addEventListener('click', () => {
+        mode = mode === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', mode);
+        render();
+      });
+    })();
+  </script>
+</body>
+</html>

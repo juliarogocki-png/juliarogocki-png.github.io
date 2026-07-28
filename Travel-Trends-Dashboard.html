@@ -5,397 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Trends Dashboard | Julia Rogocki</title>
   <meta name="description" content="Travel Trends Dashboard case study in the Julia Rogocki portfolio." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
   <style>
-    :root {
-      --bg: #f7f6f2;
-      --surface: #ffffff;
-      --surface-2: #f1efe9;
-      --text: #1f1d17;
-      --muted: #6f6b63;
-      --line: #ddd8cf;
-      --accent: #0d6b6f;
-      --accent-soft: #dcebea;
-      --shadow: 0 10px 30px rgba(26, 22, 16, 0.08);
-      --radius: 18px;
-      --content: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 96px;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--content), calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(247, 246, 242, 0.88);
-      border-bottom: 1px solid rgba(31, 29, 23, 0.08);
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 72px;
-      gap: 24px;
-    }
-
-    .brand {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover,
-    .nav-links a[aria-current="page"] {
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 72px 0 36px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1, h2, h3 {
-      font-family: "Instrument Serif", serif;
-      font-weight: 400;
-      line-height: 1.05;
-      margin: 0 0 16px;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      max-width: 10ch;
-    }
-
-    h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-    }
-
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 14px;
-    }
-
-    .intro {
-      max-width: 62ch;
-      font-size: 1.08rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    main section {
-      padding: 24px 0 40px;
-      scroll-margin-top: 96px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.85fr;
-      gap: 24px;
-      align-items: end;
-    }
-
-    .hero-card,
-    .info-card,
-    .project-card,
-    .content-card,
-    .mockup-card {
-      background: var(--surface);
-      border: 1px solid rgba(31, 29, 23, 0.08);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 32px;
-      min-height: 100%;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .button-primary,
-    .button-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 16px;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: opacity 180ms ease, background 180ms ease;
-    }
-
-    .button-primary {
-      background: var(--accent);
-      color: #ffffff;
-    }
-
-    .button-secondary {
-      background: var(--surface-2);
-      color: var(--text);
-    }
-
-    .button-primary:hover,
-    .project-link:hover {
-      opacity: 0.92;
-    }
-
-    .button-secondary:hover {
-      background: #ebe7de;
-    }
-
-    .info-card {
-      padding: 28px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .info-item span {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .info-item p {
-      margin: 0;
-      color: var(--text);
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 52ch;
-    }
-
-    .projects-grid,
-    .two-column {
-      display: grid;
-      gap: 24px;
-    }
-
-    .projects-grid {
-      grid-template-columns: repeat(3, 1fr);
-      align-items: stretch;
-    }
-
-    .two-column {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .project-card {
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-
-    .project-type {
-      display: inline-flex;
-      align-self: flex-start;
-      margin-bottom: 16px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--surface-2);
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .project-card p {
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: auto;
-      margin-bottom: 22px;
-    }
-
-    .meta span {
-      padding: 9px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: 0.88rem;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.65);
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-self: flex-start;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: opacity 180ms ease;
-    }
-
-    .mockup-stage {
-      min-height: 260px;
-      padding: 18px;
-      background: var(--surface-2);
-      border-bottom: 1px solid var(--line);
-      border-radius: var(--radius) var(--radius) 0 0;
-    }
-
-    .mockup-box {
-      height: 100%;
-      border-radius: 14px;
-      border: 1px dashed var(--line);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 1rem;
-      color: var(--muted);
-      background: linear-gradient(135deg, rgba(13, 107, 111, 0.08), rgba(255,255,255,0.9));
-      font-size: 0.98rem;
-    }
-
-    .mockup-body,
-    .content-card {
-      padding: 24px 28px 28px;
-    }
-
-    .mockup-body p,
-    .content-card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-.code-wrap {
-  margin: 0;
-  padding: 22px;
-  background: #111111;
-  color: #f5f5f5;
-  border-radius: 14px;
-  overflow: auto;
-  max-width: 100%;
-  min-height: 220px;
-  font-size: 0.92rem;
-  line-height: 1.65;
-  -webkit-overflow-scrolling: touch;
-}
-
-.code-wrap code {
-  display: block;
-  white-space: pre;
-  min-width: max-content;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    footer {
-      padding: 48px 0 72px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .projects-grid,
-      .two-column {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        max-width: 100%;
-      }
-
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      .section-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+    :root{--bg:#f7f6f2;--surface:#fff;--surface-2:#f1efe9;--text:#1f1d17;--muted:#6f6b63;--line:#ddd8cf;--accent:#0d6b6f;--accent-soft:#dcebea;--shadow:0 10px 30px rgba(26,22,16,.08);--radius:18px;--content:1120px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--content),calc(100% - 2rem));margin:0 auto}
+    header{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(247,246,242,.88);border-bottom:1px solid rgba(31,29,23,.08)}
+    .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px;gap:24px}
+    .brand{font-size:.95rem;font-weight:600}
+    .nav-links{display:flex;gap:20px;flex-wrap:wrap}
+    .nav-links a{font-size:.95rem;color:var(--muted)}
+    .hero{padding:72px 0 36px}
+    .eyebrow{display:inline-block;margin-bottom:18px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    h1,h2,h3{font-family:"Instrument Serif",serif;font-weight:400;line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+    h1{font-size:clamp(3rem,7vw,5.2rem);max-width:10ch}
+    h2{font-size:clamp(1.8rem,3vw,2.4rem)}
+    h3{font-size:1.45rem;margin-bottom:10px}
+    .intro{max-width:62ch;font-size:1.05rem;color:var(--muted);margin:0}
+    main section{padding:24px 0 40px;scroll-margin-top:96px}
+    .hero-grid,.two-column,.projects-grid{display:grid;gap:22px}
+    .hero-grid{grid-template-columns:1.35fr .75fr;align-items:end}
+    .two-column{grid-template-columns:repeat(2,1fr)}
+    .projects-grid{grid-template-columns:repeat(3,1fr)}
+    .card,.info-card,.mockup-card,.content-card{background:var(--surface);border:1px solid rgba(31,29,23,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card{padding:32px}
+    .info-card{padding:24px;display:grid;gap:16px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 15px;border-radius:999px;font-size:.94rem;font-weight:600}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.secondary{background:var(--surface-2);color:var(--text)}
+    .info-item span,.eyebrow{letter-spacing:.08em;text-transform:uppercase}
+    .info-item span{display:block;margin-bottom:6px;font-size:.78rem;font-weight:600;color:var(--muted)}
+    .info-item p{margin:0}
+    .section-head{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:22px}
+    .section-head p{margin:0;color:var(--muted)}
+    .mockup-stage{min-height:250px;padding:16px;background:var(--surface-2);border-bottom:1px solid var(--line);border-radius:var(--radius) var(--radius) 0 0}
+    .mockup-box{height:100%;border-radius:14px;border:1px dashed var(--line);display:grid;place-items:center;text-align:center;padding:1rem;color:var(--muted);background:linear-gradient(135deg,rgba(13,107,111,.08),rgba(255,255,255,.9))}
+    .mockup-body,.content-card{padding:22px 24px 24px}
+    .mockup-body p,.content-card p{margin:0;color:var(--muted)}
+    .insight-list{margin:12px 0 0;padding-left:18px;color:var(--muted)}
+    .insight-list li{margin-bottom:8px}
+    .conclusion-card{padding:24px}
+    footer{padding:44px 0 64px;color:var(--muted);font-size:.95rem}
+    @media (max-width:980px){
+      .hero-grid,.two-column,.projects-grid,.section-head{grid-template-columns:1fr}
+      .nav{flex-direction:column;align-items:flex-start;padding:14px 0}
     }
   </style>
 </head>
@@ -413,33 +72,21 @@
   </header>
 
   <main>
-    <section class="hero" id="top">
+    <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-card">
+        <div class="hero-card card">
           <p class="eyebrow">Portfolio Case Study</p>
           <h1>Travel Trends Dashboard</h1>
-          <p class="intro">
-Wie verschiebt sich das Interesse von klassischen Beach Holidays hin zu Slow Travel und Solo Trips – und welche Reiseformen gewinnen leise im Hintergrund?
-          </p>
+          <p class="intro">How does interest in classic beach holidays shift toward slow travel and solo trips, and which travel types are quietly gaining momentum in Germany?</p>
           <div class="hero-actions">
-            <a class="button-primary" href="#mockups">View mockups</a>
-            <a class="button-secondary" href="#implementation">View code</a>
+            <a class="btn primary" href="#mockups">View mockups</a>
+            <a class="btn secondary" href="#analysis">View analysis</a>
           </div>
         </div>
-
         <aside class="info-card" aria-label="Project overview">
-          <div class="info-item">
-            <span>Focus</span>
-            <p>Dashboard presentation, chart storytelling and code-first layout.</p>
-          </div>
-          <div class="info-item">
-            <span>Style</span>
-            <p>Consistent with the Julia Rogocki portfolio system.</p>
-          </div>
-          <div class="info-item">
-            <span>Status</span>
-            <p>Mockups can be added later.</p>
-          </div>
+          <div class="info-item"><span>Focus</span><p>Travel demand trends, category comparison and time-based pattern analysis.</p></div>
+          <div class="info-item"><span>Question</span><p>Which travel archetypes are stable, seasonal or emerging over time?</p></div>
+          <div class="info-item"><span>Scope</span><p>Germany weekly search interest from July 2025 to July 2026.</p></div>
         </aside>
       </div>
     </section>
@@ -451,97 +98,96 @@ Wie verschiebt sich das Interesse von klassischen Beach Holidays hin zu Slow Tra
             <p class="eyebrow">Project overview</p>
             <h2>Why this project exists</h2>
           </div>
-          <p>
-This dashboard explores how interest in different types of trips in Germany shifts over time – from classic beach holidays to solo, slow and sustainable travel. It turns raw search data into a clear story about emerging travel preferences and gives me a way to show structured analysis, clean visualisation and a focused, niche question inside my portfolio.
-          </p>
+          <p>This project turns raw travel search data into a clear portfolio case study with a niche but understandable question: how travel preferences shift between beach holidays, solo trips, slow travel and sustainable travel.</p>
         </div>
 
         <div class="projects-grid" id="mockups">
           <article class="mockup-card">
-            <div class="mockup-stage">
-              <div class="mockup-box">
-                Mockup 1<br />
-                Dashboard hero image or screenshot
-              </div>
-            </div>
-            <div class="mockup-body">
-              <h3>Main visual</h3>
-              <p>This is where you can later insert the final dashboard screenshot or a large mockup.</p>
-            </div>
+            <div class="mockup-stage"><div class="mockup-box">Mockup 1<br />Main dashboard screenshot</div></div>
+            <div class="mockup-body"><h3>Main visual</h3><p>Use this for the full dashboard view with the key charts and an immediate visual summary of the analysis.</p></div>
           </article>
-
           <article class="mockup-card">
-            <div class="mockup-stage">
-              <div class="mockup-box">
-                Mockup 2<br />
-                Chart close-up or supporting visual
-              </div>
-            </div>
-            <div class="mockup-body">
-              <h3>Supporting visual</h3>
-              <p>This can later become a close-up of the charts or a second visual explaining the analysis.</p>
-            </div>
+            <div class="mockup-stage"><div class="mockup-box">Mockup 2<br />Chart close-up</div></div>
+            <div class="mockup-body"><h3>Supporting visual</h3><p>Use this to highlight the ranking chart or a detailed crop of the strongest trend so the insight is easier to read.</p></div>
           </article>
-
           <article class="mockup-card">
-            <div class="mockup-stage">
-              <div class="mockup-box">
-                Mockup 3<br />
-                Mobile / process / code screenshot
-              </div>
-            </div>
-            <div class="mockup-body">
-              <h3>Process visual</h3>
-              <p>This slot can later show the coding process, layout planning or a mobile view of the page.</p>
-            </div>
+            <div class="mockup-stage"><div class="mockup-box">Mockup 3<br />Process or mobile view</div></div>
+            <div class="mockup-body"><h3>Process visual</h3><p>Use this for the process side of the project, such as code, planning, or a mobile-friendly composition of the dashboard.</p></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="implementation">
+    <section id="analysis">
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Implementation</p>
-            <h2>Show the <em>code</em>, not just the result</h2>
+            <p class="eyebrow">Analysis</p>
+            <h2>What the data shows</h2>
           </div>
-          <p>
-            The blocks below stay visible so visitors can actually see the code and scroll inside it.
-          </p>
+          <p>Two views make the story easy to understand: a ranking of average interest and a time-based comparison of the most important travel types.</p>
         </div>
 
-<div class="two-column">
-  <article class="content-card">
-    <h3>Ranking chart</h3>
-    <pre class="code-wrap"><code>ranking = (
-    df[keyword_cols]
-    .mean()
-    .sort_values(ascending=True)
-    .reset_index()
-)
-ranking.columns = ["keyword", "avg_interest"]
+        <div class="two-column">
+          <article class="content-card">
+            <h3>Average interest ranking</h3>
+            <p>The ranking view compares the overall level of interest for each travel type across the full period. It helps show which categories stay dominant and which ones remain niche but relevant.</p>
+            <ul class="insight-list">
+              <li>Beach holidays remain the strongest overall category.</li>
+              <li>Solo travel and slow travel become more visible when looking at change over time.</li>
+              <li>City breaks provide a stable comparison point for short-trip demand.</li>
+            </ul>
+          </article>
 
-fig, ax = plt.subplots(figsize=(11, 6.5), facecolor=BG)
-ax.barh(ranking["keyword"], ranking["avg_interest"], color=bar_colors)
-ax.set_title("Average Search Interest by Travel Keyword", loc="left")
-plt.tight_layout()</code></pre>
-  </article>
+          <article class="content-card">
+            <h3>Weekly trend comparison</h3>
+            <p>This view focuses on movement over time. It makes the seasonal nature of beach holidays visible while showing how solo and sustainable travel gain momentum more gradually.</p>
+            <ul class="insight-list">
+              <li>Beach holidays peak strongly in seasonal periods.</li>
+              <li>Solo travel grows from a niche line into a more important signal.</li>
+              <li>Sustainable travel stays lower in volume but points to a longer-term shift in travel behavior.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Key insights</p>
+            <h2>Don't just show the results</h2>
+          </div>
+          <p>This section explains what the numbers mean, not just what they look like.</p>
+        </div>
+
+        <div class="content-card">
+          <p>The dashboard does not only present charts — it helps interpret changing travel behavior over time. Beach holidays remain the most visible category, but the growing presence of solo and slow travel suggests a broader shift toward more personal and flexible trip planning. Instead of showing only final results, this section highlights the meaning behind the patterns and makes the analysis easier to understand in a portfolio context.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="conclusion">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Conclusion</p>
+            <h2>What this dashboard adds</h2>
+          </div>
+          <p>This section closes the story with the key takeaway and explains why the analysis matters in the portfolio context.</p>
+        </div>
+
+        <div class="conclusion-card content-card">
+          <p>The dashboard shows that travel interest is not moving in one direction only: beach holidays still lead, but solo and sustainable travel are gaining visibility and create a more nuanced picture of how people want to travel. That makes the project a strong portfolio piece because it combines data analysis, clear storytelling and a clean visual presentation in one focused case study.</p>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="container">
-        <div class="section-head">
-          <div>
-          </div>
-          <p>
-          </p>
-        </div>
-
-        <div class="content-card">
-          <a class="project-link" href="projects.html">Back to Projects</a>
+        <div class="content-card" style="text-align:center;">
+          <a class="btn primary" href="projects.html">Back to Projects</a>
         </div>
       </div>
     </section>

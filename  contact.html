@@ -4,66 +4,459 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CV / Contact | Julia Rogocki</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta
+    name="description"
+    content="Contact and CV page for Julia Rogocki — sociology master's student with experience in research support, data-related work and digital process improvement."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1efe9;
+      --text: #1f1d17;
+      --muted: #6f6b63;
+      --line: #ddd8cf;
+      --accent: #0d6b6f;
+      --accent-soft: #dcebea;
+      --shadow: 0 10px 30px rgba(26, 22, 16, 0.08);
+      --radius: 18px;
+      --content: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--content), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 246, 242, 0.88);
+      border-bottom: 1px solid rgba(31, 29, 23, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      max-width: 60ch;
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    main section {
+      padding: 24px 0 40px;
+    }
+
+    .hero-card,
+    .info-card,
+    .content-card {
+      background: var(--surface);
+      border: 1px solid rgba(31, 29, 23, 0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 32px;
+    }
+
+    .info-card {
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .info-item span {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .info-item p {
+      margin: 0;
+      color: var(--text);
+    }
+
+    .content-card {
+      padding: 30px;
+    }
+
+    .content-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .meta-tags span {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .contact-links,
+    .skill-list,
+    .education-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-links li,
+    .skill-list li,
+    .education-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(31, 29, 23, 0.08);
+      color: var(--muted);
+    }
+
+    .contact-links li:last-child,
+    .skill-list li:last-child,
+    .education-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-links a {
+      color: var(--text);
+    }
+
+    .contact-links a:hover {
+      color: var(--accent);
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity 180ms ease, background 180ms ease;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    .button-primary:hover {
+      opacity: 0.92;
+    }
+
+    .button-secondary:hover {
+      background: #ebe7de;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    footer {
+      padding: 48px 0 72px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .two-column,
+      .three-column {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">CV / Contact</a>
-    </nav>
+    <div class="container nav">
+      <a class="brand" href="index.html">Julia Rogocki</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">CV / Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <p class="eyebrow">Contact</p>
-      <h1>CV / Contact</h1>
-      <p class="intro">
-        Feel free to get in touch for roles, collaborations or conversations around research,
-        analysis and digital projects.
-      </p>
-    </section>
-
-    <section>
-      <div class="cards">
-        <div class="card">
-          <h2>Email</h2>
-          <p>yourname@email.com</p>
-        </div>
-
-        <div class="card">
-          <h2>LinkedIn</h2>
-          <p>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-              linkedin.com/in/yourprofile
-            </a>
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <p class="eyebrow">CV / Contact</p>
+          <h1>Interested in structured, thoughtful digital work.</h1>
+          <p class="intro">
+            I am interested in roles and projects related to digital processes, research support,
+            data-related work and workflow improvement. My background combines analytical thinking,
+            structured organization and an interest in making information more usable and clear.
           </p>
+
+          <div class="meta-tags">
+            <span>Research Support</span>
+            <span>Data & Processes</span>
+            <span>Organization</span>
+          </div>
+
+          <div class="button-row">
+            <a class="button-primary" href="CV_anonym.pdf" target="_blank" rel="noopener noreferrer">Open CV</a>
+            <a class="button-secondary" href="projects.html">View projects</a>
+          </div>
         </div>
 
-        <div class="card">
-          <h2>CV</h2>
-          <p>
-            <a href="#" target="_blank" rel="noopener noreferrer">Download CV</a>
-          </p>
-        </div>
+        <aside class="info-card" aria-label="Contact overview">
+          <div class="info-item">
+            <span>Current status</span>
+            <p>M.A. Sociology student, expected completion at the end of 2026.</p>
+          </div>
+          <div class="info-item">
+            <span>Areas of interest</span>
+            <p>Digital processes, data organization, workflow improvement and research-related support.</p>
+          </div>
+          <div class="info-item">
+            <span>Location</span>
+            <p>Germany</p>
+          </div>
+        </aside>
       </div>
     </section>
 
     <section>
-      <div class="card">
-        <h2>Areas of Interest</h2>
-        <p>
-          I am particularly interested in research-related, analytical and digital work,
-          including structured problem solving, data-driven projects and process improvement.
-        </p>
+      <div class="container two-column">
+        <article class="content-card">
+          <h2>Contact</h2>
+          <p>
+            This page can be used as a simple contact and CV overview. Replace the placeholder items
+            below with your actual public contact details before publishing.
+          </p>
+
+          <ul class="contact-links">
+            <li>Email — <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+            <li>LinkedIn — <a href="#" target="_blank" rel="noopener noreferrer">Add your LinkedIn profile</a></li>
+            <li>GitHub — <a href="#" target="_blank" rel="noopener noreferrer">Add your GitHub profile</a></li>
+          </ul>
+        </article>
+
+        <article class="content-card">
+          <h2>Profile</h2>
+          <p>
+            I have experience in structured, data-related tasks as well as in the preparation,
+            organization and coordination of information. My work so far has included support in
+            research contexts, project-related workflows and digital process development.
+          </p>
+          <p>
+            I am especially interested in practical work environments where analytical thinking,
+            organization and digital tools come together.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container three-column">
+        <article class="content-card">
+          <h2>Key Competencies</h2>
+          <ul class="skill-list">
+            <li>Excel — advanced</li>
+            <li>Generative AI / LLMs — advanced practical experience</li>
+            <li>Survey and research software — good knowledge</li>
+            <li>Word, PowerPoint, Canva, Power BI — good knowledge</li>
+          </ul>
+        </article>
+
+        <article class="content-card">
+          <h2>Technical Basics</h2>
+          <ul class="skill-list">
+            <li>SQL — foundational knowledge</li>
+            <li>Python — foundational knowledge</li>
+            <li>MATLAB — foundational knowledge</li>
+            <li>SAP — foundational knowledge</li>
+          </ul>
+        </article>
+
+        <article class="content-card">
+          <h2>Education</h2>
+          <ul class="education-list">
+            <li>M.A. Sociology — expected completion end of 2026</li>
+            <li>B.A. Social Sciences</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <article class="content-card">
+          <h2>What I Can Contribute</h2>
+          <p>
+            My experience includes work in market research, research support, project coordination
+            and science management. Across these roles, I have contributed to data handling,
+            organizational processes, planning activities and the structured support of ongoing work.
+          </p>
+          <p>
+            I bring a combination of analytical thinking, organizational ability, adaptability,
+            problem-solving and a structured way of working in dynamic environments.
+          </p>
+        </article>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Based in Germany · Portfolio in progress</p>
+    <div class="container">
+      <p>Portfolio overview with selected projects and case studies.</p>
+    </div>
   </footer>
 </body>
 </html>

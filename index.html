@@ -144,6 +144,7 @@
 
     main section {
       padding: 24px 0 40px;
+      scroll-margin-top: 96px;
     }
 
     .hero-grid {
@@ -155,7 +156,8 @@
 
     .hero-card,
     .info-card,
-    .project-card {
+    .project-card,
+    .content-card {
       background: var(--surface);
       border: 1px solid rgba(31, 29, 23, 0.08);
       border-radius: var(--radius);
@@ -301,18 +303,19 @@
       font-weight: 600;
     }
 
-    .text-card {
-      background: transparent;
-      border-top: 1px solid rgba(31, 29, 23, 0.08);
-      padding-top: 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+    .content-card {
+      padding: 30px;
     }
 
-    .text-card p {
-      margin: 0;
+    .content-card p {
+      margin: 0 0 16px;
       color: var(--muted);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
 
     footer {
@@ -324,7 +327,7 @@
     @media (max-width: 980px) {
       .hero-grid,
       .projects-grid,
-      .text-card {
+      .two-column {
         grid-template-columns: 1fr;
       }
 
@@ -352,8 +355,8 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="./index.html" aria-current="page">Home</a>
         <a href="./projects.html">Projects</a>
-        <a href="./about.html">About</a>
-        <a href="./contact.html">CV / Contact</a>
+        <a href="#about">About</a>
+        <a href="#contact">CV / Contact</a>
       </nav>
     </div>
   </header>
@@ -370,7 +373,7 @@
           </p>
           <div class="hero-actions">
             <a class="button-primary" href="./projects.html">View projects</a>
-            <a class="button-secondary" href="./contact.html">CV / Contact</a>
+            <a class="button-secondary" href="#contact">CV / Contact</a>
           </div>
         </div>
 
@@ -453,22 +456,57 @@
       </div>
     </section>
 
-    <section>
-      <div class="container text-card">
-        <div>
-          <p class="eyebrow">Approach</p>
-          <h2>How I think about projects</h2>
-        </div>
-        <div>
+    <section id="about">
+      <div class="container two-column">
+        <article class="content-card">
+          <p class="eyebrow">About</p>
+          <h2>Interested in clarity, structure and usable digital thinking.</h2>
           <p>
-            I’m especially interested in projects where clarity matters: when information needs structure,
-            workflows need simplification, or an idea has to become intuitive in real use.
+            I am building a portfolio around projects that combine structured thinking,
+            usability and digital problem-solving.
           </p>
-          <p style="margin-top:16px;">
-            My portfolio is still growing, but each project is meant to show not only a result,
-            but also the underlying thinking behind it.
+          <p>
+            I am especially interested in work where information, workflows and user needs
+            need to be translated into clear and practical solutions.
           </p>
-        </div>
+        </article>
+
+        <article class="content-card">
+          <p class="eyebrow">Focus Areas</p>
+          <h2>How I approach projects</h2>
+          <p>
+            I like projects that start with a concrete problem and require both structure and empathy.
+            For me, good digital work is not only functional, but also understandable and well organized.
+          </p>
+          <p>
+            This portfolio is still growing, but each project is meant to show not only a result,
+            but also the thinking behind it.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container two-column">
+        <article class="content-card">
+          <p class="eyebrow">CV / Contact</p>
+          <h2>Get in touch</h2>
+          <p>Email — your.email@example.com</p>
+          <p>LinkedIn — add your profile link</p>
+          <p>GitHub — add your profile link</p>
+        </article>
+
+        <article class="content-card">
+          <p class="eyebrow">Profile</p>
+          <h2>Current direction</h2>
+          <p>
+            I am interested in digital processes, structured workflows, research-related support
+            and analytical tasks that help make information clearer and more usable.
+          </p>
+          <p>
+            You can also link your CV here with a button or direct PDF download once you are ready to publish it.
+          </p>
+        </article>
       </div>
     </section>
   </main>

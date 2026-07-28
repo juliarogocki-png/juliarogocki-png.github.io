@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tone & Glow | Julia Rogocki</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Projects | Julia Rogocki</title>
+  <link rel="preconnect" href://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -36,12 +36,6 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-      border-radius: 16px;
     }
 
     a {
@@ -88,12 +82,13 @@
       color: var(--muted);
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
       color: var(--text);
     }
 
     .hero {
-      padding: 72px 0 48px;
+      padding: 72px 0 36px;
     }
 
     .eyebrow {
@@ -118,144 +113,103 @@
     }
 
     h1 {
-      font-size: clamp(3rem, 7vw, 6rem);
+      font-size: clamp(3rem, 7vw, 5.5rem);
       max-width: 10ch;
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
     }
 
     h3 {
-      font-size: 1.4rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 40px;
-      align-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 14px;
     }
 
     .intro {
       max-width: 62ch;
       font-size: 1.08rem;
       color: var(--muted);
-      margin: 0 0 26px;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .meta span {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: 0.92rem;
-      color: var(--muted);
-      background: rgba(255,255,255,0.55);
-    }
-
-    .hero-visual {
-      background: linear-gradient(180deg, #fbfaf7 0%, #efebe3 100%);
-      border: 1px solid rgba(31, 29, 23, 0.08);
-      border-radius: 24px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-visual figcaption,
-    .image-block figcaption,
-    .gallery-card figcaption {
-      margin-top: 12px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    main section {
-      padding: 32px 0;
-    }
-
-    .section-head {
-      max-width: 700px;
-      margin-bottom: 28px;
-    }
-
-    .section-head p {
-      color: var(--muted);
       margin: 0;
     }
 
-    .card {
+    main section {
+      padding: 24px 0 40px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .project-card {
       background: var(--surface);
       border: 1px solid rgba(31, 29, 23, 0.08);
       border-radius: var(--radius);
       padding: 28px;
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
     }
 
-    .card p:last-child {
-      margin-bottom: 0;
+    .project-type {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: start;
+    .project-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
     }
 
-    .three-col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+      margin-bottom: 22px;
     }
 
-    .feature-list {
-      margin: 0;
-      padding-left: 18px;
+    .meta span {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: rgba(255,255,255,0.65);
     }
 
-    .feature-list li {
-      margin-bottom: 10px;
+    .project-link {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
-    .image-block {
-      background: var(--surface);
-      border: 1px solid rgba(31, 29, 23, 0.08);
-      border-radius: 20px;
-      padding: 16px;
-      box-shadow: var(--shadow);
+    .project-link:hover {
+      opacity: 0.92;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .gallery-card {
-      background: var(--surface);
-      border: 1px solid rgba(31, 29, 23, 0.08);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: var(--shadow);
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--line);
-      margin: 12px 0 0;
-    }
-
-    .quote {
-      font-size: 1.2rem;
-      color: var(--text);
-      max-width: 54ch;
+    .note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     footer {
@@ -265,10 +219,7 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid,
-      .two-col,
-      .three-col,
-      .gallery {
+      .projects-grid {
         grid-template-columns: 1fr;
       }
 
@@ -290,7 +241,7 @@
       <a class="brand" href="index.html">Julia Rogocki</a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
+        <a href="projects.html" aria-current="page">Projects</a>
         <a href="about.html">About</a>
         <a href="contact.html">CV / Contact</a>
       </nav>
@@ -299,292 +250,75 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Case Study</p>
-          <h1>Tone & Glow</h1>
-          <p class="intro">
-            A fitness app prototype designed to reduce media breaks in everyday training by combining workout plans,
-            mobility exercises, calorie tracking and a “Today” overview in one intuitive flow.
-          </p>
-
-          <div class="meta">
-            <span>Role: Concept, UX, Structure</span>
-            <span>Tool: Glide</span>
-            <span>Focus: Data model & usability</span>
-          </div>
-        </div>
-
-        <figure class="hero-visual">
-          <!-- HERO MOCKUP: eigenes Hauptbild oder Mockup einfügen -->
-          <img src="images/toneglow-mockup-hero.png" alt="Tone and Glow app mockup showing the main dashboard and training flow">
-          <figcaption>Main portfolio mockup for the Tone & Glow app.</figcaption>
-        </figure>
+      <div class="container">
+        <p class="eyebrow">Selected Work</p>
+        <h1>Projects</h1>
+        <p class="intro">
+          A selection of projects focused on structure, usability and digital problem-solving.
+          The portfolio combines no-code prototyping, UX thinking and data-driven work.
+        </p>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="section-head">
-          <h2>Overview</h2>
-          <p>
-            The project started from a practical problem in my own workout routine: training information,
-            exercise notes and calorie tracking were spread across different places, which created unnecessary
-            interruptions and made the experience less natural in use.
-          </p>
-        </div>
-
-        <div class="two-col">
-          <article class="card">
-            <h3>The problem</h3>
+        <div class="projects-grid">
+          <article class="project-card">
+            <span class="project-type">Case Study</span>
+            <h2>Tone & Glow</h2>
             <p>
-              The original situation was shaped by media breaks during training. Important information was available,
-              but not in one coherent context, which made routines harder to follow and less efficient in the moment.
+              A fitness app prototype designed to reduce media breaks in everyday training by combining workout plans,
+              mobility exercises, calorie tracking and a “Today” overview in one intuitive flow.
             </p>
+            <div class="meta">
+              <span>Glide</span>
+              <span>UX</span>
+              <span>Data Structure</span>
+            </div>
+            <a class="project-link" href="tone-and-glow.html">View case study</a>
           </article>
 
-          <article class="card">
-            <h3>The goal</h3>
+          <article class="project-card">
+            <span class="project-type">Project</span>
+            <h2>Data Analysis Project</h2>
             <p>
-              The aim was to bring workout structure, flexibility content, calorie tracking and a navigation logic
-              that feels natural in daily use into one app experience.
+              A project focused on structuring data, analyzing patterns and translating findings into clear visual output.
+              This case will highlight analytical thinking and practical use of Python.
             </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <figure class="image-block">
-          <!-- PRÄSENTATIONSFOLIE 1: z. B. exportierte Seite 2 -->
-          <img src="images/tone-slide-problem.png" alt="Presentation slide about the initial problem of media breaks in the training routine">
-          <figcaption>Slide from the original presentation showing the starting point: a fragmented training routine with media breaks.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Why Glide</h2>
-          <p>
-            Glide enabled a fast start without custom code and shifted the focus toward structure, data logic and user experience
-            instead of early implementation complexity.
-          </p>
-        </div>
-
-        <div class="three-col">
-          <article class="card">
-            <h3>Fast prototyping</h3>
-            <p>
-              It allowed quick iteration and made the first app version directly usable during real workouts.
-            </p>
+            <div class="meta">
+              <span>Python</span>
+              <span>Analysis</span>
+              <span>Visualization</span>
+            </div>
+            <a class="project-link" href="project-2.html">View project</a>
           </article>
 
-          <article class="card">
-            <h3>Data-focused setup</h3>
+          <article class="project-card">
+            <span class="project-type">Project</span>
+            <h2>Digital Process Project</h2>
             <p>
-              A table-based backend was well suited for training plans, flexibility content and tracking features.
+              A project about improving structure and efficiency in a practical workflow.
+              This case will show process thinking, organization and a solution-oriented approach.
             </p>
-          </article>
-
-          <article class="card">
-            <h3>UX first</h3>
-            <p>
-              This setup supported early thinking around hierarchy, clarity and actual use context.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Core features</h2>
-          <p>
-            The app combined several functions that would otherwise be split across notes, trackers and separate planning tools.
-          </p>
-        </div>
-
-        <div class="two-col">
-          <article class="card">
-            <ul class="feature-list">
-              <li>Structured training plan with workout splits such as Booty, Upper Body, Core and LISS / HIIT Cardio.</li>
-              <li>Flexibility and mobility module organized by specific problem zones.</li>
-              <li>Calorie tracker with daily values, target calories and progress visualization.</li>
-              <li>“Today” overview for quick access to the current routine.</li>
-              <li>Integrated stopwatch for direct use during workout sessions.</li>
-            </ul>
-          </article>
-
-          <figure class="image-block">
-            <!-- APP SCREEN ODER FOLIE ZU FEATURES -->
-            <img src="images/toneglow-features-screen.png" alt="App screen or slide showing key features of Tone and Glow">
-            <figcaption>Feature overview: workout plan, mobility module, calorie tracking and today screen.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="gallery">
-          <figure class="gallery-card">
-            <!-- SCREEN 1 -->
-            <img src="images/toneglow-screen-today.png" alt="Today dashboard screen of the Tone and Glow app">
-            <figcaption>Today view</figcaption>
-          </figure>
-
-          <figure class="gallery-card">
-            <!-- SCREEN 2 -->
-            <img src="images/toneglow-screen-workout.png" alt="Workout split screen of the Tone and Glow app">
-            <figcaption>Workout split</figcaption>
-          </figure>
-
-          <figure class="gallery-card">
-            <!-- SCREEN 3 -->
-            <img src="images/toneglow-screen-calories.png" alt="Calorie tracker screen of the Tone and Glow app">
-            <figcaption>Calorie tracking</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Data model & structure</h2>
-          <p>
-            One of the central steps in the project was turning previously unstructured notes into a clear and connected data model
-            inside Glide.
-          </p>
-        </div>
-
-        <div class="two-col">
-          <article class="card">
-            <p>
-              The app was built on multiple linked tables, including training plan, calories, flexibility content,
-              calorie tracker data and the “Today” view. Rather than existing side by side, these parts were connected
-              so information would appear in a meaningful usage context.
-            </p>
-            <p>
-              This structure made it easier to move from a routine to the relevant detail view and understand
-              what mattered on a specific training day. It also created the basis for future features such as filters,
-              favorites and progress indicators.
-            </p>
-          </article>
-
-          <figure class="image-block">
-            <!-- PRÄSENTATIONSFOLIE 2: z. B. exportierte Seite 6 -->
-            <img src="images/tone-slide-datamodel.png" alt="Presentation slide showing the data model and structure of Tone and Glow">
-            <figcaption>Data model and structural logic from the original presentation.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Testing in context</h2>
-          <p>
-            The first version of the app was tested directly during real training sessions, which made it possible
-            to evaluate relevance, clarity and timing in a practical situation.
-          </p>
-        </div>
-
-        <div class="two-col">
-          <figure class="image-block">
-            <!-- PRÄSENTATIONSFOLIE 3: z. B. exportierte Seite 7 -->
-            <img src="images/tone-slide-testing.png" alt="Presentation slide about testing Tone and Glow in a real workout context">
-            <figcaption>Real-context testing and iterative improvement were part of the project from the start.</figcaption>
-          </figure>
-
-          <article class="card">
-            <h3>Iteration through use</h3>
-            <p>
-              Observations and improvement ideas were documented immediately after training and then implemented in the app.
-              This included changes in information order, clearer labels and better overview structures in key sections.
-            </p>
-            <p>
-              The app was therefore not only conceptually planned once, but gradually improved through repeated use in a real setting.
-            </p>
+            <div class="meta">
+              <span>Process</span>
+              <span>Digitalization</span>
+              <span>Workflow</span>
+            </div>
+            <a class="project-link" href="project-3.html">View project</a>
           </article>
         </div>
-      </div>
-    </section>
 
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Limits of no-code</h2>
-          <p>
-            The project also made visible where no-code tools are strong and where they become restrictive.
-          </p>
-        </div>
-
-        <div class="three-col">
-          <article class="card">
-            <h3>What worked well</h3>
-            <p>
-              Glide was strong for quick prototyping, structured data logic and fast testing of product ideas.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>What was limited</h3>
-            <p>
-              Design freedom, layout control and some interaction ideas could not be implemented as precisely as intended.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>What that showed</h3>
-            <p>
-              The project highlighted where no-code is enough for learning and validation, and where deeper technical control becomes necessary.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <figure class="image-block">
-          <!-- PRÄSENTATIONSFOLIE 4 ODER SWIFT-AUSBLICK -->
-          <img src="images/tone-slide-swift.png" alt="Presentation slide about the future direction from Glide to Swift">
-          <figcaption>Future direction: moving from Glide toward Swift for more control over design and interaction.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Learning perspective</h2>
-          <p class="quote">
-            Tone & Glow showed me that everyday problems can become meaningful starting points for digital solutions,
-            and that user experience depends not only on interface design, but also on structure, navigation logic and real-life use.
-          </p>
-          <div class="divider"></div>
-        </div>
-
-        <div class="card">
-          <p>
-            The project helped me understand no-code as a practical way to test, reflect on and evolve ideas quickly.
-            At the same time, it became a strong case study for how I think about usability, information architecture
-            and iterative product improvement.
-          </p>
-        </div>
+        <p class="note">
+          Tone & Glow is currently the most detailed case study in this portfolio.
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <p>Based on the original Tone & Glow project presentation and translated into a portfolio case study format.</p>
+      <p>Portfolio overview with selected projects and case studies.</p>
     </div>
   </footer>
 </body>

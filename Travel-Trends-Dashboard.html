@@ -1,718 +1,545 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Trends Dashboard · Portfolio Case Study</title>
-  <meta name="description" content="A modern portfolio case study for a travel trends dashboard with mockup placeholders." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <title>Travel Trends Dashboard | Julia Rogocki</title>
+  <meta
+    name="description"
+    content="Travel Trends Dashboard case study in the Julia Rogocki portfolio."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
     :root {
-      --bg: #f6f3ee;
-      --surface: #fffdf9;
-      --surface-2: #f0ebe3;
-      --line: #ddd4c8;
-      --text: #223039;
-      --muted: #697983;
-      --faint: #93a0a8;
-      --primary: #1e4e60;
-      --accent: #c97c63;
-      --radius-lg: 28px;
-      --radius-md: 20px;
-      --shadow-sm: 0 8px 22px rgba(28, 37, 43, 0.05);
-      --shadow-lg: 0 18px 48px rgba(28, 37, 43, 0.08);
-      --content: 1180px;
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1efe9;
+      --text: #1f1d17;
+      --muted: #6f6b63;
+      --line: #ddd8cf;
+      --accent: #0d6b6f;
+      --accent-soft: #dcebea;
+      --shadow: 0 10px 30px rgba(26, 22, 16, 0.08);
+      --radius: 18px;
+      --content: 1120px;
     }
 
-    [data-theme="dark"] {
-      --bg: #121517;
-      --surface: #1c2022;
-      --surface-2: #24292c;
-      --line: #31383d;
-      --text: #edf0f1;
-      --muted: #a5b0b6;
-      --faint: #7e8a91;
-      --primary: #7fb3c7;
-      --accent: #dc9b86;
-      --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.25);
-      --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.35);
+    * {
+      box-sizing: border-box;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
     body {
       margin: 0;
-      font-family: 'Manrope', system-ui, sans-serif;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(circle at 0% 0%, rgba(30,78,96,0.07), transparent 24%),
-        radial-gradient(circle at 100% 0%, rgba(201,124,99,0.10), transparent 28%),
-        var(--bg);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img, svg { display: block; max-width: 100%; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .container {
       width: min(var(--content), calc(100% - 2rem));
-      margin-inline: auto;
+      margin: 0 auto;
     }
 
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: 0;
-    }
-
-    .skip-link:focus {
-      left: 1rem;
-      top: 1rem;
-      z-index: 999;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 0.75rem 1rem;
-    }
-
-    .header {
+    header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: color-mix(in srgb, var(--bg) 86%, transparent);
-      border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.85rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: var(--shadow-sm);
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 246, 242, 0.88);
+      border-bottom: 1px solid rgba(31, 29, 23, 0.08);
     }
 
     .nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 1rem;
-      color: var(--muted);
-      font-size: 0.95rem;
+      min-height: 72px;
+      gap: 24px;
     }
 
-    .theme-toggle {
-      width: 44px;
-      height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--surface);
+    .brand {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
       color: var(--text);
-      cursor: pointer;
     }
 
     .hero {
-      padding: 5.5rem 0 3rem;
+      padding: 72px 0 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .intro {
+      max-width: 62ch;
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    main section {
+      padding: 24px 0 40px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .eyebrow {
-      margin: 0 0 1rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.045em; }
-
-    h1 {
-      font-size: clamp(3.2rem, 7vw, 6.4rem);
-      max-width: 9.5ch;
-    }
-
-    h1 em,
-    .section-title em {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-weight: 400;
-      color: var(--accent);
-    }
-
-    .hero-copy p {
-      margin: 1.25rem 0 0;
-      max-width: 60ch;
-      color: var(--muted);
-      font-size: 1.05rem;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 24px;
+      align-items: end;
     }
 
     .hero-card,
-    .panel,
+    .info-card,
     .project-card,
-    .mockup-card,
-    .note-card {
+    .content-card,
+    .mockup-card {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(31, 29, 23, 0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     .hero-card {
-      padding: 1.5rem;
-      display: grid;
-      gap: 1rem;
+      padding: 32px;
+      min-height: 100%;
     }
 
-    .mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .mini-item {
-      padding: 1rem;
-      border-radius: var(--radius-md);
-      background: color-mix(in srgb, var(--surface) 72%, var(--surface-2));
-      border: 1px solid var(--line);
-    }
-
-    .mini-item span {
-      display: block;
-      color: var(--faint);
-      font-size: 0.76rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .button-row,
-    .action-row {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.85rem;
-      margin-top: 1.8rem;
+      gap: 14px;
+      margin-top: 28px;
     }
 
-    .button {
+    .button-primary,
+    .button-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0.9rem 1.2rem;
+      padding: 12px 16px;
       border-radius: 999px;
+      font-size: 0.95rem;
       font-weight: 600;
-      border: 1px solid transparent;
-      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+      transition: opacity 180ms ease, background 180ms ease;
     }
 
-    .button:hover { transform: translateY(-1px); }
-    .button.primary { background: var(--primary); color: white; }
-    .button.secondary { background: var(--surface); border-color: var(--line); color: var(--text); }
-    .button.ghost { background: transparent; border-color: var(--line); color: var(--muted); }
+    .button-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
 
-    .section {
-      padding: 1.5rem 0 4.5rem;
+    .button-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    .button-primary:hover,
+    .project-link:hover {
+      opacity: 0.92;
+    }
+
+    .button-secondary:hover {
+      background: #ebe7de;
+    }
+
+    .info-card {
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .info-item span {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .info-item p {
+      margin: 0;
+      color: var(--text);
     }
 
     .section-head {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 2rem;
+      display: flex;
+      justify-content: space-between;
       align-items: end;
-      margin-bottom: 1.4rem;
+      gap: 16px;
+      margin-bottom: 20px;
     }
 
     .section-head p {
       margin: 0;
       color: var(--muted);
-      max-width: 58ch;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-    }
-
-    .projects-grid,
-    .split-grid,
-    .insight-grid {
-      display: grid;
-      gap: 1.2rem;
+      max-width: 52ch;
     }
 
     .projects-grid {
-      grid-template-columns: 1.25fr 0.75fr;
-    }
-
-    .split-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .insight-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
     }
 
     .project-card {
-      overflow: hidden;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
     }
 
-    .project-visual {
-      min-height: 320px;
-      padding: 1.5rem;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, color-mix(in srgb, var(--primary) 14%, var(--surface-2)), var(--surface));
-      border-bottom: 1px solid var(--line);
-      display: grid;
-      align-content: space-between;
-      position: relative;
-    }
-
-    .project-visual::after {
-      content: "Replace with screenshot later";
-      position: absolute;
-      right: 1rem;
-      bottom: 1rem;
-      font-size: 0.82rem;
-      color: var(--faint);
-    }
-
-    .fake-chart-lines,
-    .fake-chart-bars {
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    .fake-chart-lines div {
-      height: 3px;
+    .project-type {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 16px;
+      padding: 8px 12px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), transparent 70%);
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    .fake-chart-bars div {
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 38%, var(--primary)));
-    }
-
-    .project-body,
-    .panel-body,
-    .note-body,
-    .mockup-body {
-      padding: 1.5rem;
-    }
-
-    .project-body p,
-    .panel-body p,
-    .note-body p,
-    .note-body li,
-    .mockup-body p {
+    .project-card p {
+      margin: 0 0 18px;
       color: var(--muted);
     }
 
-    .stack {
+    .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 1rem;
+      gap: 10px;
+      margin-top: auto;
+      margin-bottom: 22px;
     }
 
-    .tag {
-      padding: 0.45rem 0.75rem;
+    .meta span {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      background: color-mix(in srgb, var(--accent) 10%, var(--surface));
-      border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--line));
-      font-size: 0.82rem;
-      color: var(--text);
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.65);
     }
 
-    .mockup-card {
-      overflow: hidden;
-      min-height: 340px;
+    .project-link {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity 180ms ease;
     }
 
     .mockup-stage {
-      min-height: 220px;
-      padding: 1.25rem;
-      background: color-mix(in srgb, var(--surface) 65%, var(--surface-2));
+      min-height: 260px;
+      padding: 18px;
+      background: var(--surface-2);
       border-bottom: 1px solid var(--line);
+      border-radius: var(--radius) var(--radius) 0 0;
     }
 
     .mockup-box {
       height: 100%;
-      border-radius: 18px;
+      border-radius: 14px;
       border: 1px dashed var(--line);
       display: grid;
       place-items: center;
       text-align: center;
       padding: 1rem;
-      color: var(--faint);
-      background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, var(--surface-2)), var(--surface));
+      color: var(--muted);
+      background: linear-gradient(135deg, rgba(13, 107, 111, 0.08), rgba(255,255,255,0.9));
+      font-size: 0.98rem;
     }
 
-    .code-frame {
+    .mockup-body {
+      padding: 24px 28px 28px;
+    }
+
+    .mockup-body p {
       margin: 0;
-      padding: 1.2rem;
-      border-radius: 20px;
-      background: #12202a;
-      color: #e8eef1;
-      overflow: auto;
-      font-size: 0.9rem;
-      line-height: 1.65;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    }
-
-    .note-list {
-      margin: 0;
-      padding-left: 1.1rem;
-    }
-
-    .insight-card {
-      padding: 1.3rem;
-      border-radius: var(--radius-md);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .insight-card span {
-      display: inline-block;
-      margin-bottom: 0.8rem;
-      font-size: 0.77rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-
-    .portfolio-link-box {
-      padding: 1.3rem;
-      border-radius: var(--radius-md);
-      background: color-mix(in srgb, var(--primary) 7%, var(--surface));
-      border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--line));
-      margin-top: 1rem;
-    }
-
-    .footer {
-      padding: 2rem 0 4rem;
       color: var(--muted);
     }
 
-    .footer-inner {
-      border-top: 1px solid var(--line);
-      padding-top: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+    .content-card {
+      padding: 30px;
+    }
+
+    .content-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    footer {
+      padding: 48px 0 72px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     @media (max-width: 980px) {
       .hero-grid,
-      .section-head,
       .projects-grid,
-      .split-grid,
-      .insight-grid,
-      .mini-grid {
+      .two-column {
         grid-template-columns: 1fr;
       }
-      .nav { display: none; }
-    }
 
-    @media (max-width: 640px) {
-      .container { width: min(var(--content), calc(100% - 1.25rem)); }
-      .hero { padding-top: 4.5rem; }
-      .button-row,
-      .action-row { flex-direction: column; }
-      .button { width: 100%; }
-      .project-visual,
-      .mockup-stage { min-height: 220px; }
+      h1 {
+        max-width: 100%;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
-
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#top" class="brand">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>Portfolio</span>
-      </a>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#case-study">Case Study</a>
-        <a href="#implementation">Implementation</a>
-        <a href="#contact">Contact</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">Julia Rogocki</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="about.html">About</a>
+        <a href="./index.html#contact-section">CV / Contact</a>
       </nav>
-
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="top">
+  <main>
+    <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Portfolio Project · Case Study</p>
-          <h1>Travel <em>Trends</em> Dashboard.</h1>
-          <p>
-            This project page is designed as a modern portfolio case study. It focuses on the story behind the dashboard, the structure of the code, and the final visuals you will insert later.
+        <div class="hero-card">
+          <p class="eyebrow">Portfolio Case Study</p>
+          <h1>Travel Trends Dashboard</h1>
+          <p class="intro">
+            A code-led dashboard case study focused on monthly travel search trends, visual clarity and a polished portfolio presentation. The page is built to match the style of the rest of the portfolio.
           </p>
-          <div class="button-row">
-            <a class="button primary" href="#case-study">Open project</a>
-            <a class="button secondary" href="#implementation">See code</a>
+          <div class="hero-actions">
+            <a class="button-primary" href="#mockups">View mockups</a>
+            <a class="button-secondary" href="#implementation">View code notes</a>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Portfolio summary">
-          <div class="mini-grid">
-            <div class="mini-item">
-              <span>Project type</span>
-              <strong>Dashboard case study</strong>
-            </div>
-            <div class="mini-item">
-              <span>Focus</span>
-              <strong>Code + visuals</strong>
-            </div>
-            <div class="mini-item">
-              <span>Tools</span>
-              <strong>HTML, CSS, JS, Python</strong>
-            </div>
-            <div class="mini-item">
-              <span>Layout</span>
-              <strong>Modern one-page flow</strong>
-            </div>
+        <aside class="info-card" aria-label="Project overview">
+          <div class="info-item">
+            <span>Focus</span>
+            <p>Dashboard presentation, chart storytelling and code-first layout.</p>
+          </div>
+          <div class="info-item">
+            <span>Style</span>
+            <p>Consistent with the Julia Rogocki portfolio system.</p>
+          </div>
+          <div class="info-item">
+            <span>Status</span>
+            <p>Mockups can be added later.</p>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="work">
+    <section>
       <div class="container">
         <div class="section-head">
           <div>
             <p class="eyebrow">Project overview</p>
-            <h2 class="section-title">A clean page for the <em>dashboard</em></h2>
+            <h2>Why this project exists</h2>
           </div>
           <p>
-            The layout keeps a smooth flow: first the context, then the mockups, then the implementation. That makes the page feel like a real case study instead of a random collection of blocks.
+            This project page shows the dashboard as a portfolio case study, but keeps the same typography, colors and navigation pattern as the rest of the portfolio.
           </p>
         </div>
 
-        <div class="projects-grid">
-          <article class="project-card" id="case-study">
-            <div class="project-visual">
-              <div>
-                <p class="eyebrow">Featured case study</p>
-                <h3>Travel Trends Dashboard</h3>
-              </div>
-              <div class="fake-chart-lines" aria-hidden="true">
-                <div style="width:100%;"></div>
-                <div style="width:88%;opacity:.62;"></div>
-                <div style="width:95%;opacity:.46;"></div>
-                <div style="width:78%;opacity:.34;"></div>
-                <div style="width:66%;opacity:.25;"></div>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3>What this page is for</h3>
-              <p>
-                This page is meant to present the dashboard project in a portfolio format. The visuals are mockups for now, so you can insert screenshots, chart exports, or device previews later.
-              </p>
-              <div class="stack">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Python</span>
-              </div>
-              <div class="action-row">
-                <a class="button primary" href="#implementation">View implementation</a>
-                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard" target="_blank" rel="noopener noreferrer">GitHub repo</a>
-                <a class="button ghost" href="https://yourusername.github.io/Travel-Trends-Dashboard/" target="_blank" rel="noopener noreferrer">Live demo</a>
-              </div>
-            </div>
-          </article>
-
-          <aside class="panel">
-            <div class="panel-body">
-              <p class="eyebrow">Why this works</p>
-              <h3>Portfolio-friendly structure</h3>
-              <p>
-                Direct project links and a clear case-study section are common in portfolio pages because they make it easy to understand the work quickly.
-              </p>
-              <div class="portfolio-link-box">
-                Put this file in your GitHub repo as <code>Travel-Trends-Dashboard.html</code> and link to it from <code>index.html</code>.
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Mockups</p>
-            <h2 class="section-title">Empty spaces for the <em>final visuals</em></h2>
-          </div>
-          <p>
-            These are deliberate placeholders. Later you can drop in your dashboard screenshot, ranking chart, line chart, or a mockup of the final GitHub Pages view.
-          </p>
-        </div>
-
-        <div class="split-grid">
+        <div class="projects-grid" id="mockups">
           <article class="mockup-card">
             <div class="mockup-stage">
-              <div class="mockup-box">Mockup 1<br>Dashboard hero image</div>
+              <div class="mockup-box">
+                Mockup 1<br />
+                Dashboard hero image or screenshot
+              </div>
             </div>
             <div class="mockup-body">
-              <h3>Main visual mockup</h3>
-              <p>This can later become a full dashboard screenshot or a laptop mockup.</p>
+              <h3>Main visual</h3>
+              <p>This is where you can later insert the final dashboard screenshot or a large mockup.</p>
             </div>
           </article>
 
           <article class="mockup-card">
             <div class="mockup-stage">
-              <div class="mockup-box">Mockup 2<br>Chart preview / close-up</div>
+              <div class="mockup-box">
+                Mockup 2<br />
+                Chart close-up or supporting visual
+              </div>
             </div>
             <div class="mockup-body">
-              <h3>Supporting mockup</h3>
-              <p>This can later become a chart close-up, process image, or detail section.</p>
+              <h3>Supporting visual</h3>
+              <p>This can later become a close-up of the charts or a second visual explaining the analysis.</p>
+            </div>
+          </article>
+
+          <article class="mockup-card">
+            <div class="mockup-stage">
+              <div class="mockup-box">
+                Mockup 3<br />
+                Mobile / process / code screenshot
+              </div>
+            </div>
+            <div class="mockup-body">
+              <h3>Process visual</h3>
+              <p>This slot can later show the coding process, layout planning or a mobile view of the page.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="implementation">
+    <section id="implementation">
       <div class="container">
         <div class="section-head">
           <div>
             <p class="eyebrow">Implementation</p>
-            <h2 class="section-title">Show the <em>code</em>, not just the result</h2>
+            <h2>What the code section can explain</h2>
           </div>
           <p>
-            This part is for code snippets, notes, and repo links. It helps the portfolio feel technical and makes the project easier to review.
+            Use this space for short notes about the chart logic, the Python export, and why the layout choices support the dashboard story.
           </p>
         </div>
 
-        <div class="split-grid">
-          <article class="panel">
-            <div class="panel-body">
-              <h3>Example snippet</h3>
-              <pre class="code-frame"><code>ranking = (
-    df[keyword_cols]
-    .mean()
-    .sort_values(ascending=True)
-    .reset_index()
-)
-ranking.columns = ["keyword", "avg_interest"]</code></pre>
-              <div class="action-row">
-                <a class="button primary" href="https://github.com/yourusername/Travel-Trends-Dashboard" target="_blank" rel="noopener noreferrer">Open repository</a>
-                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read notes</a>
-              </div>
-            </div>
+        <div class="two-column">
+          <article class="content-card">
+            <p class="eyebrow">Snippet idea</p>
+            <h3>Ranking chart logic</h3>
+            <p>
+              Show the average keyword ranking and explain why a horizontal bar chart works well for comparison.
+            </p>
           </article>
 
-          <aside class="note-card">
-            <div class="note-body">
-              <h3>How to use it</h3>
-              <ul class="note-list">
-                <li>Save as <code>Travel-Trends-Dashboard.html</code>.</li>
-                <li>Link to it from your main portfolio page.</li>
-                <li>Add your images later inside the mockup boxes.</li>
-                <li>Replace GitHub links with your real repo and demo URLs.</li>
-              </ul>
-            </div>
-          </aside>
+          <article class="content-card">
+            <p class="eyebrow">Snippet idea</p>
+            <h3>Line chart logic</h3>
+            <p>
+              Show the monthly trend chart and explain how it reveals long-term movement and seasonality.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section>
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Contact</p>
-            <h2 class="section-title">Ready for your <em>portfolio</em></h2>
+            <p class="eyebrow">Back to projects</p>
+            <h2>Return to overview</h2>
           </div>
           <p>
-            This page is set up to fit into a GitHub-based portfolio structure with a clean navigation flow.
+            The project page stays linked to the main projects overview so the portfolio feels connected.
           </p>
         </div>
 
-        <div class="panel">
-          <div class="panel-body">
-            <h3>Simple contact links</h3>
-            <div class="action-row">
-              <a class="button primary" href="mailto:yourname@email.com">Email me</a>
-              <a class="button secondary" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a class="button ghost" href="https://www.linkedin.com/in/yourname/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-          </div>
+        <div class="content-card">
+          <a class="project-link" href="projects.html">Back to Projects</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span>Travel Trends Dashboard · Project page with mockup placeholders.</span>
-      <a href="#top">Back to top</a>
+  <footer>
+    <div class="container">
+      <p>Travel Trends Dashboard case study for the Julia Rogocki portfolio.</p>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const toggle = document.querySelector('[data-theme-toggle]');
-      let mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.setAttribute('data-theme', mode);
-
-      const render = () => {
-        toggle.innerHTML = mode === 'dark'
-          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
-          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-      };
-
-      render();
-      toggle.addEventListener('click', () => {
-        mode = mode === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', mode);
-        render();
-      });
-    })();
-  </script>
 </body>
 </html>

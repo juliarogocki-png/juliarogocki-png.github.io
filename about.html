@@ -6,7 +6,7 @@
   <title>About | Julia Rogocki</title>
   <meta
     name="description"
-    content="About Julia Rogocki — a sociology master's student with experience in digital processes, data analysis, research support and structured workflow improvement."
+    content="About Julia Rogocki and her portfolio focus on structure, usability and digital problem-solving."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -100,13 +100,6 @@
       padding: 72px 0 36px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
     .eyebrow {
       display: inline-block;
       margin-bottom: 18px;
@@ -120,7 +113,7 @@
       text-transform: uppercase;
     }
 
-    h1, h2, h3 {
+    h1, h2 {
       font-family: "Instrument Serif", serif;
       font-weight: 400;
       line-height: 1.05;
@@ -137,13 +130,8 @@
       font-size: clamp(1.8rem, 3vw, 2.5rem);
     }
 
-    h3 {
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-    }
-
     .intro {
-      max-width: 60ch;
+      max-width: 62ch;
       font-size: 1.08rem;
       color: var(--muted);
       margin: 0;
@@ -153,138 +141,39 @@
       padding: 24px 0 40px;
     }
 
-    .hero-card,
-    .info-card,
-    .content-card {
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .card {
       background: var(--surface);
       border: 1px solid rgba(31, 29, 23, 0.08);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 32px;
-    }
-
-    .info-card {
-      padding: 28px;
-      display: grid;
-      gap: 18px;
-      align-content: start;
-    }
-
-    .info-item span {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .info-item p {
-      margin: 0;
-      color: var(--text);
-    }
-
-    .content-card {
       padding: 30px;
     }
 
-    .content-card p {
+    .card p {
       margin: 0 0 16px;
       color: var(--muted);
     }
 
-    .two-column {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .three-column {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .skill-list,
-    .timeline-list,
-    .education-list,
-    .soft-skill-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .skill-list li,
-    .education-list li,
-    .soft-skill-list li {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(31, 29, 23, 0.08);
-      color: var(--muted);
-    }
-
-    .skill-list li:last-child,
-    .education-list li:last-child,
-    .soft-skill-list li:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .timeline-list {
-      display: grid;
-      gap: 18px;
-    }
-
-    .timeline-item {
-      padding: 18px 0 0;
-      border-top: 1px solid rgba(31, 29, 23, 0.08);
-    }
-
-    .timeline-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .timeline-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-
-    .timeline-role {
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .timeline-date {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .timeline-item p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .meta-tags {
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 26px;
+      margin-top: 22px;
     }
 
-    .meta-tags span {
+    .tag-row span {
       padding: 9px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
       font-size: 0.88rem;
       color: var(--muted);
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255,255,255,0.65);
     }
 
     footer {
@@ -294,9 +183,7 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid,
-      .two-column,
-      .three-column {
+      .content-grid {
         grid-template-columns: 1fr;
       }
 
@@ -315,48 +202,52 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="index.html">Julia Rogocki</a>
+      <a class="brand" href="./index.html">Julia Rogocki</a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html" aria-current="page">About</a>
-        <a href="contact.html">CV / Contact</a>
+        <a href="./index.html">Home</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./about.html" aria-current="page">About</a>
+        <a href="./index.html#contact-section">CV / Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card">
-          <p class="eyebrow">About</p>
-          <h1>Analytical thinking, structure and digital workflows.</h1>
-          <p class="intro">
-            I am a sociology master’s student with experience in research support,
-            data-related tasks and digital process improvement. I am especially interested
-            in projects that turn complex information into clearer structures, useful systems
-            and practical solutions.
+      <div class="container">
+        <p class="eyebrow">About</p>
+        <h1>Interested in clarity, structure and usable digital thinking.</h1>
+        <p class="intro">
+          I am building a portfolio around projects that combine structured thinking,
+          usability and digital problem-solving. I am especially interested in work
+          where information, workflows and user needs need to be translated into clear solutions.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-grid">
+        <article class="card">
+          <h2>Background</h2>
+          <p>
+            My background connects analytical work, organization and an interest in digital structures.
+            I enjoy projects where complexity needs to become clearer, more understandable and more useful.
           </p>
+          <p>
+            What interests me most is the point where structure and usability meet —
+            whether in a workflow, a prototype, a data-related task or a practical digital concept.
+          </p>
+        </article>
 
-          <div class="meta-tags">
-            <span>Research</span>
-            <span>Data & Processes</span>
+        <aside class="card">
+          <h2>Focus Areas</h2>
+          <div class="tag-row">
+            <span>UX Thinking</span>
             <span>Digital Structure</span>
-          </div>
-        </div>
-
-        <aside class="info-card" aria-label="About overview">
-          <div class="info-item">
-            <span>Current focus</span>
-            <p>Digital processes, data analysis, workflow improvement and structured information work.</p>
-          </div>
-          <div class="info-item">
-            <span>Education</span>
-            <p>M.A. Sociology, expected completion at the end of 2026.</p>
-          </div>
-          <div class="info-item">
-            <span>Background</span>
-            <p>Experience across research support, project coordination, data organization and process-related tasks.</p>
+            <span>Workflows</span>
+            <span>Research Support</span>
+            <span>Data Organization</span>
+            <span>Problem-Solving</span>
           </div>
         </aside>
       </div>
@@ -364,132 +255,16 @@
 
     <section>
       <div class="container">
-        <article class="content-card">
-          <h2>Background</h2>
+        <article class="card">
+          <h2>What matters to me</h2>
           <p>
-            My background combines sociology, research-related work and an interest in digital structures,
-            data handling and process improvement. Across different student assistant roles, I have supported
-            projects through data entry, organization, research support, planning and the structured handling
-            of information.
+            I like projects that start with a concrete problem and require both structure and empathy.
+            For me, good digital work is not only functional, but also understandable and well organized.
           </p>
           <p>
-            I am particularly interested in work that requires clarity: understanding a problem, organizing
-            complexity and helping turn fragmented processes into more usable and efficient systems.
+            This portfolio is still growing, but each page is meant to show how I approach projects:
+            by bringing together clarity, logic and thoughtful design decisions.
           </p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="container three-column">
-        <article class="content-card">
-          <h2>What I Focus On</h2>
-          <p>
-            I am especially interested in projects at the intersection of research, digital concepts,
-            process improvement and data-supported decision-making.
-          </p>
-        </article>
-
-        <article class="content-card">
-          <h2>How I Work</h2>
-          <p>
-            I like to approach tasks in a structured way: understanding the context, identifying relevant
-            information, organizing priorities and building solutions that are clear, logical and practical.
-          </p>
-        </article>
-
-        <article class="content-card">
-          <h2>Tools & Skills</h2>
-          <p>
-            My current toolkit includes Excel, survey and research software, Power BI, generative AI tools,
-            as well as foundational knowledge in SQL, Python, MATLAB and SAP.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <article class="content-card">
-          <h2>Experience</h2>
-          <div class="timeline-list">
-            <div class="timeline-item">
-              <div class="timeline-meta">
-                <div class="timeline-role">Student Assistant</div>
-                <div class="timeline-date">Jul 2025 – present</div>
-              </div>
-              <p>
-                Experience in market research with a focus on data management, data analysis and process optimization,
-                including database maintenance and support for workflow digitalization with SQL and Python.
-              </p>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-meta">
-                <div class="timeline-role">Research Assistant, Institute for Transnational Neuroscience and Clinical Psychology</div>
-                <div class="timeline-date">Mar 2026 – present</div>
-              </div>
-              <p>
-                Organizational and administrative support with a focus on data entry, data analysis with MATLAB
-                and project-related coordination, including collaboration across stakeholders and careful task prioritization.
-              </p>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-meta">
-                <div class="timeline-role">Student Assistant, Project Management and Science Management</div>
-                <div class="timeline-date">Nov 2024 – Jul 2025</div>
-              </div>
-              <p>
-                Support in project and science management with a focus on application handling, data maintenance,
-                meeting organization and planning activities as part of structured administrative and project-related workflows.
-              </p>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-meta">
-                <div class="timeline-role">Student Assistant, Psychology</div>
-                <div class="timeline-date">Nov 2022 – Mar 2026</div>
-              </div>
-              <p>
-                Research support focused on literature review, study planning, data entry and administrative tasks,
-                alongside coordination of ongoing research and organizational processes.
-              </p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="container two-column">
-        <article class="content-card">
-          <h2>Key Competencies</h2>
-          <ul class="skill-list">
-            <li>Excel — advanced</li>
-            <li>Generative AI / LLMs — advanced practical experience</li>
-            <li>Survey and research software — good knowledge</li>
-            <li>Word, PowerPoint, Canva, Power BI — good knowledge</li>
-            <li>SQL, Python, MATLAB — foundational knowledge</li>
-            <li>SAP — foundational knowledge</li>
-          </ul>
-        </article>
-
-        <article class="content-card">
-          <h2>Education & Soft Skills</h2>
-          <ul class="education-list">
-            <li>M.A. Sociology — expected completion end of 2026</li>
-            <li>B.A. Social Sciences</li>
-          </ul>
-
-          <div style="height: 18px;"></div>
-
-          <ul class="soft-skill-list">
-            <li>Teamwork and organization</li>
-            <li>Time management and adaptability</li>
-            <li>Problem-solving and critical thinking</li>
-            <li>Initiative and self-motivation</li>
-          </ul>
         </article>
       </div>
     </section>

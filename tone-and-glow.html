@@ -7,168 +7,189 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">CV / Contact</a>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Julia Rogocki</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">CV / Contact</a>
+      </div>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Project</p>
+  <main class="project-page">
+    <section class="project-hero">
+      <p class="eyebrow">Case Study</p>
       <h1>Tone & Glow</h1>
-      <p class="intro">
-        A fitness app prototype designed to bring training plans, mobility routines
-        and calorie tracking into one structured and intuitive workflow.
+      <p class="project-intro">
+        A fitness app prototype that brings workout structure, mobility routines,
+        calorie tracking and quick daily orientation into one connected experience.
       </p>
     </section>
 
-    <section>
-      <div class="card">
+    <section class="project-section">
+      <div class="card single-card">
         <h2>Overview</h2>
         <p>
-          Tone & Glow started from a practical everyday problem: managing workouts,
-          exercise notes and calorie tracking across different tools created unnecessary
-          breaks in the training routine.
+          Tone & Glow started with a practical problem from everyday training:
+          important information was spread across different notes and tools,
+          which created friction during the workout itself.
         </p>
         <p>
-          The goal of the project was to create a more seamless experience by combining
-          key workout information, daily guidance and supporting features in one place.
+          The project goal was to bring structure, clarity and ease of use into
+          one app concept that supports both planning and in-the-moment execution.
         </p>
       </div>
     </section>
 
-    <section>
-      <div class="cards">
-        <div class="card">
-          <h2>Problem</h2>
-          <p>
-            My training routine involved several media breaks between notes, plans
-            and tracking tools. This made the experience less clear and less efficient
-            in the moment of use.
-          </p>
-        </div>
+    <section class="project-section">
+      <div class="card single-card">
+        <h2>App Mockups</h2>
+        <p>
+          Selected prototype screens showing the app structure, workout flow and
+          tracking functions.
+        </p>
 
-        <div class="card">
-          <h2>Goal</h2>
-          <p>
-            The app was meant to bring together workout structure, flexibility exercises,
-            calorie tracking and a natural-feeling navigation in one coherent system.
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>Approach</h2>
-          <p>
-            I used Glide as a no-code environment to focus first on information architecture,
-            logic, structure and usability before moving to a more advanced implementation.
-          </p>
+        <div class="mockup-gallery">
+          <img src="assets/tone-and-glow/Tone & - 2.png" alt="Tone & Glow app screen 2">
+          <img src="assets/tone-and-glow/IMG_0157.png" alt="Tone & Glow app screen 5">
+          <img src="assets/tone-and-glow/IMG_0158.png" alt="Tone & Glow app screen 6">
+          <img src="assets/tone-and-glow/Tone & - 7.png" alt="Tone & Glow app screen 7">
+          <img src="assets/tone-and-glow/Tone & - 8.png" alt="Tone & Glow app screen 8">
+          <img src="assets/tone-and-glow/Tone & - 9.png" alt="Tone & Glow app screen 9">
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="card">
+    <section class="project-section">
+      <div class="card-grid three">
+        <article class="card">
+          <h2>Problem</h2>
+          <p>
+            Training plans, exercise notes and calorie tracking were handled in
+            separate places. This interrupted the routine and made the process
+            less intuitive during use.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Goal</h2>
+          <p>
+            The idea was to create one connected workflow that combines workout
+            guidance, flexibility support, calorie tracking and daily orientation.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Approach</h2>
+          <p>
+            I built the first version with Glide as a no-code prototype in order
+            to focus on structure, logic, information architecture and usability.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="card single-card">
         <h2>Core Features</h2>
-        <ul>
-          <li>Training plan with structured workout splits.</li>
-          <li>Mobility and flexibility exercises organized by problem area.</li>
-          <li>Calorie tracker with daily and target-based progress view.</li>
-          <li>“Today” overview for quick orientation during training.</li>
-          <li>Integrated stopwatch for direct use in workout sessions.</li>
+        <ul class="feature-list">
+          <li>Structured training plan with workout splits.</li>
+          <li>Mobility and stretching exercises organized by use case.</li>
+          <li>Calorie tracker with progress-oriented overview.</li>
+          <li>Today view for fast orientation before and during training.</li>
+          <li>Integrated stopwatch for practical workout use.</li>
+          <li>Habit and routine support through connected feature logic.</li>
         </ul>
       </div>
     </section>
 
-    <section>
-      <div class="card">
+    <section class="project-section">
+      <div class="card single-card">
         <h2>Data Model & Structure</h2>
         <p>
-          A key part of the project was transforming previously unstructured notes into
-          a clear data model inside Glide. Multiple tables — including training plan,
-          calories, flexibility content, tracker data and the “Today” view — were linked
-          into one connected structure.
+          An important part of the project was translating previously unstructured
+          notes into a clear and connected data model. Different content areas such
+          as training plan, calorie tracking, flexibility exercises and the daily
+          overview were linked into one logical system.
         </p>
         <p>
-          This made it possible to place information in a meaningful usage context,
-          so that users could move logically from a routine to the relevant exercise
-          details and understand where they were within the plan.
+          This improved orientation inside the app and helped place information in
+          the context where it was actually needed by the user.
         </p>
       </div>
     </section>
 
-    <section>
-      <div class="cards">
-        <div class="card">
+    <section class="project-section">
+      <div class="card-grid two">
+        <article class="card">
           <h2>Testing</h2>
           <p>
-            I tested the first version directly during real training sessions. This helped
-            identify which information was actually useful in the moment and where the flow
-            still felt unclear.
+            The prototype was tested in real training situations. This helped reveal
+            which information was useful in the moment and where navigation or
+            labeling still needed improvement.
           </p>
-        </div>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h2>Iteration</h2>
           <p>
-            Based on these observations, I adjusted the order of information, improved
-            labels and refined the overview of different sections. The app evolved through
-            repeated practical use rather than a one-time concept phase.
+            Based on direct use, the structure was refined repeatedly. I adjusted
+            information order, improved clarity and simplified the way users move
+            between the main sections.
           </p>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section>
-      <div class="cards">
-        <div class="card">
+    <section class="project-section">
+      <div class="card-grid three">
+        <article class="card">
           <h2>Why Glide</h2>
           <p>
-            Glide allowed a fast start without writing code and made it possible to focus
-            on data logic, structure and UX decisions early in the process.
+            Glide made it possible to prototype quickly and validate the concept
+            without starting with full native development.
           </p>
-        </div>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h2>Limits</h2>
           <p>
-            The project also revealed the limits of no-code tools. While Glide was strong
-            for prototyping and structured logic, design freedom and some interaction ideas
-            remained restricted.
+            The project also showed the limits of no-code tools, especially in
+            interface freedom, visual detail and more advanced interaction ideas.
           </p>
-        </div>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h2>Next Step</h2>
           <p>
-            For that reason, the long-term direction of the project is a future rebuild in
-            Swift in order to gain more control over interface design, performance and interaction.
+            The long-term direction is a rebuild in Swift to gain more control over
+            performance, visual design and interaction behavior.
           </p>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section>
-      <div class="card">
-        <h2>What I learned</h2>
+    <section class="project-section">
+      <div class="card single-card">
+        <h2>What I Learned</h2>
         <p>
-          The project showed me that everyday problems can be a strong starting point for
-          digital solutions. It also deepened my understanding that user experience is not
-          only about interface design, but also about data structure, navigation logic and
-          real-life usage context.
+          Tone & Glow showed me how strong everyday pain points can be as a starting
+          point for digital product ideas. It also reinforced that user experience is
+          not only about interface design, but just as much about information structure,
+          logic and usage context.
         </p>
         <p>
-          Tone & Glow became more than a functional prototype: it developed into a case study
-          that reflects how I think about structure, usability and iterative improvement.
+          The project became a practical case study for how I approach systems,
+          usability and iterative improvement.
         </p>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>Based in Germany · Portfolio in progress</p>
   </footer>
 </body>

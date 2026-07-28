@@ -4,17 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Trends Dashboard | Julia Rogocki</title>
-  <meta
-    name="description"
-    content="Travel Trends Dashboard case study in the Julia Rogocki portfolio."
-  />
+  <meta name="description" content="Travel Trends Dashboard case study in the Julia Rogocki portfolio." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -51,11 +45,6 @@
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     .container {
@@ -150,6 +139,7 @@
 
     main section {
       padding: 24px 0 40px;
+      scroll-margin-top: 96px;
     }
 
     .hero-grid {
@@ -248,11 +238,19 @@
       max-width: 52ch;
     }
 
-    .projects-grid {
+    .projects-grid,
+    .two-column {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
       align-items: stretch;
+    }
+
+    .two-column {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .project-card {
@@ -331,28 +329,41 @@
       font-size: 0.98rem;
     }
 
-    .mockup-body {
+    .mockup-body,
+    .content-card {
       padding: 24px 28px 28px;
     }
 
-    .mockup-body p {
+    .mockup-body p,
+    .content-card p {
       margin: 0;
       color: var(--muted);
     }
 
-    .content-card {
-      padding: 30px;
+    .code-wrap {
+      margin: 0;
+      padding: 18px;
+      background: #111111;
+      color: #f5f5f5;
+      border-radius: 14px;
+      overflow: auto;
+      max-width: 100%;
+      font-size: 0.92rem;
+      line-height: 1.6;
     }
 
-    .content-card p {
-      margin: 0 0 16px;
-      color: var(--muted);
+    .code-wrap code {
+      display: block;
+      white-space: pre;
+      min-width: max-content;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
-    .two-column {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
     }
 
     footer {
@@ -391,7 +402,7 @@
       <a class="brand" href="index.html">Julia Rogocki</a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
         <a href="./index.html#contact-section">CV / Contact</a>
       </nav>
@@ -399,7 +410,7 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="container hero-grid">
         <div class="hero-card">
           <p class="eyebrow">Portfolio Case Study</p>
@@ -409,7 +420,7 @@
           </p>
           <div class="hero-actions">
             <a class="button-primary" href="#mockups">View mockups</a>
-            <a class="button-secondary" href="#implementation">View code notes</a>
+            <a class="button-secondary" href="#implementation">View code</a>
           </div>
         </div>
 
@@ -430,7 +441,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="overview">
       <div class="container">
         <div class="section-head">
           <div>
@@ -490,34 +501,43 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Implementation</p>
-            <h2>What the code section can explain</h2>
+            <h2>Show the <em>code</em>, not just the result</h2>
           </div>
           <p>
-            Use this space for short notes about the chart logic, the Python export, and why the layout choices support the dashboard story.
+            The blocks below stay visible so visitors can actually see the code and scroll inside it.
           </p>
         </div>
 
         <div class="two-column">
           <article class="content-card">
-            <p class="eyebrow">Snippet idea</p>
-            <h3>Ranking chart logic</h3>
-            <p>
-              Show the average keyword ranking and explain why a horizontal bar chart works well for comparison.
-            </p>
+            <h3>Ranking chart</h3>
+            <pre class="code-wrap"><code>ranking = (
+    df[keyword_cols]
+    .mean()
+    .sort_values(ascending=True)
+    .reset_index()
+)
+ranking.columns = ["keyword", "avg_interest"]
+
+fig, ax = plt.subplots(figsize=(11, 6.5), facecolor=BG)
+ax.barh(ranking["keyword"], ranking["avg_interest"], color=bar_colors)
+ax.set_title("Average Search Interest by Travel Keyword", loc="left")
+plt.tight_layout()</code></pre>
           </article>
 
           <article class="content-card">
-            <p class="eyebrow">Snippet idea</p>
-            <h3>Line chart logic</h3>
-            <p>
-              Show the monthly trend chart and explain how it reveals long-term movement and seasonality.
-            </p>
+            <h3>Trend line</h3>
+            <pre class="code-wrap"><code>fig, ax = plt.subplots(figsize=(11, 6.5), facecolor=BG)
+ax.plot(months, beach_holiday, color=COLORS[0], linewidth=2.5)
+ax.plot(months, solo_travel, color=COLORS[1], linewidth=2.5)
+ax.set_title("Monthly Search Interest", loc="left")
+plt.tight_layout()</code></pre>
           </article>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="contact">
       <div class="container">
         <div class="section-head">
           <div>

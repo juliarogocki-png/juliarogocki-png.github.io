@@ -1,143 +1,791 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Trends Dashboard | Julia Rogocki</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Travel-Trends-Dashboard · Portfolio</title>
+  <meta name="description" content="A modern portfolio case study presenting a code-first travel trends dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f3ee;
+      --surface: #fffdf9;
+      --surface-2: #f0ebe3;
+      --line: #ddd4c8;
+      --text: #223039;
+      --muted: #697983;
+      --faint: #93a0a8;
+      --primary: #1e4e60;
+      --primary-2: #2f6a7d;
+      --accent: #c97c63;
+      --accent-soft: #f3e1d9;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --shadow-sm: 0 8px 22px rgba(28, 37, 43, 0.05);
+      --shadow-lg: 0 18px 48px rgba(28, 37, 43, 0.08);
+      --content: 1180px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121517;
+      --surface: #1c2022;
+      --surface-2: #24292c;
+      --line: #31383d;
+      --text: #edf0f1;
+      --muted: #a5b0b6;
+      --faint: #7e8a91;
+      --primary: #7fb3c7;
+      --primary-2: #99c5d6;
+      --accent: #dc9b86;
+      --accent-soft: #392d2a;
+      --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(30,78,96,0.07), transparent 24%),
+        radial-gradient(circle at 100% 0%, rgba(201,124,99,0.10), transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(var(--content), calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 999;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.42);
+    }
+
+    .brand-mark::before {
+      width: 22px;
+      height: 3px;
+      left: 8px;
+      top: 12px;
+      transform: rotate(-35deg);
+    }
+
+    .brand-mark::after {
+      width: 14px;
+      height: 3px;
+      left: 16px;
+      top: 22px;
+      transform: rotate(45deg);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 5.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.045em; }
+
+    h1 {
+      font-size: clamp(3.2rem, 7vw, 6.6rem);
+      max-width: 9.5ch;
+    }
+
+    h1 em,
+    .section-title em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .hero-copy p {
+      margin: 1.25rem 0 0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-card,
+    .panel,
+    .project-card,
+    .chart-card,
+    .note-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .mini-item {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: color-mix(in srgb, var(--surface) 72%, var(--surface-2));
+      border: 1px solid var(--line);
+    }
+
+    .mini-item span {
+      display: block;
+      color: var(--faint);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .mini-item strong {
+      font-size: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .button-row,
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 48px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button.primary { background: var(--primary); color: white; }
+    .button.secondary { background: var(--surface); border-color: var(--line); color: var(--text); }
+    .button.ghost { background: transparent; border-color: var(--line); color: var(--muted); }
+
+    .section {
+      padding: 1.5rem 0 4.5rem;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .projects-grid,
+    .split-grid,
+    .insight-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1.25fr 0.75fr;
+    }
+
+    .split-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .insight-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .project-card {
+      overflow: hidden;
+    }
+
+    .project-visual {
+      min-height: 320px;
+      padding: 1.5rem;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02)),
+        linear-gradient(135deg, color-mix(in srgb, var(--primary) 14%, var(--surface-2)), var(--surface));
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      align-content: space-between;
+      position: relative;
+    }
+
+    .project-visual::after {
+      content: "Replace with exported chart preview or screenshot";
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      font-size: 0.82rem;
+      color: var(--faint);
+    }
+
+    .fake-chart-lines,
+    .fake-chart-bars {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .fake-chart-lines div {
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), transparent 70%);
+    }
+
+    .fake-chart-bars div {
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 38%, var(--primary)));
+    }
+
+    .project-body,
+    .chart-body,
+    .panel-body,
+    .note-body {
+      padding: 1.5rem;
+    }
+
+    .project-body p,
+    .chart-body p,
+    .panel-body p,
+    .note-body p,
+    .note-body li {
+      color: var(--muted);
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+      border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--line));
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .chart-card {
+      overflow: hidden;
+    }
+
+    .chart-image {
+      min-height: 260px;
+      padding: 1.25rem;
+      background: color-mix(in srgb, var(--surface) 65%, var(--surface-2));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .code-frame {
+      margin: 0;
+      padding: 1.2rem;
+      border-radius: 20px;
+      background: #12202a;
+      color: #e8eef1;
+      overflow: auto;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .note-list {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .insight-card {
+      padding: 1.3rem;
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .insight-card span {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      font-size: 0.77rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .portfolio-link-box {
+      padding: 1.3rem;
+      border-radius: var(--radius-md);
+      background: color-mix(in srgb, var(--primary) 7%, var(--surface));
+      border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--line));
+      margin-top: 1rem;
+    }
+
+    .footer {
+      padding: 2rem 0 4rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      border-top: 1px solid var(--line);
+      padding-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-head,
+      .projects-grid,
+      .split-grid,
+      .insight-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(var(--content), calc(100% - 1.25rem)); }
+      .hero { padding-top: 4.5rem; }
+      .button-row,
+      .action-row { flex-direction: column; }
+      .button { width: 100%; }
+      .project-visual,
+      .chart-image { min-height: 220px; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">CV / Contact</a>
-    </nav>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Portfolio home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Portfolio</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#case-study">Case Study</a>
+        <a href="#implementation">Implementation</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Project</p>
-      <h1>Travel Trends Dashboard</h1>
-      <p class="intro">
-        A Python-based dashboard concept developed to explore patterns, seasonal shifts
-        and changing consumer interest in travel-related topics through data visualization.
-      </p>
-    </section>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Developer Portfolio · Featured Project</p>
+          <h1>Turning <em>chart code</em> into a clean portfolio story.</h1>
+          <p>
+            This page is built as a GitHub-ready portfolio homepage with one featured case study at its center. The project focus is not just the final visuals, but the code behind them, the chart choices, and the narrative flow that makes the work easy to understand.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="#case-study">Open featured project</a>
+            <a class="button secondary" href="#implementation">See code section</a>
+            <a class="button ghost" href="#contact">Contact</a>
+          </div>
+        </div>
 
-    <section>
-      <div class="card">
-        <h2>Overview</h2>
-        <p>
-          This project was designed as a data-focused case study that combines research thinking
-          with visual analysis. The idea was to use structured data exploration to better understand
-          how interest in travel-related topics changes over time.
-        </p>
-        <p>
-          It also serves as a portfolio project to demonstrate how Python can be used not only for
-          data handling, but also for clear and decision-oriented visual communication.
-        </p>
+        <aside class="hero-card" aria-label="Portfolio summary">
+          <div class="mini-grid">
+            <div class="mini-item">
+              <span>Portfolio style</span>
+              <strong>Single-page case-study layout</strong>
+            </div>
+            <div class="mini-item">
+              <span>Main project</span>
+              <strong>Travel Trends Dashboard</strong>
+            </div>
+            <div class="mini-item">
+              <span>Focus</span>
+              <strong>HTML, CSS, JS, Python charts</strong>
+            </div>
+            <div class="mini-item">
+              <span>Structure</span>
+              <strong>Live preview + code links</strong>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section>
-      <div class="cards">
-        <div class="card">
-          <h2>Question</h2>
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2 class="section-title">Featured project inside the <em>portfolio</em></h2>
+          </div>
           <p>
-            How do travel interests shift across topics, time periods and possible seasonal patterns,
-            and how can these changes be made visible in an understandable way?
+            Project sections in portfolios usually work best when they combine a preview, short explanation, and direct links to both the code and the live result. That makes it easier to evaluate implementation quality and also mirrors common GitHub Pages portfolio patterns.
           </p>
         </div>
 
-        <div class="card">
-          <h2>Goal</h2>
-          <p>
-            The goal was to build a dashboard concept that makes trends easier to compare and interpret
-            through a combination of structured metrics and visual outputs.
-          </p>
-        </div>
+        <div class="projects-grid">
+          <article class="project-card" id="case-study">
+            <div class="project-visual" role="img" aria-label="Preview area for travel trends project visuals">
+              <div>
+                <p class="eyebrow">Featured case study</p>
+                <h3>Travel Trends Dashboard</h3>
+              </div>
+              <div class="fake-chart-lines" aria-hidden="true">
+                <div style="width: 100%;"></div>
+                <div style="width: 89%; opacity: .62;"></div>
+                <div style="width: 95%; opacity: .46;"></div>
+                <div style="width: 78%; opacity: .34;"></div>
+                <div style="width: 66%; opacity: .25;"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Travel Trends Dashboard</h3>
+              <p>
+                This project presents a travel keyword dataset as a polished portfolio dashboard case study. The page is intentionally framed around implementation and decision-making: why the line chart fits the monthly time series, why a ranking bar chart makes the comparison clearer, and how the exported visuals connect back to the code.
+              </p>
+              <div class="stack" aria-label="Technology tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Python</span>
+                <span class="tag">Matplotlib / Seaborn</span>
+              </div>
+              <div class="action-row">
+                <a class="button primary" href="#implementation">View implementation</a>
+                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+                <a class="button ghost" href="https://yourusername.github.io/Travel-Trends-Dashboard/" target="_blank" rel="noopener noreferrer">Live demo</a>
+              </div>
+            </div>
+          </article>
 
-        <div class="card">
-          <h2>Focus</h2>
-          <p>
-            The main focus of the project is the combination of Python, trend analysis and data
-            visualization in a format that remains clear, practical and visually coherent.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="card">
-        <h2>Planned Visualizations</h2>
-        <ul>
-          <li>Time-based comparisons to show shifts in interest over time.</li>
-          <li>Charts for comparing categories or travel-related topics.</li>
-          <li>Heatmaps to highlight seasonal or recurring patterns.</li>
-          <li>Dashboard elements for quick scanning and structured interpretation.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <div class="card">
-        <h2>Approach</h2>
-        <p>
-          The project follows an analytical workflow: defining the question, structuring the data,
-          identifying relevant dimensions for comparison and translating the findings into visuals
-          that support interpretation rather than just display numbers.
-        </p>
-        <p>
-          This reflects the kind of work I am interested in most: connecting research questions,
-          structured analysis and digital presentation in one coherent output.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="cards">
-        <div class="card">
-          <h2>Why this project</h2>
-          <p>
-            I wanted to include a project that shows my interest in data-driven topics and my ability
-            to think through visual analysis beyond static reporting.
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>Technical Perspective</h2>
-          <p>
-            The dashboard is intended to demonstrate practical Python usage for analysis workflows,
-            comparisons and visual outputs such as heatmaps and charts.
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>Portfolio Role</h2>
-          <p>
-            Within the portfolio, this project complements the more UX-focused and process-focused
-            case studies by adding a clear analytics and visualization perspective.
-          </p>
+          <aside class="panel">
+            <div class="panel-body">
+              <p class="eyebrow">Project framing</p>
+              <h3>What makes this strong in a portfolio</h3>
+              <p>
+                The strength is not only that it looks clean, but that the page explains the thinking behind the charts. Data storytelling guidance emphasizes chart choice, emphasis, and interpretation rather than just displaying numbers, which fits a dashboard case-study format very well.
+              </p>
+              <div class="portfolio-link-box">
+                Put this file directly into your GitHub Pages repo as <code>index.html</code>. Then replace the placeholder repo and demo URLs with your real GitHub links.
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="card">
-        <h2>What I learned</h2>
-        <p>
-          This project reinforces the importance of choosing visual formats that help people understand
-          patterns, not just inspect data. It also reflects my interest in combining analysis,
-          structure and communication in digital work.
-        </p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Charts</p>
+            <h2 class="section-title">A cleaner way to present the <em>dashboard</em></h2>
+          </div>
+          <p>
+            For time-dependent data, trend lines are useful because they show change over time, while a ranking chart gives a compact category comparison. Using both together creates a stronger story than relying on a single chart alone.
+          </p>
+        </div>
+
+        <div class="split-grid">
+          <article class="chart-card">
+            <div class="chart-image">
+              <!-- Add your line chart image later -->
+            </div>
+            <div class="chart-body">
+              <h3>Line chart</h3>
+              <p>
+                This chart is the best place to show seasonality, movement across years, and the stronger late growth in some topics. The monthly structure of the CSV makes it a natural time-series view.
+              </p>
+              <div class="action-row">
+                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard/blob/main/line-chart.py" target="_blank" rel="noopener noreferrer">View line chart code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="chart-card">
+            <div class="chart-image">
+              <!-- Add your ranking chart image later -->
+            </div>
+            <div class="chart-body">
+              <h3>Ranking bar chart</h3>
+              <p>
+                The ranking view highlights the long-run comparison more clearly than a single recent snapshot. In this dataset, that is especially useful because several values jump sharply toward the end of the series.
+              </p>
+              <div class="action-row">
+                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard/blob/main/ranking-chart.py" target="_blank" rel="noopener noreferrer">View ranking chart code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="implementation">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Implementation</p>
+            <h2 class="section-title">Showing the code, not just the <em>output</em></h2>
+          </div>
+          <p>
+            Case-study pages become more convincing when they include the implementation path, not only the polished outcome. Portfolio templates and guidance commonly recommend direct GitHub links, reusable project sections, and dedicated case-study areas for exactly that reason.
+          </p>
+        </div>
+
+        <div class="split-grid">
+          <article class="panel">
+            <div class="panel-body">
+              <h3>Example snippet</h3>
+              <pre class="code-frame"><code>ranking = (
+    df[keyword_cols]
+    .mean()
+    .sort_values(ascending=True)
+    .reset_index()
+)
+ranking.columns = ["keyword", "avg_interest"]
+
+fig, ax = plt.subplots(figsize=(11, 6.5), facecolor=BG)
+ax.barh(ranking["keyword"], ranking["avg_interest"], color=bar_colors)
+ax.set_title("Average Search Interest by Travel Keyword", loc="left")
+plt.tight_layout()</code></pre>
+              <div class="action-row">
+                <a class="button primary" href="https://github.com/yourusername/Travel-Trends-Dashboard" target="_blank" rel="noopener noreferrer">Open full repository</a>
+                <a class="button secondary" href="https://github.com/yourusername/Travel-Trends-Dashboard/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project notes</a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="note-card">
+            <div class="note-body">
+              <h3>How to wire this to GitHub</h3>
+              <ul class="note-list">
+                <li>Save this page as <code>index.html</code> in your portfolio repository.</li>
+                <li>Create an <code>assets/</code> folder and place your exported chart PNGs there.</li>
+                <li>Replace the placeholder GitHub URLs with your actual repo, demo, and file links.</li>
+                <li>Use one button for the live project and one button for the source code, which is a common portfolio pattern.</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Insights</p>
+            <h2 class="section-title">What the data is actually <em>saying</em></h2>
+          </div>
+          <p>
+            The CSV shows five monthly keyword series from July 2021 to July 2026. Across that range, <strong>beach holiday</strong> is frequently the strongest theme, while <strong>solo travel</strong> becomes much stronger in the later portion of the dataset.
+          </p>
+        </div>
+
+        <div class="insight-grid">
+          <article class="insight-card">
+            <span>Dominant keyword</span>
+            <p><strong>beach holiday</strong> often posts the highest values in the series.</p>
+          </article>
+          <article class="insight-card">
+            <span>Rising topic</span>
+            <p><strong>solo travel</strong> shows one of the clearest long-term growth patterns.</p>
+          </article>
+          <article class="insight-card">
+            <span>Portfolio angle</span>
+            <p>The project works best when it reads as a code-led dashboard case study instead of only a visual gallery.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 class="section-title">Built for a GitHub-based <em>portfolio</em></h2>
+          </div>
+          <p>
+            This layout is ready to act as a GitHub Pages portfolio entry point: a featured project, chart previews, and direct code links in one HTML file. GitHub repositories and GitHub Pages are a practical way to connect source code and live portfolio projects from the same place.
+          </p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-body">
+            <h3>Replace these with your real details</h3>
+            <div class="action-row">
+              <a class="button primary" href="mailto:yourname@email.com">Email me</a>
+              <a class="button secondary" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+              <a class="button ghost" href="https://www.linkedin.com/in/yourname/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>Based in Germany · Portfolio in progress</p>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Single-file portfolio homepage with an integrated travel trends dashboard case study.</span>
+      <a href="#top">Back to top</a>
+    </div>
   </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', mode);
+
+      const render = () => {
+        toggle.innerHTML = mode === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+      };
+
+      render();
+      toggle.addEventListener('click', () => {
+        mode = mode === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', mode);
+        render();
+      });
+    })();
+  </script>
 </body>
 </html>

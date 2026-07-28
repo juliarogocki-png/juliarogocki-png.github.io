@@ -4,67 +4,469 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Julia Rogocki | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1efe9;
+      --text: #1f1d17;
+      --muted: #6f6b63;
+      --line: #ddd8cf;
+      --accent: #0d6b6f;
+      --accent-soft: #dcebea;
+      --shadow: 0 10px 30px rgba(26, 22, 16, 0.08);
+      --radius: 18px;
+      --content: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--content), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 246, 242, 0.88);
+      border-bottom: 1px solid rgba(31, 29, 23, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .intro {
+      max-width: 62ch;
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    main section {
+      padding: 24px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .hero-card,
+    .info-card,
+    .project-card {
+      background: var(--surface);
+      border: 1px solid rgba(31, 29, 23, 0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 32px;
+      min-height: 100%;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    .info-card {
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .info-item span {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .info-item p {
+      margin: 0;
+      color: var(--text);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .project-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .project-type {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .project-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+      margin-bottom: 22px;
+    }
+
+    .meta span {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: rgba(255,255,255,0.65);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .project-link:hover,
+    .button-primary:hover {
+      opacity: 0.92;
+    }
+
+    .button-secondary:hover {
+      background: #ebe7de;
+    }
+
+    .text-card {
+      background: transparent;
+      border-top: 1px solid rgba(31, 29, 23, 0.08);
+      padding-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .text-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 48px 0 72px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .projects-grid,
+      .text-card {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">CV / Contact</a>
-    </nav>
+    <div class="container nav">
+      <a class="brand" href="index.html">Julia Rogocki</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">CV / Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <p class="eyebrow">Portfolio</p>
-      <h1>Julia Rogocki</h1>
-      <p class="intro">
-        I am interested in the intersection of research, data analysis and digital projects.
-        My work focuses on structuring information, understanding patterns and translating ideas into clear, usable formats.
-      </p>
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <p class="eyebrow">Portfolio</p>
+          <h1>Structure, usability and thoughtful digital solutions.</h1>
+          <p class="intro">
+            I’m Julia Rogocki and I’m building a portfolio around UX thinking,
+            no-code prototyping, digital structure and analytical problem-solving.
+          </p>
+          <div class="hero-actions">
+            <a class="button-primary" href="projects.html">View projects</a>
+            <a class="button-secondary" href="contact.html">CV / Contact</a>
+          </div>
+        </div>
+
+        <aside class="info-card" aria-label="Profile overview">
+          <div class="info-item">
+            <span>Focus</span>
+            <p>UX thinking, no-code prototyping, structured workflows and data-driven work.</p>
+          </div>
+          <div class="info-item">
+            <span>Current case study</span>
+            <p>Tone & Glow — a fitness app prototype built around intuitive training flow.</p>
+          </div>
+          <div class="info-item">
+            <span>Based in</span>
+            <p>Germany</p>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section class="focus">
-      <h2>Focus Areas</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Research & Analysis</h3>
-          <p>Understanding questions, patterns and findings through structured analysis.</p>
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Selected Work</p>
+            <h2>Featured projects</h2>
+          </div>
+          <p>
+            A compact overview of projects that reflect how I work: starting from a practical problem,
+            building structure and turning ideas into usable digital concepts.
+          </p>
         </div>
-        <div class="card">
-          <h3>Digital Projects</h3>
-          <p>Developing and presenting digital ideas with a clear user-oriented structure.</p>
-        </div>
-        <div class="card">
-          <h3>Process & Coordination</h3>
-          <p>Planning, organizing and improving workflows in digital contexts.</p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <span class="project-type">Case Study</span>
+            <h3>Tone & Glow</h3>
+            <p>
+              A fitness app prototype designed to reduce media breaks in everyday training by combining
+              workout plans, mobility exercises, calorie tracking and a “Today” overview in one flow.
+            </p>
+            <div class="meta">
+              <span>Glide</span>
+              <span>UX</span>
+              <span>Data Structure</span>
+            </div>
+            <a class="project-link" href="tone-and-glow.html">View case study</a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Project</span>
+            <h3>Data Analysis Project</h3>
+            <p>
+              A project centered on structuring data, analyzing patterns and translating findings into
+              clear visual output with a practical analytical workflow.
+            </p>
+            <div class="meta">
+              <span>Python</span>
+              <span>Analysis</span>
+              <span>Visualization</span>
+            </div>
+            <a class="project-link" href="project-2.html">View project</a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Project</span>
+            <h3>Digital Process Project</h3>
+            <p>
+              A project focused on improving structure and efficiency in a practical workflow through
+              organization, digital thinking and solution-oriented process design.
+            </p>
+            <div class="meta">
+              <span>Process</span>
+              <span>Digitalization</span>
+              <span>Workflow</span>
+            </div>
+            <a class="project-link" href="project-3.html">View project</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="projects-preview">
-      <h2>Selected Projects</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Tone & Glow – App Concept</h3>
-          <p>A concept-driven app project focused on structure, information architecture and user-oriented thinking.</p>
+    <section>
+      <div class="container text-card">
+        <div>
+          <p class="eyebrow">Approach</p>
+          <h2>How I think about projects</h2>
         </div>
-        <div class="card">
-          <h3>Digitalization Process</h3>
-          <p>A project on structuring and coordinating a digital workflow for evaluation processes.</p>
-        </div>
-        <div class="card">
-          <h3>Travel Trends Dashboard</h3>
-          <p>A Python-based project exploring travel patterns through charts, comparisons and heatmaps.</p>
+        <div>
+          <p>
+            I’m especially interested in projects where clarity matters: when information needs structure,
+            workflows need simplification, or an idea has to become intuitive in real use.
+          </p>
+          <p style="margin-top:16px;">
+            My portfolio is still growing, but each project is meant to show not only a result,
+            but also the underlying thinking behind it.
+          </p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Based in Germany · Portfolio in progress</p>
+    <div class="container">
+      <p>Portfolio overview with selected projects and case studies.</p>
+    </div>
   </footer>
 </body>
 </html>

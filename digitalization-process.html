@@ -257,6 +257,13 @@
       border-top: 1px solid rgba(31, 29, 23, 0.08);
     }
 
+    .project-figure button {
+      all: unset;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+    }
+
     .project-figure img {
       width: 100%;
       height: auto;
@@ -264,6 +271,11 @@
       border: 1px solid rgba(31, 29, 23, 0.08);
       background: var(--surface-2);
       box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-figure button:hover img {
+      transform: scale(1.01);
     }
 
     .project-figure figcaption {
@@ -275,6 +287,49 @@
 
     .wide-card {
       grid-column: 1 / -1;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 29, 23, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 100;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: min(1100px, 96vw);
+      max-height: 92vh;
+      width: 100%;
+    }
+
+    .modal-content img {
+      width: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
     }
 
     footer {
@@ -366,6 +421,19 @@
               and limited automation. This made evaluation and reporting more time-consuming,
               less transparent and harder to scale.
             </p>
+
+            <figure class="project-figure">
+              <button type="button" class="zoom-trigger" data-full="assets/challenge-process.png" aria-label="Open challenge process image">
+                <img
+                  src="assets/challenge-process.png"
+                  alt="Evaluation process before digitalization showing the manual and fragmented workflow."
+                  loading="lazy"
+                />
+              </button>
+              <figcaption>
+                Existing workflow and the manual evaluation process.
+              </figcaption>
+            </figure>
           </article>
 
           <article class="project-card">
@@ -375,6 +443,19 @@
               The aim was to design a clearer target workflow supported by a stable data structure,
               automated analysis functions and a more user-friendly reporting process.
             </p>
+
+            <figure class="project-figure">
+              <button type="button" class="zoom-trigger" data-full="assets/goal-process.png" aria-label="Open goal process image">
+                <img
+                  src="assets/goal-process.png"
+                  alt="Target digital workflow showing the new structured process and process logic."
+                  loading="lazy"
+                />
+              </button>
+              <figcaption>
+                New target process after digitalization.
+              </figcaption>
+            </figure>
           </article>
 
           <article class="project-card">
@@ -417,13 +498,13 @@
           </p>
 
           <figure class="project-figure">
-            <img
-              src="assets/projektstrukturplan.png"
-              alt="Project structure plan showing project management, requirements, data management, Python backend, user interface, reporting, testing and introduction."
-              width="1200"
-              height="1600"
-              loading="lazy"
-            />
+            <button type="button" class="zoom-trigger" data-full="assets/projektstrukturplan.png" aria-label="Open project structure image">
+              <img
+                src="assets/projektstrukturplan.png"
+                alt="Project structure plan showing project management, requirements, data management, Python backend, user interface, reporting, testing and introduction."
+                loading="lazy"
+              />
+            </button>
             <figcaption>
               Project structure plan with the main work areas and system-related modules.
             </figcaption>
@@ -485,13 +566,13 @@
           </p>
 
           <figure class="project-figure">
-            <img
-              src="assets/digitalization-gantt.png"
-              alt="Gantt chart for the digitalization process project showing task groups, assigned people, progress, start dates and planned versus actual end dates."
-              width="1600"
-              height="900"
-              loading="lazy"
-            />
+            <button type="button" class="zoom-trigger" data-full="assets/digitalization-gantt.png" aria-label="Open gantt image">
+              <img
+                src="assets/digitalization-gantt.png"
+                alt="Gantt chart for the digitalization process project showing task groups, assigned people, progress, start dates and planned versus actual end dates."
+                loading="lazy"
+              />
+            </button>
             <figcaption>
               Gantt overview showing task progress, assignments and scheduling across the project timeline.
             </figcaption>
@@ -519,10 +600,47 @@
     </section>
   </main>
 
+  <div class="modal" id="imageModal" aria-hidden="true">
+    <button class="modal-close" type="button" id="modalClose">Close</button>
+    <div class="modal-content">
+      <img id="modalImage" alt="Expanded preview" />
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <p>Portfolio overview with selected projects and case studies.</p>
     </div>
   </footer>
+
+  <script>
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementById('modalClose');
+
+    document.querySelectorAll('.zoom-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        modalImg.src = btn.dataset.full || btn.querySelector('img').src;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    const closeModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
 </body>
 </html>

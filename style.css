@@ -180,6 +180,11 @@
       background: var(--surface-2);
       color: var(--text);
     }
+    .download-link {
+      color: #008000;
+      text-decoration: none;
+    }
+
 
     .button-primary:hover,
     .project-link:hover {
@@ -328,9 +333,6 @@
         align-items: flex-start;
         flex-direction: column;
       }
-     .download-link {
-       color: #008000;
-       text-decoration: none;
-      }
+
     }
   </style>

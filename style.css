@@ -257,6 +257,12 @@ p {
   color: #88808f;
 }
 
+.download-link {
+  color: #8a5cff;
+  text-decoration: none;
+}
+
+
 @media (max-width: 800px) {
   .nav {
     flex-direction: column;

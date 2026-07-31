@@ -5,14 +5,14 @@
   --text: #1f1d17;
   --muted: #6f6b63;
   --line: #ddd8cf;
-  --accent: #0d6b6f;
-  --accent-soft: #dcebea;
+  --accent: #d98fa1;
+  --accent-soft: #f6e1e7;
   --shadow: 0 10px 30px rgba(26, 22, 16, 0.08);
   --radius: 18px;
   --content: 1120px;
 
   --btn-bg: var(--accent);
-  --btn-bg-hover: #0a585b;
+  --btn-bg-hover: #c97c90;
   --btn-text: #ffffff;
   --btn-secondary-bg: var(--surface-2);
   --btn-secondary-bg-hover: #ebe7de;

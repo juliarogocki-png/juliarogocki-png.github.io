@@ -4,142 +4,247 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Trends Dashboard | Julia Rogocki</title>
-  <meta name="description" content="Travel Trends Dashboard case study in the Julia Rogocki portfolio." />
+
+  <!-- Fonts / Icons falls du sie schon in index.html nutzt -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Zentrale Styles -->
   <link rel="stylesheet" href="style.css" />
-  
 </head>
 <body>
-  <header>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="index.html">Julia Rogocki</a>
-      <nav class="nav-links" aria-label="Main navigation">
+      <div class="brand">
+        <a href="index.html" class="brand-link">Julia Rogocki</a>
+      </div>
+      <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
-        <a href="./index.html#contact-section">CV / Contact</a>
+        <a href="cv-contact.html">CV / Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card card">
-          <p class="eyebrow">Portfolio Case Study</p>
+  <main id="main">
+    <!-- Hero / Overview -->
+    <section class="section hero">
+      <div class="container project-layout">
+        <article class="project-summary">
           <h1>Travel Trends Dashboard</h1>
-          <p class="intro">How does interest in classic beach holidays shift toward slow travel and solo trips, and which travel types are quietly gaining momentum in Germany?</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#mockups">View mockups</a>
-            <a class="btn secondary" href="#analysis">View analysis</a>
+          <p class="project-lead">
+            A small data lab exploring travel trends over time with Python,
+            focusing on clear charts, transparent code and actionable insights.
+          </p>
+
+          <div class="project-meta">
+            <p><strong>Focus:</strong> Data analysis, trend visualization, Python charts</p>
+            <p><strong>Role:</strong> End-to-end analysis, notebook implementation, portfolio integration</p>
           </div>
-        </div>
-        <aside class="info-card" aria-label="Project overview">
-          <div class="info-item"><span>Focus</span><p>Travel demand trends, category comparison and time-based pattern analysis.</p></div>
-          <div class="info-item"><span>Question</span><p>Which travel archetypes are stable, seasonal or emerging over time?</p></div>
-          <div class="info-item"><span>Scope</span><p>Germany weekly search interest from July 2025 to July 2026.</p></div>
+
+          <div class="project-actions">
+            <a class="btn-primary" href="https://github.com/DEIN_USERNAME/DEIN_REPO" target="_blank" rel="noopener">
+              View notebook on GitHub
+            </a>
+            <a class="btn-secondary" href="projects.html">
+              Back to projects
+            </a>
+          </div>
+        </article>
+
+        <aside class="project-aside">
+          <div class="info-card">
+            <h2>Project context</h2>
+            <p>
+              This dashboard prototype is part of my data & digitalization portfolio
+              and demonstrates how I use Python to turn raw travel data into
+              readable visual patterns.
+            </p>
+            <ul class="meta-list">
+              <li>Stack: Python, pandas, seaborn/matplotlib</li>
+              <li>Format: Jupyter Notebook, static charts</li>
+              <li>Portfolio: GitHub Pages case study</li>
+            </ul>
+          </div>
         </aside>
       </div>
     </section>
 
-    <section id="overview">
+    <!-- Key Visualizations -->
+    <section class="section">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Project overview</p>
-            <h2>Why this project exists</h2>
-          </div>
-          <p>This project turns raw travel search data into a clear portfolio case study with a niche but understandable question: how travel preferences shift between beach holidays, solo trips, slow travel and sustainable travel.</p>
-        </div>
+        <header class="section-header">
+          <h2>Key visualizations</h2>
+          <p>
+            The dashboard focuses on a small set of strong charts instead of many decorative visuals.
+            Each chart answers a concrete question about travel trends.
+          </p>
+        </header>
 
-        <div class="projects-grid" id="mockups">
-          <article class="mockup-card">
-            <div class="mockup-stage"><div class="mockup-box">Mockup 1<br />Main dashboard screenshot</div></div>
-            <div class="mockup-body"><h3>Main visual</h3><p>Use this for the full dashboard view with the key charts and an immediate visual summary of the analysis.</p></div>
+        <div class="project-grid">
+          <article class="card">
+            <h3>Seasonality line chart</h3>
+            <figure class="chart-figure">
+              <!-- Später echte Datei einfügen, z.B. assets/travel-seasonality-line.png -->
+              <img src="assets/travel-seasonality-line.png" alt="Line chart showing seasonal peaks for a selected destination" />
+              <figcaption>
+                Monthly interest for a destination over several years, highlighting clear seasonal peaks and quieter periods.
+              </figcaption>
+            </figure>
+            <p class="card-copy">
+              This chart shows how demand for a specific destination changes over time, revealing pronounced summer peaks
+              and off-season dips that are relevant for planning and marketing.
+            </p>
           </article>
-          <article class="mockup-card">
-            <div class="mockup-stage"><div class="mockup-box">Mockup 2<br />Chart close-up</div></div>
-            <div class="mockup-body"><h3>Supporting visual</h3><p>Use this to highlight the ranking chart or a detailed crop of the strongest trend so the insight is easier to read.</p></div>
+
+          <article class="card">
+            <h3>Destination comparison</h3>
+            <figure class="chart-figure">
+              <!-- Platzhalter, später ersetzen -->
+              <img src="assets/travel-destination-bars.png" alt="Bar chart comparing interest levels across destinations" />
+              <figcaption>
+                Relative interest for multiple destinations in a selected period, making it easy to compare popularity.
+              </figcaption>
+            </figure>
+            <p class="card-copy">
+              A bar chart compares destinations within the same timeframe, giving a quick overview of which locations
+              are currently most attractive.
+            </p>
           </article>
-          <article class="mockup-card">
-            <div class="mockup-stage"><div class="mockup-box">Mockup 3<br />Process or mobile view</div></div>
-            <div class="mockup-body"><h3>Process visual</h3><p>Use this for the process side of the project, such as code, planning, or a mobile-friendly composition of the dashboard.</p></div>
+
+          <article class="card">
+            <h3>Heatmap of patterns</h3>
+            <figure class="chart-figure">
+              <!-- Platzhalter, später ersetzen -->
+              <img src="assets/travel-heatmap.png" alt="Heatmap showing intensity of travel interest over time and categories" />
+              <figcaption>
+                A heatmap visualizes patterns across time and categories, making recurring combinations clearly visible.
+              </figcaption>
+            </figure>
+            <p class="card-copy">
+              The heatmap emphasizes repeated patterns and anomalies, supporting more nuanced questions such as:
+              which periods are surprisingly strong or weak compared to the general trend.
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="analysis">
+    <!-- Code & Implementation -->
+    <section class="section">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Analysis</p>
-            <h2>What the data shows</h2>
-          </div>
-          <p>Two views make the story easy to understand: a ranking of average interest and a time-based comparison of the most important travel types.</p>
-        </div>
+        <header class="section-header">
+          <h2>Code & implementation</h2>
+          <p>
+            The main purpose of this project page is to make the implementation visible:
+            how the data is loaded, prepared and turned into charts with Python.
+          </p>
+        </header>
 
-        <div class="two-column">
-          <article class="content-card">
-            <h3>Average interest ranking</h3>
-            <p>The ranking view compares the overall level of interest for each travel type across the full period. It helps show which categories stay dominant and which ones remain niche but relevant.</p>
-            <ul class="insight-list">
-              <li>Beach holidays remain the strongest overall category.</li>
-              <li>Solo travel and slow travel become more visible when looking at change over time.</li>
-              <li>City breaks provide a stable comparison point for short-trip demand.</li>
-            </ul>
+        <div class="code-grid">
+          <article class="code-card">
+            <h3>Data loading & preparation</h3>
+            <p class="card-copy">
+              The notebook starts with a clear, reproducible data pipeline:
+              reading the source file, selecting relevant columns and creating tidy structures.
+            </p>
+            <div class="code-block">
+              <pre><code class="language-python">
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load data (example: Google Trends export or tourism statistics)
+df = pd.read_csv("data/travel_trends.csv")
+
+# Basic cleaning and selection
+df["date"] = pd.to_datetime(df["date"])
+df = df.sort_values("date")
+
+# Filter for one destination and aggregate by month
+mallorca = (
+    df[df["destination"] == "Mallorca"]
+    .groupby(pd.Grouper(key="date", freq="M"))
+    .agg({"interest_score": "mean"})
+    .reset_index()
+)
+
+print(mallorca.head())
+              </code></pre>
+            </div>
           </article>
 
-          <article class="content-card">
-            <h3>Weekly trend comparison</h3>
-            <p>This view focuses on movement over time. It makes the seasonal nature of beach holidays visible while showing how solo and sustainable travel gain momentum more gradually.</p>
-            <ul class="insight-list">
-              <li>Beach holidays peak strongly in seasonal periods.</li>
-              <li>Solo travel grows from a niche line into a more important signal.</li>
-              <li>Sustainable travel stays lower in volume but points to a longer-term shift in travel behavior.</li>
-            </ul>
+          <article class="code-card">
+            <h3>Chart generation in Python</h3>
+            <p class="card-copy">
+              Charts are generated directly from the cleaned data and exported as PNG files,
+              which are then integrated into this portfolio page.
+            </p>
+            <div class="code-block">
+              <pre><code class="language-python">
+sns.set(style="whitegrid")
+
+plt.figure(figsize=(10, 5))
+sns.lineplot(
+    data=mallorca,
+    x="date",
+    y="interest_score",
+    color="#d98fa1"
+)
+
+plt.title("Mallorca interest over time")
+plt.xlabel("Date")
+plt.ylabel("Interest score")
+
+plt.tight_layout()
+plt.savefig("assets/travel-seasonality-line.png", dpi=150)
+plt.close()
+              </code></pre>
+            </div>
+
+            <div class="project-actions">
+              <a class="btn-primary" href="https://github.com/DEIN_USERNAME/DEIN_REPO" target="_blank" rel="noopener">
+                Open full notebook on GitHub
+              </a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="insights">
+    <!-- Insights & reflection -->
+    <section class="section">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Key insights</p>
-            <h2>Don't just show the results</h2>
-          </div>
-          <p>This section explains what the numbers mean, not just what they look like.</p>
-        </div>
-
-        <div class="content-card">
-          <p>The dashboard does not only present charts — it helps interpret changing travel behavior over time. Beach holidays remain the most visible category, but the growing presence of solo and slow travel suggests a broader shift toward more personal and flexible trip planning. Instead of showing only final results, this section highlights the meaning behind the patterns and makes the analysis easier to understand in a portfolio context.</p>
-        </div>
+        <header class="section-header">
+          <h2>Insights & reflection</h2>
+        </header>
+        <article class="project-copy">
+          <p>
+            The Travel Trends Dashboard is intentionally kept small and focused:
+            it shows how I structure questions, choose appropriate visualizations
+            and keep the underlying code readable and reproducible.
+          </p>
+          <p>
+            In a next step, this analysis could be extended into an interactive dashboard,
+            for example with filters for destinations, time ranges or traveler segments.
+            For this portfolio stage, the combination of notebook, charts and this case page
+            already demonstrates my approach to data‑driven work.
+          </p>
+        </article>
       </div>
     </section>
-
-    <section id="conclusion">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Conclusion</p>
-            <h2>What this dashboard adds</h2>
-          </div>
-          <p>This section closes the story with the key takeaway and explains why the analysis matters in the portfolio context.</p>
-        </div>
-
-        <div class="conclusion-card content-card">
-          <p>The dashboard shows that travel interest is not moving in one direction only: beach holidays still lead, but solo and sustainable travel are gaining visibility and create a more nuanced picture of how people want to travel. That makes the project a strong portfolio piece because it combines data analysis, clear storytelling and a clean visual presentation in one focused case study.</p>
-        </div>
-      </div>
-    </section>
+  </main>
 
   <footer>
     <div class="container">
-      <p>Travel Trends Dashboard case study - Julia Rogocki portfolio.</p>
+      <p>Project page last updated 04.08.2026.</p>
     </div>
   </footer>
 </body>

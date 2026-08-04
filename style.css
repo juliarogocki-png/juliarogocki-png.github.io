@@ -115,19 +115,19 @@ main section {
   scroll-margin-top: 96px;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
-  align-items: end;
-}
-
-.two-column, .two-col, .content-grid, .projects-grid, .gallery, .three-col {
+.hero-grid,
+.two-column,
+.content-grid,
+.projects-grid,
+.gallery,
+.three-col {
   display: grid;
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-.two-column, .two-col, .content-grid {
+.hero-grid,
+.two-column,
+.content-grid {
   grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
 }
 
@@ -136,18 +136,37 @@ main section {
   align-items: stretch;
 }
 
-.three-col { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+.gallery {
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
 
-.card, .info-card, .project-card, .content-card, .hero-card, .mockup-card, .gallery-card, .image-block {
+.three-col {
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+
+.card,
+.info-card,
+.project-card,
+.content-card,
+.hero-card,
+.mockup-card,
+.gallery-card,
+.image-block {
   background: var(--surface);
   border: 1px solid rgba(31, 29, 23, 0.08);
   border-radius: clamp(1rem, 2vw, 1.25rem);
   box-shadow: var(--shadow);
 }
 
-.hero-card, .info-card, .project-card, .content-card {
+.card,
+.content-card,
+.hero-card,
+.info-card,
+.project-card {
   padding: clamp(1.25rem, 3vw, 2rem);
 }
+
 
 .info-card {
   display: grid;
@@ -166,14 +185,18 @@ main section {
 }
 .info-item p { margin: 0; }
 
-.hero-actions, .button-row {
+.hero-actions,
+.button-row {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(0.75rem, 1.5vw, 0.9rem);
   margin-top: clamp(1rem, 2vw, 1.5rem);
 }
 
-.button-primary, .button-secondary, .btn, .project-link, .download-link {
+.button-primary,
+.button-secondary,
+.btn,
+.project-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -184,17 +207,42 @@ main section {
   transition: opacity 180ms ease, background 180ms ease, color 180ms ease;
 }
 
-.button-primary, .btn.primary, .project-link { background: var(--btn-bg); color: var(--btn-text); }
-.button-secondary, .btn.secondary { background: var(--btn-secondary-bg); color: var(--btn-secondary-text); }
-.button-primary:hover, .btn.primary:hover, .project-link:hover { background: var(--btn-bg-hover); }
-.button-secondary:hover, .btn.secondary:hover { background: var(--btn-secondary-bg-hover); }
+.button-primary,
+.btn.primary,
+.project-link {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+.button-secondary,
+.btn.secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+}
+
+.button-primary:hover,
+.btn.primary:hover,
+.project-link:hover {
+  background: var(--btn-bg-hover);
+}
+
+.button-secondary:hover,
+.btn.secondary:hover {
+  background: var(--btn-secondary-bg-hover);
+}
 
 .download-link {
   color: #e3a7b6;
   padding: 0;
   border-radius: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
-.download-link:hover { opacity: 0.8; }
+
+.download-link:hover {
+  opacity: 0.8;
+}
+
 
 .section-head {
   display: grid;

@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Trends Dashboard | Julia Rogocki</title>
 
-  <!-- Fonts / Icons falls du sie schon in index.html nutzt -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -13,7 +12,6 @@
     rel="stylesheet"
   />
 
-  <!-- Zentrale Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -50,8 +48,8 @@
           </div>
 
           <div class="project-actions">
-            <a class="btn-primary" href="https://github.com/DEIN_USERNAME/DEIN_REPO" target="_blank" rel="noopener">
-              View notebook on GitHub
+            <a class="btn-primary" href="https://github.com/juliarogocki-png/juliarogocki-png.github.io/tree/main" target="_blank" rel="noopener">
+              View project on GitHub
             </a>
             <a class="btn-secondary" href="projects.html">
               Back to projects
@@ -92,29 +90,33 @@
           <article class="card">
             <h3>Seasonality line chart</h3>
             <figure class="chart-figure">
-              <!-- Später echte Datei einfügen, z.B. assets/travel-seasonality-line.png -->
-              <img src="assets/travel-seasonality-line.png" alt="Line chart showing seasonal peaks for a selected destination" />
+              <img 
+                src="https://raw.githubusercontent.com/juliarogocki-png/juliarogocki-png.github.io/main/assets/travel-seasonality-line.png" 
+                alt="Line chart showing simulated seasonal interest for top 5 travel hashtags over 12 months" 
+              />
               <figcaption>
-                Monthly interest for a destination over several years, highlighting clear seasonal peaks and quieter periods.
+                Monthly interest for top hashtags over 12 months, highlighting seasonal peaks and quieter periods.
               </figcaption>
             </figure>
             <p class="card-copy">
-              This chart shows how demand for a specific destination changes over time, revealing pronounced summer peaks
-              and off-season dips that are relevant for planning and marketing.
+              This chart shows how interest in specific hashtags changes over time, revealing pronounced peaks
+              and off-season dips that are relevant for content planning and marketing.
             </p>
           </article>
 
           <article class="card">
             <h3>Destination comparison</h3>
             <figure class="chart-figure">
-              <!-- Platzhalter, später ersetzen -->
-              <img src="assets/travel-destination-bars.png" alt="Bar chart comparing interest levels across destinations" />
+              <img 
+                src="https://raw.githubusercontent.com/juliarogocki-png/juliarogocki-png.github.io/main/assets/travel-destination-bars.png" 
+                alt="Horizontal bar chart ranking top 10 hashtags by total views in billions" 
+              />
               <figcaption>
-                Relative interest for multiple destinations in a selected period, making it easy to compare popularity.
+                Relative interest for multiple hashtags in a selected period, making it easy to compare popularity.
               </figcaption>
             </figure>
             <p class="card-copy">
-              A bar chart compares destinations within the same timeframe, giving a quick overview of which locations
+              A bar chart compares hashtags within the same timeframe, giving a quick overview of which topics
               are currently most attractive.
             </p>
           </article>
@@ -122,15 +124,17 @@
           <article class="card">
             <h3>Heatmap of patterns</h3>
             <figure class="chart-figure">
-              <!-- Platzhalter, später ersetzen -->
-              <img src="assets/travel-heatmap.png" alt="Heatmap showing intensity of travel interest over time and categories" />
+              <img 
+                src="https://raw.githubusercontent.com/juliarogocki-png/juliarogocki-png.github.io/main/assets/travel-heatmap.png" 
+                alt="Heatmap comparing hashtag categories by normalized posts and views" 
+              />
               <figcaption>
-                A heatmap visualizes patterns across time and categories, making recurring combinations clearly visible.
+                A heatmap visualizes patterns across categories and metrics, making recurring combinations clearly visible.
               </figcaption>
             </figure>
             <p class="card-copy">
               The heatmap emphasizes repeated patterns and anomalies, supporting more nuanced questions such as:
-              which periods are surprisingly strong or weak compared to the general trend.
+              which categories are surprisingly strong or weak compared to the general trend.
             </p>
           </article>
         </div>
@@ -149,72 +153,239 @@
         </header>
 
         <div class="code-grid">
+          <!-- Chart 1 -->
           <article class="code-card">
-            <h3>Data loading & preparation</h3>
+            <h3>Chart 1: Seasonality line chart</h3>
             <p class="card-copy">
-              The notebook starts with a clear, reproducible data pipeline:
-              reading the source file, selecting relevant columns and creating tidy structures.
+              Simulated seasonal interest for top travel hashtags over 12 months.
             </p>
             <div class="code-block">
               <pre><code class="language-python">
+"""
+Chart 1: Seasonality line chart
+Output: assets/travel-seasonality-line.png
+"""
+
+import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
+from io import StringIO
 
-# Load data (example: Google Trends export or tourism statistics)
-df = pd.read_csv("data/travel_trends.csv")
+os.makedirs("assets", exist_ok=True)
 
-# Basic cleaning and selection
-df["date"] = pd.to_datetime(df["date"])
-df = df.sort_values("date")
+csv_data = """hashtag,posts_millions,views_billions,category,source
+#travel,26.3,217.8,General,tiktokhashtags.com
+#traveltiktok,5.4,49.0,TikTok,tiktokhashtags.com
+#travellife,2.5,16.3,Lifestyle,tiktokhashtags.com
+#adventure,4.3,40.7,Activity,tiktokhashtags.com
+#vacation,6.9,40.6,General,tiktokhashtags.com
+#nature,21.7,132.3,Activity,tiktokhashtags.com
+#traveltips,0.408,10.5,Information,tiktokhashtags.com
+#travelblogger,0.589,4.4,Influencer,tiktokhashtags.com
+#travelmemories,0.589,4.0,General,tiktokhashtags.com
+#travelphotography,0.756,3.0,Photography,tiktokhashtags.com
+#holidaycountdown,1.3,11.6,Planning,tiktokhashtags.com
+#viaje,2.0,20.3,Travel,tiktokhashtags.com
+#naturevibes,1.7,8.3,Nature,tiktokhashtags.com
+#dubai,24.0,176.5,Destination,tiktokhashtags.com
+#summer,24.3,171.3,Seasonal,tiktokhashtags.com
+#holidayvibes,1.3,8.1,Holiday,tiktokhashtags.com
+#asmr,18.8,937.5,Content,tiktokhashtags.com
+#motivation,40.5,374.3,Content,tiktokhashtags.com
+#fyp,616.2,49600.0,Trending,tiktokhashtags.com
+#explore,72.3,1200.0,Trending,tiktokhashtags.com
+#foryou,707.5,29000.0,Trending,tiktokhashtags.com"""
 
-# Filter for one destination and aggregate by month
-mallorca = (
-    df[df["destination"] == "Mallorca"]
-    .groupby(pd.Grouper(key="date", freq="M"))
-    .agg({"interest_score": "mean"})
-    .reset_index()
-)
-
-print(mallorca.head())
-              </code></pre>
-            </div>
-          </article>
-
-          <article class="code-card">
-            <h3>Chart generation in Python</h3>
-            <p class="card-copy">
-              Charts are generated directly from the cleaned data and exported as PNG files,
-              which are then integrated into this portfolio page.
-            </p>
-            <div class="code-block">
-              <pre><code class="language-python">
+df = pd.read_csv(StringIO(csv_data))
 sns.set(style="whitegrid")
 
+top_hashtags = df.nlargest(5, "views_billions")["hashtag"].tolist()
+months = pd.date_range("2025-01-01", periods=12, freq="ME")
+
+np.random.seed(42)
+sim_data = []
+for i, hashtag in enumerate(top_hashtags):
+    base = df[df["hashtag"] == hashtag]["views_billions"].values[0]
+    phase = i * np.pi / 4
+    for t, month in enumerate(months):
+        seasonal = np.sin(2 * np.pi * (t / 12) + phase)
+        noise = np.random.normal(0, base * 0.05)
+        value = base * (0.6 + 0.4 * (seasonal + 1) / 2) + noise
+        sim_data.append({
+            "date": month,
+            "hashtag": hashtag,
+            "views_billions": max(0, value)
+        })
+
+sim_df = pd.DataFrame(sim_data)
+
 plt.figure(figsize=(10, 5))
-sns.lineplot(
-    data=mallorca,
-    x="date",
-    y="interest_score",
-    color="#d98fa1"
-)
+for hashtag, grp in sim_df.groupby("hashtag"):
+    plt.plot(
+        grp["date"],
+        grp["views_billions"],
+        marker="o",
+        label=hashtag,
+        linewidth=2
+    )
 
-plt.title("Mallorca interest over time")
-plt.xlabel("Date")
-plt.ylabel("Interest score")
-
+plt.title("Simulated seasonal interest for top hashtags", fontsize=14, fontweight="600")
+plt.xlabel("Month", fontsize=12)
+plt.ylabel("Views (billions)", fontsize=12)
+plt.legend(title="Hashtag", fontsize=10, title_fontsize=11)
 plt.tight_layout()
 plt.savefig("assets/travel-seasonality-line.png", dpi=150)
 plt.close()
               </code></pre>
             </div>
+          </article>
 
-            <div class="project-actions">
-              <a class="btn-primary" href="https://github.com/DEIN_USERNAME/DEIN_REPO" target="_blank" rel="noopener">
-                Open full notebook on GitHub
-              </a>
+          <!-- Chart 2 -->
+          <article class="code-card">
+            <h3>Chart 2: Destination comparison</h3>
+            <p class="card-copy">
+              Top 10 hashtags by total views.
+            </p>
+            <div class="code-block">
+              <pre><code class="language-python">
+"""
+Chart 2: Destination/Hashtag comparison (Bar Chart)
+Output: assets/travel-destination-bars.png
+"""
+
+import os
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from io import StringIO
+
+os.makedirs("assets", exist_ok=True)
+
+csv_data = """hashtag,posts_millions,views_billions,category,source
+#travel,26.3,217.8,General,tiktokhashtags.com
+#traveltiktok,5.4,49.0,TikTok,tiktokhashtags.com
+#travellife,2.5,16.3,Lifestyle,tiktokhashtags.com
+#adventure,4.3,40.7,Activity,tiktokhashtags.com
+#vacation,6.9,40.6,General,tiktokhashtags.com
+#nature,21.7,132.3,Activity,tiktokhashtags.com
+#traveltips,0.408,10.5,Information,tiktokhashtags.com
+#travelblogger,0.589,4.4,Influencer,tiktokhashtags.com
+#travelmemories,0.589,4.0,General,tiktokhashtags.com
+#travelphotography,0.756,3.0,Photography,tiktokhashtags.com
+#holidaycountdown,1.3,11.6,Planning,tiktokhashtags.com
+#viaje,2.0,20.3,Travel,tiktokhashtags.com
+#naturevibes,1.7,8.3,Nature,tiktokhashtags.com
+#dubai,24.0,176.5,Destination,tiktokhashtags.com
+#summer,24.3,171.3,Seasonal,tiktokhashtags.com
+#holidayvibes,1.3,8.1,Holiday,tiktokhashtags.com
+#asmr,18.8,937.5,Content,tiktokhashtags.com
+#motivation,40.5,374.3,Content,tiktokhashtags.com
+#fyp,616.2,49600.0,Trending,tiktokhashtags.com
+#explore,72.3,1200.0,Trending,tiktokhashtags.com
+#foryou,707.5,29000.0,Trending,tiktokhashtags.com"""
+
+df = pd.read_csv(StringIO(csv_data))
+sns.set(style="whitegrid")
+palette = sns.color_palette("muted")
+
+top10 = df.nlargest(10, "views_billions").sort_values("views_billions")
+
+plt.figure(figsize=(10, 6))
+plt.barh(
+    top10["hashtag"],
+    top10["views_billions"],
+    color=palette[2]
+)
+
+plt.title("Top 10 hashtags by total views (billions)", fontsize=14, fontweight="600")
+plt.xlabel("Views (billions)", fontsize=12)
+plt.ylabel("Hashtag", fontsize=12)
+plt.tight_layout()
+plt.savefig("assets/travel-destination-bars.png", dpi=150)
+plt.close()
+              </code></pre>
             </div>
           </article>
+
+          <!-- Chart 3 -->
+          <article class="code-card">
+            <h3>Chart 3: Heatmap of patterns</h3>
+            <p class="card-copy">
+              Hashtag categories vs. normalized performance.
+            </p>
+            <div class="code-block">
+              <pre><code class="language-python">
+"""
+Chart 3: Heatmap of patterns
+Output: assets/travel-heatmap.png
+"""
+
+import os
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from io import StringIO
+
+os.makedirs("assets", exist_ok=True)
+
+csv_data = """hashtag,posts_millions,views_billions,category,source
+#travel,26.3,217.8,General,tiktokhashtags.com
+#traveltiktok,5.4,49.0,TikTok,tiktokhashtags.com
+#travellife,2.5,16.3,Lifestyle,tiktokhashtags.com
+#adventure,4.3,40.7,Activity,tiktokhashtags.com
+#vacation,6.9,40.6,General,tiktokhashtags.com
+#nature,21.7,132.3,Activity,tiktokhashtags.com
+#traveltips,0.408,10.5,Information,tiktokhashtags.com
+#travelblogger,0.589,4.4,Influencer,tiktokhashtags.com
+#travelmemories,0.589,4.0,General,tiktokhashtags.com
+#travelphotography,0.756,3.0,Photography,tiktokhashtags.com
+#holidaycountdown,1.3,11.6,Planning,tiktokhashtags.com
+#viaje,2.0,20.3,Travel,tiktokhashtags.com
+#naturevibes,1.7,8.3,Nature,tiktokhashtags.com
+#dubai,24.0,176.5,Destination,tiktokhashtags.com
+#summer,24.3,171.3,Seasonal,tiktokhashtags.com
+#holidayvibes,1.3,8.1,Holiday,tiktokhashtags.com
+#asmr,18.8,937.5,Content,tiktokhashtags.com
+#motivation,40.5,374.3,Content,tiktokhashtags.com
+#fyp,616.2,49600.0,Trending,tiktokhashtags.com
+#explore,72.3,1200.0,Trending,tiktokhashtags.com
+#foryou,707.5,29000.0,Trending,tiktokhashtags.com"""
+
+df = pd.read_csv(StringIO(csv_data))
+sns.set(style="whitegrid")
+
+df_norm = df.copy()
+df_norm["posts_norm"] = df_norm["posts_millions"] / df_norm["posts_millions"].max()
+df_norm["views_norm"] = df_norm["views_billions"] / df_norm["views_billions"].max()
+
+heatmap_matrix = df_norm.groupby("category")[["posts_norm", "views_norm"]].mean()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(
+    heatmap_matrix,
+    annot=True,
+    fmt=".2f",
+    cmap="YlOrRd",
+    cbar_kws={"label": "Normalized intensity (0–1)"}
+)
+
+plt.title("Hashtag categories: normalized performance patterns", fontsize=14, fontweight="600")
+plt.xlabel("Metric", fontsize=12)
+plt.ylabel("Category", fontsize=12)
+plt.tight_layout()
+plt.savefig("assets/travel-heatmap.png", dpi=150)
+plt.close()
+              </code></pre>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-actions" style="margin-top: 2rem;">
+          <a class="btn-primary" href="https://github.com/juliarogocki-png/juliarogocki-png.github.io/tree/main" target="_blank" rel="noopener">
+            Show whole code on GitHub
+          </a>
         </div>
       </div>
     </section>

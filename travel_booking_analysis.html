@@ -1,225 +1,330 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Exploratory UX-oriented analysis of hotel booking conversion by device type." />
-  <title>Exploring Booking Conversion by Device Type | Julia Rogocki</title>
+<!-- Ersetze in deiner bestehenden Projektseite den bisherigen Analysis-Results- und Code-Abschnitt durch diesen Block. -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+<section class="section analysis-results-section">
+  <div class="container">
+    <header class="section-header">
+      <p class="eyebrow">Analysis results</p>
+      <h2>Desktop sessions show the higher observed conversion</h2>
+      <p>
+        In this dataset, 8.3% of desktop searches result in a booking, compared with 6.0% of
+        mobile searches. This is an observed association, not evidence that device type causes the difference.
+      </p>
+    </header>
 
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand"><a href="index.html" class="brand-link">Julia Rogocki</a></div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="projects.html" aria-current="page">Projects</a>
-        <a href="about.html">About</a>
-        <a href="cv-contact.html">CV / Contact</a>
-      </nav>
+    <div class="analysis-summary">
+      <p class="analysis-label">Key finding</p>
+      <h3>The clearest difference appears in conversion.</h3>
+      <p>
+        Travel distance and stay length provide useful context, but their distributions overlap
+        considerably across device groups.
+      </p>
     </div>
-  </header>
 
-  <main id="main">
-    <section class="section hero">
-      <div class="container project-layout">
-        <article class="project-summary">
-          <p class="eyebrow">Data analysis · UX research</p>
-          <h1>Exploring Booking Conversion by Device Type</h1>
-          <p class="project-lead">
-            An exploratory and inferential analysis of hotel-search sessions, examining whether
-            desktop and mobile users differ in booking conversion after accounting for selected
-            characteristics of the search context.
-          </p>
+    <div class="analysis-visual-grid">
+      <figure class="analysis-visual">
+        <span class="zoom-hint">Click to enlarge</span>
+        <button type="button" class="chart-trigger" data-chart="visuals/booking_rate.png" data-alt="Bar chart comparing observed booking rates for desktop and mobile users">
+          <img src="visuals/booking_rate.png" alt="Bar chart comparing observed booking rates for desktop and mobile users" loading="lazy" />
+        </button>
+        <figcaption>
+          <strong>1. Conversion:</strong> Desktop searches have the higher observed booking rate: 8.3% compared with 6.0% on mobile.
+        </figcaption>
+      </figure>
 
-          <div class="project-meta project-meta-grid">
-            <div><span>Focus</span><strong>Booking conversion and device comparison</strong></div>
-            <div><span>Role</span><strong>Data preparation, analysis and interpretation</strong></div>
-            <div><span>Tools</span><strong>Python · pandas · seaborn · scikit-learn</strong></div>
-          </div>
+      <figure class="analysis-visual">
+        <span class="zoom-hint">Click to enlarge</span>
+        <button type="button" class="chart-trigger" data-chart="visuals/distance_boxplot.png" data-alt="Boxplot comparing travel distance for desktop and mobile users">
+          <img src="visuals/distance_boxplot.png" alt="Boxplot comparing travel distance for desktop and mobile users" loading="lazy" />
+        </button>
+        <figcaption>
+          <strong>2. Travel context:</strong> Desktop searches show a somewhat higher median and a wider central distribution. The groups overlap substantially.
+        </figcaption>
+      </figure>
 
-          <div class="project-actions">
-            <a class="btn-primary" href="projects.html">Back to projects</a>
-          </div>
-        </article>
+      <figure class="analysis-visual">
+        <span class="zoom-hint">Click to enlarge</span>
+        <button type="button" class="chart-trigger" data-chart="visuals/stay_distribution.png" data-alt="Distribution of requested stay length by device type">
+          <img src="visuals/stay_distribution.png" alt="Distribution of requested stay length by device type" loading="lazy" />
+        </button>
+        <figcaption>
+          <strong>3. Stay length:</strong> Short stays dominate in both groups, and the distributions are highly similar. Values outside the 1–30 day range are not shown.
+        </figcaption>
+      </figure>
+    </div>
 
-        <aside class="project-aside">
-          <div class="info-card">
-            <p class="eyebrow">Project context</p>
-            <h2>From search behaviour to conversion</h2>
-            <p>
-              This project uses hotel-search and booking records to investigate whether the device
-              used during a search is associated with booking conversion. The workflow combines
-              descriptive visualization with logistic regression.
-            </p>
-            <p>
-              The model does not prove causality. It tests whether the observed device-related pattern
-              remains after selected contextual variables are included.
-            </p>
-            <ul class="meta-list">
-              <li>Outcome: booking or no booking</li>
-              <li>Main predictor: mobile versus desktop</li>
-              <li>Context: travel distance and stay length</li>
-              <li>Output: three visualizations and a regression model</li>
-            </ul>
-            <p class="source-note">
-              Data source:
-              <a href="https://www.kaggle.com/competitions/expedia-hotel-recommendations/data" target="_blank" rel="noopener">Expedia Hotel Recommendations on Kaggle</a>
-            </p>
-          </div>
-        </aside>
+    <div class="analysis-conclusion">
+      <p>
+        <strong>Interpretation:</strong> The booking-rate chart shows the clearest descriptive
+        difference. Travel distance and stay length do not visibly separate desktop and mobile
+        searches to the same extent.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section code-section">
+  <div class="container">
+    <header class="section-header code-section-header">
+      <p class="eyebrow">Don’t show just the result</p>
+      <h2>Show the code behind the analysis</h2>
+      <p>
+        This excerpt shows how the booking-rate visualization was created. Scroll inside the
+        dark code window to inspect the complete snippet.
+      </p>
+    </header>
+
+    <div class="code-window" aria-label="Scrollable Python code example">
+      <div class="code-window-bar">
+        <i></i><i></i><i></i><span>analysis.py</span>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <header class="section-header">
-          <p class="eyebrow">Research question</p>
-          <h2>Are booking rates associated with device type?</h2>
-          <p>
-            Are hotel-search sessions on desktop and mobile devices associated with different
-            booking-conversion rates, and does this association remain after accounting for
-            selected characteristics of the search context?
-          </p>
-        </header>
-        <article class="project-copy">
-          <p>
-            The analysis begins with a descriptive comparison of booking rates. It then examines
-            travel distance and requested stay length to understand whether the search contexts show
-            visible differences or substantial overlap. Finally, logistic regression estimates the
-            association between device type and booking status while controlling for selected search features.
-          </p>
-          <p>
-            This structure separates three questions: What do the raw group differences look like?
-            Which contextual variables appear relevant? And does the device-related difference remain
-            visible once those variables are considered together?
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <header class="section-header">
-          <p class="eyebrow">Analysis results</p>
-          <h2>Desktop sessions show the higher observed conversion</h2>
-          <p>
-            In this dataset, 8.3% of desktop searches result in a booking, compared with 6.0% of
-            mobile searches. This is an observed association, not evidence that device type causes the difference.
-          </p>
-        </header>
-
-        <article class="analysis-panel">
-          <div class="analysis-panel-intro">
-            <p class="analysis-label">Key finding</p>
-            <h3>The main difference appears in conversion, not in the visible search context.</h3>
-            <p>
-              Travel distance and stay length provide useful context, but their distributions overlap
-              considerably across device groups.
-            </p>
-          </div>
-
-          <div class="analysis-visual-grid">
-            <figure class="analysis-visual">
-              <span class="zoom-hint">Click to enlarge</span>
-              <button type="button" class="chart-trigger" data-chart="visuals/booking_rate.png" data-alt="Bar chart comparing observed booking rates for desktop and mobile users">
-                <img src="visuals/booking_rate.png" alt="Bar chart comparing observed booking rates for desktop and mobile users" loading="lazy" />
-              </button>
-              <figcaption>
-                <strong>1. Conversion:</strong> Desktop searches have the higher observed booking rate: 8.3% compared with 6.0% on mobile.
-              </figcaption>
-            </figure>
-
-            <figure class="analysis-visual">
-              <span class="zoom-hint">Click to enlarge</span>
-              <button type="button" class="chart-trigger" data-chart="visuals/distance_boxplot.png" data-alt="Boxplot comparing travel distance for desktop and mobile users">
-                <img src="visuals/distance_boxplot.png" alt="Boxplot comparing travel distance for desktop and mobile users" loading="lazy" />
-              </button>
-              <figcaption>
-                <strong>2. Travel context:</strong> The distributions are strongly right-skewed and overlap substantially. A log-scaled or trimmed version would improve readability.
-              </figcaption>
-            </figure>
-
-            <figure class="analysis-visual">
-              <span class="zoom-hint">Click to enlarge</span>
-              <button type="button" class="chart-trigger" data-chart="visuals/stay_distribution.png" data-alt="Distribution of requested stay length by device type">
-                <img src="visuals/stay_distribution.png" alt="Distribution of requested stay length by device type" loading="lazy" />
-              </button>
-              <figcaption>
-                <strong>3. Stay length:</strong> Short stays dominate, but negative values and the very wide x-axis should be checked before drawing substantive conclusions.
-              </figcaption>
-            </figure>
-          </div>
-
-          <div class="analysis-panel-conclusion">
-            <p>
-              <strong>Interpretation:</strong> The booking-rate chart is the clearest result. The two
-              distribution charts are useful as contextual diagnostics, but they should be refined before
-              being treated as polished evidence.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section code-section">
-      <div class="container">
-        <header class="section-header code-section-header">
-          <p class="eyebrow">Don’t show just the result</p>
-          <h2>Show the code behind the analysis</h2>
-          <p>
-            A short excerpt from the Python workflow used to calculate the booking rates and create the visualization.
-            The complete analysis is available in the linked GitHub repository.
-          </p>
-        </header>
-
-        <div class="code-window" aria-label="Scrollable Python code example">
-          <div class="code-window-bar"><i></i><i></i><i></i><span>analysis.py</span></div>
-          <pre><code>import pandas as pd
+      <pre tabindex="0"><code>import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
 
-booking_rate = (
-    df.groupby("device_type")["is_booking"]
-      .mean()
-      .mul(100)
-      .reset_index(name="booking_rate")
+booking = (
+    df.groupby("device")["is_booking"]
+      .agg(["mean", "count"])
+      .reindex(["Desktop", "Mobile"])
 )
 
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.bar(
-    booking_rate["device_type"],
-    booking_rate["booking_rate"],
+fig, ax = plt.subplots(figsize=(8, 5), facecolor="#f7f6f2")
+
+bars = ax.bar(
+    booking.index,
+    booking["mean"],
+    width=0.55,
     color="#d98fa1"
 )
 
-for index, value in enumerate(booking_rate["booking_rate"]):
-    ax.text(index, value + 0.25, f"{value:.1f}%", ha="center", weight="bold")
+for bar, rate, n in zip(
+    bars,
+    booking["mean"],
+    booking["count"]
+):
+    ax.text(
+        bar.get_x() + bar.get_width() / 2,
+        rate + 0.002,
+        f"{rate:.1%}\n(n={n:,})",
+        ha="center",
+        va="bottom",
+        fontweight="600"
+    )
 
 ax.set_title("Booking Rate by Device Type")
-ax.set_ylabel("Booking Rate")
 ax.set_xlabel("Device Type")
-ax.set_ylim(0, 9)
+ax.set_ylabel("Booking Rate")
+ax.yaxis.set_major_formatter(PercentFormatter(1))
+ax.set_ylim(0, 0.10)
+
 plt.tight_layout()
-plt.savefig("visuals/booking_rate.png", dpi=180)
-plt.show()</code></pre>
-        </div>
+plt.savefig("visuals/booking_rate.png", dpi=300)
+plt.close(fig)</code></pre>
+    </div>
 
-        <div class="code-cta">
-          <a class="btn-primary" href="https://github.com/juliarogocki-png/juliarogocki-png.github.io/tree/main" target="_blank" rel="noopener">Go to the full code on GitHub →</a>
-        </div>
-      </div>
-    </section>
+    <div class="code-cta">
+      <a class="btn-primary" href="https://github.com/juliarogocki-png/juliarogocki-png.github.io/tree/main" target="_blank" rel="noopener">
+        Go to the full code on GitHub →
+      </a>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-      <div class="container">
-        <header class="section-header">
-          <p class="eyebrow">Next analytical step</p>
-          <h2>Testing the device association</h2>
-          <p>
-            Because booking status is binary, logistic regression is appropriate fo
+<!-- Ergänze diese CSS-Regeln am Ende deiner style.css. -->
+<style>
+  .analysis-results-section {
+    background: var(--bg);
+  }
+
+  .analysis-summary {
+    max-width: 700px;
+    margin: 0 0 2rem;
+    padding: 1.5rem clamp(1.25rem, 3vw, 2rem);
+    background: var(--surface-2);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .analysis-summary h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .analysis-summary p:last-child {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .analysis-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .analysis-visual {
+    margin: 0;
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid rgba(31, 29, 23, 0.08);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .analysis-visual button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .analysis-visual button:focus-visible,
+  .code-window pre:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .analysis-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    background: var(--surface-2);
+    transition: transform 180ms ease;
+  }
+
+  .analysis-visual button:hover img {
+    transform: scale(1.02);
+  }
+
+  .analysis-visual figcaption {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .zoom-hint {
+    display: block;
+    margin-bottom: 0.7rem;
+    color: var(--accent-dark, #a95f76);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .analysis-conclusion {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  .analysis-conclusion p {
+    margin: 0;
+  }
+
+  .code-section {
+    background: var(--surface-2);
+  }
+
+  .code-section-header {
+    max-width: 700px;
+  }
+
+  .code-window {
+    overflow: hidden;
+    border: 1px solid #37352f;
+    border-radius: var(--radius);
+    background: #171614;
+    box-shadow: var(--shadow);
+  }
+
+  .code-window-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #37352f;
+    color: #a9a49a;
+    font-size: 0.78rem;
+  }
+
+  .code-window-bar i {
+    width: 9px;
+    height: 9px;
+    display: block;
+    border-radius: 50%;
+    background: #d98fa1;
+  }
+
+  .code-window-bar i:nth-child(2) { background: #d7bd87; }
+  .code-window-bar i:nth-child(3) { background: #91b89a; }
+
+  .code-window pre {
+    max-height: 380px;
+    overflow: auto;
+    margin: 0;
+    padding: 1.25rem;
+    color: #f3eee5;
+    font: 0.82rem/1.7 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    tab-size: 2;
+    white-space: pre;
+  }
+
+  .code-window pre::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .code-window pre::-webkit-scrollbar-thumb {
+    background: #514d45;
+    border-radius: 999px;
+  }
+
+  .code-cta {
+    margin-top: 1.25rem;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .analysis-visual-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<!-- Lightbox: einmalig direkt vor </body> einfügen. -->
+<div class="lightbox" id="chartLightbox" role="dialog" aria-modal="true" aria-label="Enlarged chart">
+  <button class="lightbox-close" type="button" aria-label="Close enlarged chart">×</button>
+  <img src="" alt="" />
+</div>
+
+<script>
+  const lightbox = document.querySelector('#chartLightbox');
+  const lightboxImage = lightbox.querySelector('img');
+  const closeButton = lightbox.querySelector('.lightbox-close');
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.chart-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      lightboxImage.src = trigger.dataset.chart;
+      lightboxImage.alt = trigger.dataset.alt;
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeButton.focus();
+    });
+  });
+
+  closeButton.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeLightbox();
+  });
+</script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Social Media Engagement Analysis | Julia Rogocki</title>
+  <title>Booking Behaviour by Device Type | Julia Rogocki</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,22 +36,21 @@
     <section class="section hero">
       <div class="container project-layout">
         <article class="project-summary">
-          <h1>Social Media Engagement Analysis</h1>
+          <h1>Booking Behaviour by Device Type</h1>
           <p class="project-lead">
-            A small data lab exploring engagement patterns on social media with Python,
-            focusing on clear charts, transparent code and actionable insights.
+            A focused exploratory data analysis of hotel-search and booking behaviour,
+            examining whether desktop and mobile users differ in booking conversion,
+            travel distance and requested stay length.
           </p>
 
           <div class="project-meta">
-            <p><strong>Focus:</strong> Data analysis, engagement visualization, Python charts</p>
-            <p><strong>Role:</strong> End-to-end analysis, modular scripts, portfolio integration</p>
+            <p><strong>Focus:</strong> Exploratory data analysis, behavioural comparison, data visualization</p>
+            <p><strong>Role:</strong> Data preparation, statistical exploration, visualization and interpretation</p>
+            <p><strong>Tools:</strong> Python, pandas, seaborn, matplotlib</p>
           </div>
 
           <div class="project-actions">
-            <a class="btn-primary" href="https://github.com/juliarogocki-png/social-media-engagement-analysis" target="_blank" rel="noopener">
-              View project on GitHub
-            </a>
-            <a class="btn-secondary" href="projects.html">
+            <a class="btn-primary" href="projects.html">
               Back to projects
             </a>
           </div>
@@ -61,17 +60,49 @@
           <div class="info-card">
             <h2>Project context</h2>
             <p>
-              This analysis is part of my data & digitalization portfolio
-              and demonstrates how I use Python to turn raw social media data into
-              readable visual patterns.
+              This project uses booking-search data to investigate how the device used
+              during a hotel search relates to user behaviour. The analysis is deliberately
+              descriptive: it identifies visible patterns and differences without claiming
+              that device type alone causes a booking outcome.
             </p>
             <ul class="meta-list">
-              <li>Stack: Python, pandas, seaborn/matplotlib</li>
-              <li>Format: Modular scripts, static charts</li>
-              <li>Portfolio: GitHub repository with case study</li>
+              <li>Dataset: Hotel-search and booking records</li>
+              <li>Unit of analysis: Individual search records</li>
+              <li>Output: Four static portfolio visualizations</li>
+              <li>Approach: Group comparison and correlation analysis</li>
             </ul>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <!-- Research question -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Research question</h2>
+          <p>
+            Do desktop and mobile users show different booking behaviour, and what can
+            travel distance, stay length and selected booking features tell us about these differences?
+          </p>
+        </header>
+
+        <article class="project-copy">
+          <p>
+            The analysis evaluates three connected aspects of the booking journey. First,
+            it compares the booking rate between device groups. Second, it examines whether
+            desktop and mobile searches differ in the distance between the traveller's origin
+            and the destination. Third, it explores the distribution of requested stay length.
+            A correlation matrix adds context by showing how device type, booking status and
+            search characteristics move together within the available data.
+          </p>
+          <p>
+            The guiding assumption is not that one device is inherently better than the other.
+            Instead, the goal is to identify behavioural signals that could inform UX decisions,
+            such as where mobile booking flows may need additional reassurance or where desktop
+            users may be more likely to complete a reservation.
+          </p>
+        </article>
       </div>
     </section>
 
@@ -81,62 +112,87 @@
         <header class="section-header">
           <h2>Key visualizations</h2>
           <p>
-            The analysis focuses on a small set of strong charts instead of many decorative visuals.
-            Each chart answers a concrete question about engagement patterns.
+            Each chart addresses a specific part of the research question. Together they show
+            the conversion gap, the travel-distance distribution, the shape of stay-length data
+            and the strength of relationships between selected features.
           </p>
         </header>
 
         <div class="project-grid">
           <article class="card">
-            <h3>Scatter plot: Score vs. Comments</h3>
+            <h3>Booking rate by device type</h3>
             <figure class="chart-figure">
-              <img 
-                src="https://raw.githubusercontent.com/juliarogocki-png/social-media-engagement-analysis/main/output/chart_1_scatter.png" 
-                alt="Scatter plot showing relationship between post score and number of comments across subreddits" 
+              <img
+                src="visuals/booking_rate.png"
+                alt="Bar chart comparing booking rates for desktop and mobile users"
               />
               <figcaption>
-                Each point represents a post, colored by subreddit. The pattern reveals whether high-scoring 
-                posts also generate more discussion.
+                Desktop searches have a booking rate of 8.3%, compared with 6.0% for mobile searches.
               </figcaption>
             </figure>
             <p class="card-copy">
-              This chart tests the hypothesis that posts with more upvotes also attract more comments,
-              revealing distinct engagement styles across different communities.
+              The chart provides the clearest answer to the conversion part of the question:
+              bookings occur more frequently among desktop records in this dataset. The difference
+              is descriptive and should not be interpreted as a causal device effect without further
+              controls for factors such as market, trip type, user history or traffic source.
             </p>
           </article>
 
           <article class="card">
-            <h3>Bar chart: Top posts by score</h3>
+            <h3>Travel distance by device type</h3>
             <figure class="chart-figure">
-              <img 
-                src="https://raw.githubusercontent.com/juliarogocki-png/social-media-engagement-analysis/main/output/chart_2_bars.png" 
-                alt="Horizontal bar chart ranking top 5 posts by upvote score" 
+              <img
+                src="visuals/distance_boxplot.png"
+                alt="Boxplot comparing travel distance distributions for desktop and mobile users"
               />
               <figcaption>
-                The five highest-scoring posts, making it easy to identify which topics and titles perform best.
+                The boxplots show strongly right-skewed distance distributions with many high-distance outliers.
               </figcaption>
             </figure>
             <p class="card-copy">
-              A simple ranking shows which content types achieve the highest visibility, useful for 
-              content strategy and UX decisions.
+              The central distributions overlap considerably, but desktop searches extend to a higher
+              upper whisker than mobile searches. The many outliers indicate that a relatively small
+              number of searches involve very long distances, so the median and interquartile range
+              are more informative than the extreme values alone.
             </p>
           </article>
 
           <article class="card">
-            <h3>Heatmap: Correlation matrix</h3>
+            <h3>Stay-length distribution</h3>
             <figure class="chart-figure">
-              <img 
-                src="https://raw.githubusercontent.com/juliarogocki-png/social-media-engagement-analysis/main/output/chart_3_heatmap.png" 
-                alt="Heatmap showing correlations between score, comments and upvote ratio" 
+              <img
+                src="visuals/stay_distribution.png"
+                alt="Density plot and histogram showing stay-length distributions by device type"
               />
               <figcaption>
-                Correlations between engagement metrics highlight which variables move together and which 
-                capture different aspects of engagement.
+                Both device groups are concentrated around short stays, while the long right tail reflects a small number of extended trips.
               </figcaption>
             </figure>
             <p class="card-copy">
-              The heatmap reveals whether upvotes and comments measure the same phenomenon or distinct 
-              dimensions of user engagement.
+              The density plot suggests that desktop and mobile users have broadly similar stay-length
+              patterns. Most searches concern short stays, whereas longer stays occur less often and
+              create a pronounced right-skew. The overlap means stay length alone does not clearly
+              separate the two device groups.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Correlation matrix of booking features</h3>
+            <figure class="chart-figure">
+              <img
+                src="visuals/correlation_heatmap.png"
+                alt="Heatmap showing correlations between device type, package status, search party size, rooms and booking status"
+              />
+              <figcaption>
+                The strongest relationship shown is between the number of adults and the number of rooms searched, with a correlation of 0.53.
+              </figcaption>
+            </figure>
+            <p class="card-copy">
+              Device type has only very weak correlations with the listed search features and booking
+              status. The heatmap therefore supports a cautious interpretation: the booking-rate gap
+              is visible at group level, but it is not explained by strong linear relationships between
+              device type and these individual variables. The moderate adults–rooms relationship is
+              more structurally apparent than the device-related correlations.
             </p>
           </article>
         </div>
@@ -149,187 +205,29 @@
         <header class="section-header">
           <h2>Code & implementation</h2>
           <p>
-            The main purpose of this project page is to make the implementation visible:
-            how the data is loaded, prepared and turned into charts with Python.
+            The analysis is implemented as a reproducible Python workflow. It loads the CSV data,
+            derives stay length from search dates, calculates grouped booking rates and saves each
+            visualization in a consistent portfolio style.
           </p>
         </header>
 
         <div class="code-grid">
-          <!-- Chart 1 -->
           <article class="code-card">
-            <h3>Chart 1: Scatter plot</h3>
+            <h3>Data preparation</h3>
             <p class="card-copy">
-              Relationship between upvotes and comments.
+              Search dates are converted to datetime values before the requested stay length is calculated in days.
             </p>
             <div class="code-block">
-              <pre><code class="language-python">
-"""
-Chart 1: Scatter plot – Score vs. Comments
-Output: output/chart_1_scatter.png
-"""
+              <pre><code class="language-python">df["srch_ci"] = pd.to_datetime(df["srch_ci"], errors="coerce")
+df["srch_co"] = pd.to_datetime(df["srch_co"], errors="coerce")
 
-import os
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-os.makedirs("output", exist_ok=True)
-
-# Load data from CSV
-df = pd.read_csv("data.csv")
-
-sns.set(style="whitegrid")
-
-plt.figure(figsize=(10, 6))
-sns.scatterplot(
-    data=df,
-    x="score",
-    y="num_comments",
-    hue="subreddit",
-    s=100,
-    palette="muted",
-    alpha=0.7
-)
-
-plt.title("Engagement Patterns: Upvotes vs. Comments", fontsize=14, fontweight="600")
-plt.xlabel("Score (Upvotes)", fontsize=12)
-plt.ylabel("Number of Comments", fontsize=12)
-plt.legend(title="Subreddit", bbox_to_anchor=(1.05, 1), loc="upper left")
-plt.tight_layout()
-plt.savefig("output/chart_1_scatter.png", dpi=150)
-plt.close()
-              </code></pre>
+df["stay_length"] = (
+    df["srch_co"] - df["srch_ci"]
+).dt.days</code></pre>
             </div>
           </article>
 
-          <!-- Chart 2 -->
           <article class="code-card">
-            <h3>Chart 2: Top posts bar chart</h3>
+            <h3>Booking-rate comparison</h3>
             <p class="card-copy">
-              Ranking of highest-scoring posts.
-            </p>
-            <div class="code-block">
-              <pre><code class="language-python">
-"""
-Chart 2: Bar chart – Top posts by score
-Output: output/chart_2_bars.png
-"""
-
-import os
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-os.makedirs("output", exist_ok=True)
-
-# Load data from CSV
-df = pd.read_csv("data.csv")
-
-sns.set(style="whitegrid")
-palette = sns.color_palette("muted")
-
-top5 = df.nlargest(5, "score").sort_values("score")
-
-plt.figure(figsize=(10, 6))
-plt.barh(
-    top5["title"].str[:30] + "...",
-    top5["score"],
-    color=palette[2]
-)
-
-plt.title("Top 5 Posts by Upvotes", fontsize=14, fontweight="600")
-plt.xlabel("Score", fontsize=12)
-plt.ylabel("Post Title", fontsize=12)
-plt.tight_layout()
-plt.savefig("output/chart_2_bars.png", dpi=150)
-plt.close()
-              </code></pre>
-            </div>
-          </article>
-
-          <!-- Chart 3 -->
-          <article class="code-card">
-            <h3>Chart 3: Heatmap</h3>
-            <p class="card-copy">
-              Correlation matrix of engagement metrics.
-            </p>
-            <div class="code-block">
-              <pre><code class="language-python">
-"""
-Chart 3: Heatmap – Correlation matrix
-Output: output/chart_3_heatmap.png
-"""
-
-import os
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-os.makedirs("output", exist_ok=True)
-
-# Load data from CSV
-df = pd.read_csv("data.csv")
-
-sns.set(style="whitegrid")
-
-corr_matrix = df[["score", "num_comments", "upvote_ratio"]].corr()
-
-plt.figure(figsize=(8, 6))
-sns.heatmap(
-    corr_matrix,
-    annot=True,
-    fmt=".2f",
-    cmap="YlOrRd",
-    vmin=-1,
-    vmax=1,
-    cbar_kws={"label": "Korrelation"}
-)
-
-plt.title("Korrelationsmatrix: Engagement-Faktoren", fontsize=14, fontweight="600")
-plt.tight_layout()
-plt.savefig("output/chart_3_heatmap.png", dpi=150)
-plt.close()
-              </code></pre>
-            </div>
-          </article>
-        </div>
-
-        <div class="project-actions" style="margin-top: 2rem;">
-          <a class="btn-primary" href="https://github.com/juliarogocki-png/social-media-engagement-analysis" target="_blank" rel="noopener">
-            Show whole code on GitHub
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Insights & reflection -->
-    <section class="section">
-      <div class="container">
-        <header class="section-header">
-          <h2>Insights & reflection</h2>
-        </header>
-        <article class="project-copy">
-          <p>
-            The Social Media Engagement Analysis is intentionally kept small and focused:
-            it shows how I structure questions, choose appropriate visualizations
-            and keep the implementation transparent and reproducible.
-          </p>
-          <p>
-            For a next iteration, this project could be extended with a larger dataset
-            from the Reddit API or Kaggle, time-series analysis of engagement over weeks,
-            or an interactive dashboard with filters for subreddit and time range.
-            For this portfolio stage, the combination of modular scripts, charts and this case page
-            already demonstrates my approach to data‑driven work.
-          </p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>Project page last updated 14.08.2026.</p>
-    </div>
-  </footer>
-</body>
-</html>
+              The booking rate is calculated as the mean of the binary booking indicator for each device gro

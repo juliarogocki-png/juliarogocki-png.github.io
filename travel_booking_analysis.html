@@ -237,4 +237,48 @@ y = model_df["is_booking"]</code></pre>
               A pipeline combines imputation, scaling and logistic regression in one reproducible workflow.
             </p>
             <div class="code-block">
-              <pre><code class="language-pyth
+              <pre><code class="language-python">pipe = Pipeline([
+    ("imputer", SimpleImputer(strategy="median")),
+    ("scaler", StandardScaler()),
+    ("logreg", LogisticRegression(max_iter=1000))
+])
+
+pipe.fit(X, y)</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data source -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Data source</h2>
+        </header>
+
+        <article class="project-copy">
+          <p>
+            The data originate from Expedia’s hotel-search and booking logs, made available via
+            Kaggle as part of the “Expedia Hotel Recommendations” challenge. The dataset captures
+            user search sessions, interactions with search results (clicks and bookings), and
+            contextual features such as device type, package status, party composition and
+            search parameters. [1][6][10]
+          </p>
+          <p>
+            The version used here is a derived subset prepared for exploratory analysis of booking
+            conversion by device type. As with the original competition data, records are anonymized
+            and represent a sample of Expedia searches rather than the full population of live traffic. [2][13]
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Julia Rogocki</p>
+    </div>
+  </footer>
+</body>
+</html>

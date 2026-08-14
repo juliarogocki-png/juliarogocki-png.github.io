@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Exploratory UX-oriented analysis of hotel booking conversion by device type." />
   <title>Exploring Booking Conversion by Device Type | Julia Rogocki</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,9 +16,7 @@
 
   <header class="site-header">
     <div class="container nav">
-      <div class="brand">
-        <a href="index.html" class="brand-link">Julia Rogocki</a>
-      </div>
+      <div class="brand"><a href="index.html" class="brand-link">Julia Rogocki</a></div>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="projects.html" aria-current="page">Projects</a>
@@ -32,21 +27,21 @@
   </header>
 
   <main id="main">
-    <!-- Hero / Overview -->
     <section class="section hero">
       <div class="container project-layout">
         <article class="project-summary">
+          <p class="eyebrow">Data analysis · UX research</p>
           <h1>Exploring Booking Conversion by Device Type</h1>
           <p class="project-lead">
-            An exploratory and inferential analysis of hotel-search sessions, examining
-            whether desktop and mobile users differ in booking conversion after accounting
-            for selected characteristics of the search context.
+            An exploratory and inferential analysis of hotel-search sessions, examining whether
+            desktop and mobile users differ in booking conversion after accounting for selected
+            characteristics of the search context.
           </p>
 
-          <div class="project-meta">
-            <p><strong>Focus:</strong> Booking conversion, device comparison, UX-oriented data analysis</p>
-            <p><strong>Role:</strong> Data preparation, exploratory analysis, logistic regression and interpretation</p>
-            <p><strong>Tools:</strong> Python, pandas, seaborn, matplotlib, scikit-learn</p>
+          <div class="project-meta project-meta-grid">
+            <div><span>Focus</span><strong>Booking conversion and device comparison</strong></div>
+            <div><span>Role</span><strong>Data preparation, analysis and interpretation</strong></div>
+            <div><span>Tools</span><strong>Python · pandas · seaborn · scikit-learn</strong></div>
           </div>
 
           <div class="project-actions">
@@ -56,181 +51,175 @@
 
         <aside class="project-aside">
           <div class="info-card">
-            <h2>Project context</h2>
+            <p class="eyebrow">Project context</p>
+            <h2>From search behaviour to conversion</h2>
             <p>
-              This project uses hotel-search and booking records to investigate whether the
-              device used during a search is associated with booking conversion. The workflow
-              combines descriptive visualization with a logistic regression model. The model
-              does not prove causality; it tests whether the observed device-related pattern
-              remains after selected control variables are included.
+              This project uses hotel-search and booking records to investigate whether the device
+              used during a search is associated with booking conversion. The workflow combines
+              descriptive visualization with logistic regression.
             </p>
             <p>
-              The dataset originates from Expedia's <em>Hotel Recommendations</em>
-              competition, published through Kaggle. It contains anonymized records of
-              customer search behaviour, including search attributes, device information,
-              package status, clicks and bookings. The original competition data include
-              records from 2013 and 2014; the data are a random selection and are not
-              representative of Expedia's overall business statistics.
+              The model does not prove causality. It tests whether the observed device-related pattern
+              remains after selected contextual variables are included.
             </p>
             <ul class="meta-list">
-              <li>Dataset: Hotel-search and booking records</li>
-              <li>Outcome: Search resulted in a booking or not</li>
-              <li>Predictor of interest: Mobile versus desktop device</li>
-              <li>Output: Three visualizations and a regression model</li>
-              <li>
-                Data source:
-                <a
-                  href="https://www.kaggle.com/competitions/expedia-hotel-recommendations/data"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Expedia Hotel Recommendations on Kaggle
-                </a>
-              </li>
+              <li>Outcome: booking or no booking</li>
+              <li>Main predictor: mobile versus desktop</li>
+              <li>Context: travel distance and stay length</li>
+              <li>Output: three visualizations and a regression model</li>
             </ul>
+            <p class="source-note">
+              Data source:
+              <a href="https://www.kaggle.com/competitions/expedia-hotel-recommendations/data" target="_blank" rel="noopener">Expedia Hotel Recommendations on Kaggle</a>
+            </p>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- Research question -->
     <section class="section">
       <div class="container">
         <header class="section-header">
-          <h2>Research question</h2>
+          <p class="eyebrow">Research question</p>
+          <h2>Are booking rates associated with device type?</h2>
           <p>
             Are hotel-search sessions on desktop and mobile devices associated with different
             booking-conversion rates, and does this association remain after accounting for
             selected characteristics of the search context?
           </p>
         </header>
-
         <article class="project-copy">
           <p>
-            The analysis begins with a descriptive comparison of booking rates between device
-            groups. It then examines travel distance and requested stay length to understand
-            whether the search contexts show visible differences or substantial overlap.
-            Finally, logistic regression is used to estimate the association between device type
-            and booking status while controlling for selected search features.
+            The analysis begins with a descriptive comparison of booking rates. It then examines
+            travel distance and requested stay length to understand whether the search contexts show
+            visible differences or substantial overlap. Finally, logistic regression estimates the
+            association between device type and booking status while controlling for selected search features.
           </p>
           <p>
-            This structure separates three analytical questions: What do the raw group differences
-            look like? Which contextual variables appear relevant? And does the device-related
-            difference remain visible once those variables are considered together?
+            This structure separates three questions: What do the raw group differences look like?
+            Which contextual variables appear relevant? And does the device-related difference remain
+            visible once those variables are considered together?
           </p>
         </article>
       </div>
     </section>
 
-    <!-- Analysis results -->
     <section class="section">
       <div class="container">
         <header class="section-header">
-          <h2>Analysis results</h2>
+          <p class="eyebrow">Analysis results</p>
+          <h2>Desktop sessions show the higher observed conversion</h2>
           <p>
-            The descriptive analysis compares booking conversion and travel-planning
-            characteristics across desktop and mobile search sessions.
+            In this dataset, 8.3% of desktop searches result in a booking, compared with 6.0% of
+            mobile searches. This is an observed association, not evidence that device type causes the difference.
           </p>
         </header>
 
         <article class="analysis-panel">
           <div class="analysis-panel-intro">
             <p class="analysis-label">Key finding</p>
-            <h3>Desktop sessions show the higher observed booking conversion.</h3>
+            <h3>The main difference appears in conversion, not in the visible search context.</h3>
             <p>
-              In this dataset, 8.3% of desktop searches result in a booking,
-              compared with 6.0% of mobile searches. This is a difference of
-              2.3 percentage points. The result identifies an association in the
-              observed data; it does not show that device type itself causes the difference.
+              Travel distance and stay length provide useful context, but their distributions overlap
+              considerably across device groups.
             </p>
           </div>
 
           <div class="analysis-visual-grid">
             <figure class="analysis-visual">
-              <img
-                src="visuals/booking_rate.png"
-                alt="Bar chart comparing observed booking rates for desktop and mobile users"
-              />
+              <span class="zoom-hint">Click to enlarge</span>
+              <button type="button" class="chart-trigger" data-chart="visuals/booking_rate.png" data-alt="Bar chart comparing observed booking rates for desktop and mobile users">
+                <img src="visuals/booking_rate.png" alt="Bar chart comparing observed booking rates for desktop and mobile users" loading="lazy" />
+              </button>
               <figcaption>
-                <strong>1. Conversion:</strong> Desktop searches have the higher observed
-                booking rate: 8.3% compared with 6.0% on mobile.
+                <strong>1. Conversion:</strong> Desktop searches have the higher observed booking rate: 8.3% compared with 6.0% on mobile.
               </figcaption>
             </figure>
 
             <figure class="analysis-visual">
-              <img
-                src="visuals/distance_boxplot.png"
-                alt="Boxplot comparing travel distance for desktop and mobile users"
-              />
+              <span class="zoom-hint">Click to enlarge</span>
+              <button type="button" class="chart-trigger" data-chart="visuals/distance_boxplot.png" data-alt="Boxplot comparing travel distance for desktop and mobile users">
+                <img src="visuals/distance_boxplot.png" alt="Boxplot comparing travel distance for desktop and mobile users" loading="lazy" />
+              </button>
               <figcaption>
-                <strong>2. Travel context:</strong> Both groups have strongly right-skewed
-                travel-distance distributions. Their central ranges overlap substantially,
-                although desktop searches reach a somewhat higher upper range.
+                <strong>2. Travel context:</strong> The distributions are strongly right-skewed and overlap substantially. A log-scaled or trimmed version would improve readability.
               </figcaption>
             </figure>
 
             <figure class="analysis-visual">
-              <img
-                src="visuals/stay_distribution.png"
-                alt="Histogram and density plot comparing requested stay length for desktop and mobile users"
-              />
+              <span class="zoom-hint">Click to enlarge</span>
+              <button type="button" class="chart-trigger" data-chart="visuals/stay_distribution.png" data-alt="Distribution of requested stay length by device type">
+                <img src="visuals/stay_distribution.png" alt="Distribution of requested stay length by device type" loading="lazy" />
+              </button>
               <figcaption>
-                <strong>3. Stay length:</strong> Short stays dominate in both groups.
-                The distributions overlap considerably, so stay length alone does not
-                explain the conversion difference.
+                <strong>3. Stay length:</strong> Short stays dominate, but negative values and the very wide x-axis should be checked before drawing substantive conclusions.
               </figcaption>
             </figure>
           </div>
 
           <div class="analysis-panel-conclusion">
             <p>
-              <strong>Interpretation:</strong> The clearest difference between the two
-              groups concerns conversion. Travel distance and planned stay length provide
-              useful context but do not visibly separate desktop and mobile users to the
-              same extent.
+              <strong>Interpretation:</strong> The booking-rate chart is the clearest result. The two
+              distribution charts are useful as contextual diagnostics, but they should be refined before
+              being treated as polished evidence.
             </p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Next analytical step -->
-    <section class="section">
+    <section class="section code-section">
       <div class="container">
-        <header class="section-header">
-          <h2>Next analytical step</h2>
+        <header class="section-header code-section-header">
+          <p class="eyebrow">Don’t show just the result</p>
+          <h2>Show the code behind the analysis</h2>
           <p>
-            Because booking status is binary, logistic regression is the appropriate
-            method to estimate the probability that a search results in a booking.
-            The model will test the device association while including selected
-            contextual variables.
+            A short excerpt from the Python workflow used to calculate the booking rates and create the visualization.
+            The complete analysis is available in the linked GitHub repository.
           </p>
         </header>
 
-        <article class="project-copy">
-          <p>
-            The dependent variable is <code>is_booking</code>. The main predictor is
-            <code>is_mobile</code>, where 0 represents desktop and 1 represents mobile. The control
-            variables include package status, the number of adults, the number of children, the number
-            of rooms searched and the derived stay length. Missing values are handled before modelling,
-            and numeric variables are standardized so that the coefficients can be compared more easily.
-          </p>
-          <p>
-            The most important model output is the coefficient or odds ratio for <code>is_mobile</code>.
-            An odds ratio below 1 would indicate lower booking odds for mobile sessions relative to
-            desktop sessions after adjustment. An odds ratio close to 1 would suggest that the raw
-            booking-rate difference is largely accounted for by the included contextual variables.
-            Statistical significance should be assessed using confidence intervals or p-values rather
-            than inferred from the coefficient alone.
-          </p>
-        </article>
+        <div class="code-window" aria-label="Scrollable Python code example">
+          <div class="code-window-bar"><i></i><i></i><i></i><span>analysis.py</span></div>
+          <pre><code>import pandas as pd
+import matplotlib.pyplot as plt
+
+booking_rate = (
+    df.groupby("device_type")["is_booking"]
+      .mean()
+      .mul(100)
+      .reset_index(name="booking_rate")
+)
+
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.bar(
+    booking_rate["device_type"],
+    booking_rate["booking_rate"],
+    color="#d98fa1"
+)
+
+for index, value in enumerate(booking_rate["booking_rate"]):
+    ax.text(index, value + 0.25, f"{value:.1f}%", ha="center", weight="bold")
+
+ax.set_title("Booking Rate by Device Type")
+ax.set_ylabel("Booking Rate")
+ax.set_xlabel("Device Type")
+ax.set_ylim(0, 9)
+plt.tight_layout()
+plt.savefig("visuals/booking_rate.png", dpi=180)
+plt.show()</code></pre>
+        </div>
+
+        <div class="code-cta">
+          <a class="btn-primary" href="https://github.com/juliarogocki-png/juliarogocki-png.github.io/tree/main" target="_blank" rel="noopener">Go to the full code on GitHub →</a>
+        </div>
       </div>
     </section>
 
-    <!-- Limitations -->
     <section class="section">
       <div class="container">
         <header class="section-header">
-          <h2>Limitations</h2>
+          <p class="eyebrow">Next analytical step</p>
+          <h2>Testing the device association</h2>
           <p>
-         
+            Because booking status is binary, logistic regression is appropriate fo

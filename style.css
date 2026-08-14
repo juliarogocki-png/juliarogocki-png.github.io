@@ -615,116 +615,9 @@ footer p { margin: 0; }
     width: 100%;
   }
 }
-/* Project analysis panel */
-.analysis-panel {
-  margin-top: 2rem;
-  padding: 0;
-  background: transparent;
-  color: var(--text);
-  border-radius: 0;
+
 }
 
-.analysis-panel-intro {
-  max-width: 48rem;
-  margin-bottom: 3rem;
-}
-
-.analysis-label {
-  margin: 0 0 0.75rem;
-  color: #d98fa1;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.analysis-panel h3 {
-  color: var(--text);
-}
-
-.analysis-panel p {
-  color: var(--muted);
-}
-
-
-.analysis-visual-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.analysis-visual {
-  margin: 0;
-  padding: 1rem;
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid rgba(31, 29, 23, 0.08);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-
-
-.analysis-visual img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: 0.4rem;
-  background: #f7f6f2;
-}
-
-.analysis-visual figcaption {
-  color: #e7e2d9;
-  font-size: 0.94rem;
-  line-height: 1.6;
-}
-
-.analysis-visual figcaption strong,
-.analysis-panel-conclusion strong {
-  color: #f4b5c5;
-}
-
-.analysis-panel-conclusion {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #454138;
-}
-
-.section-header {
-  margin-bottom: 2rem;
-}
-
-.section-header h2 {
-  margin: 0 0 0.75rem;
-}
-
-.section-header p {
-  margin: 0;
-  max-width: 46rem;
-}
-
-.project-copy p + p {
-  margin-top: 1.25rem;
-}
-
-.card h3 {
-  margin: 0 0 1rem;
-}
-
-.card-copy {
-  margin-top: 1.25rem;
-}
-
-@media (max-width: 900px) {
-  .analysis-visual-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .analysis-panel-intro {
-    margin-bottom: 2rem;
-  }
-}
 .code-window {
   display: block;
   width: 100%;
@@ -769,3 +662,201 @@ footer p { margin: 0; }
   font: inherit;
   white-space: pre;
 }
+
+/* Add this block at the very end of the existing style.css.
+   It affects only <body class="project-page">. */
+
+.project-page .analysis-panel {
+  margin-top: 2rem;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+  border-radius: 0;
+}
+
+.project-page .analysis-panel-intro {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+.project-page .analysis-panel h3 {
+  color: var(--text);
+}
+
+.project-page .analysis-panel p {
+  color: var(--muted);
+}
+
+.project-page .analysis-label {
+  color: var(--accent);
+}
+
+.project-page .analysis-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.project-page .analysis-visual {
+  min-width: 0;
+  margin: 0;
+  padding: 1rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid rgba(31, 29, 23, 0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.project-page .analysis-visual button,
+.project-page .analysis-visual button:hover,
+.project-page .analysis-visual button:focus,
+.project-page .analysis-visual button:active {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+  cursor: zoom-in;
+}
+
+.project-page .analysis-visual button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.project-page .analysis-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--surface-2);
+  transition: transform 180ms ease;
+}
+
+.project-page .analysis-visual button:hover img {
+  transform: scale(1.02);
+}
+
+.project-page .analysis-visual figcaption {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.project-page .analysis-visual figcaption strong {
+  color: #a95f76;
+}
+
+.project-page .analysis-panel-conclusion {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.project-page .analysis-panel-conclusion p {
+  color: var(--muted);
+}
+
+.project-page .zoom-hint {
+  display: block;
+  margin-bottom: 0.7rem;
+  color: #a95f76;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Only this page's code window is dark. */
+.project-page .code-section {
+  background: var(--surface-2);
+}
+
+.project-page .code-window {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: #171614;
+  border: 1px solid #37352f;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.project-page .code-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 42px;
+  padding: 0.8rem 1rem;
+  background: #171614;
+  border-bottom: 1px solid #37352f;
+  color: #a9a49a;
+  font-size: 0.78rem;
+}
+
+.project-page .code-window-bar i {
+  width: 9px;
+  height: 9px;
+  display: block;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #d98fa1;
+}
+
+.project-page .code-window-bar i:nth-child(2) { background: #d7bd87; }
+.project-page .code-window-bar i:nth-child(3) { background: #91b89a; }
+
+.project-page .code-window pre {
+  display: block;
+  width: 100%;
+  height: 380px;
+  max-height: 380px;
+  overflow-y: scroll;
+  overflow-x: auto;
+  margin: 0;
+  padding: 1.25rem;
+  background: #171614;
+  color: #f3eee5;
+  font: 0.82rem/1.7 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  white-space: pre;
+  scrollbar-color: #686258 #24221f;
+  -webkit-overflow-scrolling: touch;
+}
+
+.project-page .code-window code {
+  display: block;
+  color: inherit;
+  font: inherit;
+  white-space: pre;
+}
+
+.project-page .code-window pre::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.project-page .code-window pre::-webkit-scrollbar-track {
+  background: #24221f;
+}
+
+.project-page .code-window pre::-webkit-scrollbar-thumb {
+  background: #686258;
+  border: 3px solid #24221f;
+  border-radius: 999px;
+}
+
+.project-page .code-cta {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .project-page .analysis-visual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

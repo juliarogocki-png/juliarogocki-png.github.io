@@ -172,23 +172,12 @@ import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from io import StringIO
 
 os.makedirs("output", exist_ok=True)
 
-csv_data = """title,score,num_comments,created,subreddit,upvote_ratio
-"Amazing sunset photo",15234,342,2024-01-15,photography,0.94
-"Tips for learning Python?",8921,567,2024-01-16,learnpython,0.91
-"New study on social movements",12456,234,2024-01-17,sociology,0.89
-"UX design best practices",9834,445,2024-01-18,UXDesign,0.92
-"Data visualization examples",11234,389,2024-01-19,datascience,0.93
-"Travel photography inspiration",7654,278,2024-01-20,travel,0.88
-"Academic writing tips",6543,312,2024-01-21,AcademicWriting,0.87
-"Portfolio review feedback",8765,423,2024-01-22,webdev,0.90
-"Research methodology discussion",5432,198,2024-01-23,research,0.86
-"Digital product design trends",10234,501,2024-01-24,productdesign,0.91"""
+# Load data from CSV
+df = pd.read_csv("data.csv")
 
-df = pd.read_csv(StringIO(csv_data))
 sns.set(style="whitegrid")
 
 plt.figure(figsize=(10, 6))
@@ -230,23 +219,12 @@ import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from io import StringIO
 
 os.makedirs("output", exist_ok=True)
 
-csv_data = """title,score,num_comments,created,subreddit,upvote_ratio
-"Amazing sunset photo",15234,342,2024-01-15,photography,0.94
-"Tips for learning Python?",8921,567,2024-01-16,learnpython,0.91
-"New study on social movements",12456,234,2024-01-17,sociology,0.89
-"UX design best practices",9834,445,2024-01-18,UXDesign,0.92
-"Data visualization examples",11234,389,2024-01-19,datascience,0.93
-"Travel photography inspiration",7654,278,2024-01-20,travel,0.88
-"Academic writing tips",6543,312,2024-01-21,AcademicWriting,0.87
-"Portfolio review feedback",8765,423,2024-01-22,webdev,0.90
-"Research methodology discussion",5432,198,2024-01-23,research,0.86
-"Digital product design trends",10234,501,2024-01-24,productdesign,0.91"""
+# Load data from CSV
+df = pd.read_csv("data.csv")
 
-df = pd.read_csv(StringIO(csv_data))
 sns.set(style="whitegrid")
 palette = sns.color_palette("muted")
 
@@ -276,4 +254,82 @@ plt.close()
               Correlation matrix of engagement metrics.
             </p>
             <div class="code-block">
-              <pre><code class="langua
+              <pre><code class="language-python">
+"""
+Chart 3: Heatmap – Correlation matrix
+Output: output/chart_3_heatmap.png
+"""
+
+import os
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+os.makedirs("output", exist_ok=True)
+
+# Load data from CSV
+df = pd.read_csv("data.csv")
+
+sns.set(style="whitegrid")
+
+corr_matrix = df[["score", "num_comments", "upvote_ratio"]].corr()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(
+    corr_matrix,
+    annot=True,
+    fmt=".2f",
+    cmap="YlOrRd",
+    vmin=-1,
+    vmax=1,
+    cbar_kws={"label": "Korrelation"}
+)
+
+plt.title("Korrelationsmatrix: Engagement-Faktoren", fontsize=14, fontweight="600")
+plt.tight_layout()
+plt.savefig("output/chart_3_heatmap.png", dpi=150)
+plt.close()
+              </code></pre>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-actions" style="margin-top: 2rem;">
+          <a class="btn-primary" href="https://github.com/juliarogocki-png/social-media-engagement-analysis" target="_blank" rel="noopener">
+            Show whole code on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Insights & reflection -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Insights & reflection</h2>
+        </header>
+        <article class="project-copy">
+          <p>
+            The Social Media Engagement Analysis is intentionally kept small and focused:
+            it shows how I structure questions, choose appropriate visualizations
+            and keep the implementation transparent and reproducible.
+          </p>
+          <p>
+            For a next iteration, this project could be extended with a larger dataset
+            from the Reddit API or Kaggle, time-series analysis of engagement over weeks,
+            or an interactive dashboard with filters for subreddit and time range.
+            For this portfolio stage, the combination of modular scripts, charts and this case page
+            already demonstrates my approach to data‑driven work.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Project page last updated 14.08.2026.</p>
+    </div>
+  </footer>
+</body>
+</html>

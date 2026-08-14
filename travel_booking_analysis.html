@@ -50,9 +50,7 @@
           </div>
 
           <div class="project-actions">
-            <a class="btn-primary" href="projects.html">
-              Back to projects
-            </a>
+            <a class="btn-primary" href="projects.html">Back to projects</a>
           </div>
         </article>
 
@@ -68,8 +66,8 @@
             <ul class="meta-list">
               <li>Dataset: Hotel-search and booking records</li>
               <li>Unit of analysis: Individual search records</li>
-              <li>Output: Four static portfolio visualizations</li>
-              <li>Approach: Group comparison and correlation analysis</li>
+              <li>Output: Three focused static visualizations</li>
+              <li>Approach: Group comparison and distribution analysis</li>
             </ul>
           </div>
         </aside>
@@ -82,8 +80,8 @@
         <header class="section-header">
           <h2>Research question</h2>
           <p>
-            Do desktop and mobile users show different booking behaviour, and what can
-            travel distance, stay length and selected booking features tell us about these differences?
+            Do desktop and mobile users show different booking behaviour, particularly
+            in booking conversion, travel distance and requested stay length?
           </p>
         </header>
 
@@ -93,8 +91,6 @@
             it compares the booking rate between device groups. Second, it examines whether
             desktop and mobile searches differ in the distance between the traveller's origin
             and the destination. Third, it explores the distribution of requested stay length.
-            A correlation matrix adds context by showing how device type, booking status and
-            search characteristics move together within the available data.
           </p>
           <p>
             The guiding assumption is not that one device is inherently better than the other.
@@ -113,8 +109,7 @@
           <h2>Key visualizations</h2>
           <p>
             Each chart addresses a specific part of the research question. Together they show
-            the conversion gap, the travel-distance distribution, the shape of stay-length data
-            and the strength of relationships between selected features.
+            the conversion gap, the travel-distance distribution and the shape of stay-length data.
           </p>
         </header>
 
@@ -175,26 +170,6 @@
               separate the two device groups.
             </p>
           </article>
-
-          <article class="card">
-            <h3>Correlation matrix of booking features</h3>
-            <figure class="chart-figure">
-              <img
-                src="visuals/correlation_heatmap.png"
-                alt="Heatmap showing correlations between device type, package status, search party size, rooms and booking status"
-              />
-              <figcaption>
-                The strongest relationship shown is between the number of adults and the number of rooms searched, with a correlation of 0.53.
-              </figcaption>
-            </figure>
-            <p class="card-copy">
-              Device type has only very weak correlations with the listed search features and booking
-              status. The heatmap therefore supports a cautious interpretation: the booking-rate gap
-              is visible at group level, but it is not explained by strong linear relationships between
-              device type and these individual variables. The moderate adults–rooms relationship is
-              more structurally apparent than the device-related correlations.
-            </p>
-          </article>
         </div>
       </div>
     </section>
@@ -230,4 +205,55 @@ df["stay_length"] = (
           <article class="code-card">
             <h3>Booking-rate comparison</h3>
             <p class="card-copy">
-              The booking rate is calculated as the mean of the binary booking indicator for each device gro
+              The booking rate is calculated as the mean of the binary booking indicator for each device group.
+            </p>
+            <div class="code-block">
+              <pre><code class="language-python">booking = (
+    df.groupby("is_mobile")["is_booking"]
+    .mean()
+    .reset_index()
+)
+
+booking["device"] = booking["is_mobile"].map({
+    0: "Desktop",
+    1: "Mobile"
+})</code></pre>
+            </div>
+          </article>
+
+          <article class="code-card">
+            <h3>Distribution analysis</h3>
+            <p class="card-copy">
+              Boxplots and density plots make skew, overlap and extreme observations visible across device groups.
+            </p>
+            <div class="code-block">
+              <pre><code class="language-python">distance = [
+    df.loc[df["is_mobile"] == 0,
+           "orig_destination_distance"].dropna(),
+    df.loc[df["is_mobile"] == 1,
+           "orig_destination_distance"].dropna()
+]
+
+sns.histplot(
+    data=df,
+    x="stay_length",
+    hue="is_mobile",
+    kde=True,
+    stat="density",
+    common_norm=False
+)</code></pre>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-actions" style="margin-top: 2rem;">
+          <a class="btn-primary" href="https://github.com/juliarogocki-png/social-media-engagement-analysis" target="_blank" rel="noopener">
+            View project repository on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evaluation -->
+    <section class="section">
+      <div class="con

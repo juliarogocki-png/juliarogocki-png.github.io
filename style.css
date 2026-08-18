@@ -859,4 +859,75 @@ footer p { margin: 0; }
     grid-template-columns: 1fr;
   }
 }
+.project-page .regression-table-wrapper {
+  margin: 1.75rem 0 2rem;
+  overflow-x: auto;
+  border: 1px solid rgba(31, 29, 23, 0.08);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
 
+.project-page .regression-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.project-page .regression-table th,
+.project-page .regression-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-page .regression-table th {
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.project-page .regression-table td {
+  color: var(--muted);
+}
+
+.project-page .regression-table td:first-child {
+  color: var(--text);
+}
+
+.project-page .regression-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.project-page .regression-table tbody tr:hover {
+  background: rgba(246, 225, 231, 0.35);
+}
+
+.project-page .table-note {
+  margin: 0;
+  padding: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.project-page code {
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.project-page .code-window code {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+}

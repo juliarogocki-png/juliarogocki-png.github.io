@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  margin: 0;1
+  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: "Inter", sans-serif;
@@ -859,5 +859,34 @@ footer p {
 @media (max-width: 900px) {
   .project-page .analysis-visual-grid {
     grid-template-columns: 1fr;
+  }
+}
+/* Travel project: wider desktop sections only */
+@media (min-width: 1100px) {
+  .project-page .container {
+    width: min(1320px, calc(100% - 4rem));
+  }
+
+  .project-page .section-header {
+    width: 100%;
+    max-width: 1080px;
+  }
+
+  .project-page .project-copy {
+    width: 100%;
+    max-width: 1080px;
+  }
+
+  .project-page .project-copy p {
+    max-width: 900px;
+  }
+
+  .project-page .analysis-visual-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+
+  .project-page .analysis-visual {
+    padding: 1.25rem;
   }
 }

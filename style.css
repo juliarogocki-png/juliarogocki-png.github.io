@@ -890,3 +890,11 @@ footer p {
     padding: 1.25rem;
   }
 }
+@media (max-width: 980px) {
+  header {
+    position: static;
+    backdrop-filter: none;
+    background: var(--bg);
+  }
+}
+
